@@ -1,0 +1,12 @@
+#ativa  o mecanismo de rescrita do Apache
+RewriteEngine On
+ 
+ #Define o caminho base para todas as regras
+RewriteBase /
+ 
+RewriteCond %{REQUEST_FILENAME} !-f
+ 
+RewriteCond %{REQUEST_FILENAME} !-d
+ 
+RewriteRule ^(.*)$ index.php [QSA,L]
+ 
