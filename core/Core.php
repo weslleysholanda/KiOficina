@@ -46,8 +46,28 @@ class Core{
 
             // count— Conta todos os elementos em uma matriz ou em um objeto
             if(count($url) > 0){
+                $parametro = $url;
+            }else{
+                $controladorAtual = 'HomeController';
+                $acaoAtual = 'index';
+            }
 
+            //Verificando se o arquivo do CONTROLLER existe e se o método existe na class
+
+            //file_exists - Verifica se um arquivo ou diretório existe
+            //method_exists- Verifica se o método de classe existe
+            if(!file_exists('../app/controllers/' . $controladorAtual . '.php') ||!method_exists($controladorAtual, $acaoAtual)){
+
+                //Se não existir defina o controller como ErroController
+                $controladorAtual = 'ErroController';
+                $acaoAtual = 'index';
             }
         }
+
+        // Instancia do controller atual
+        $controller = new $controladorAtual();
+
+        // call_user_func_array - Chama um retorno de chamada com uma matriz de parâmetros
+        call_user_func_array(array($controller, $acaoAtual), $parametro);
     }
 }
