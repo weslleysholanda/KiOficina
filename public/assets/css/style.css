@@ -1,40 +1,40 @@
 /* Fontes do projeto */
 @font-face {
     font-family: 'PACE';
-    src: url('/assets/fonts/pace-racing-car/PACE.woff2') format('woff2'),
-        url('/assets/fonts/pace-racing-car/PACE.woff') format('woff'),
-        url('/assets/fonts/pace-racing-car/PACE.ttf') format('truetype'),
-        url('/assets/fonts/pace-racing-car/PACE.otf') format('opentype');
+    src: url('/public/assets/fonts/pace-racing-car/PACE.woff2') format('woff2'),
+        url('/public/assets/fonts/pace-racing-car/PACE.woff') format('woff'),
+        url('/public/assets/fonts/pace-racing-car/PACE.ttf') format('truetype'),
+        url('/public/assets/fonts/pace-racing-car/PACE.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'PACE Italic';
-    src: url('/assets/fonts/pace-racing-car/PACE-Italic.woff2') format('woff2'),
-        url('/assets/fonts/pace-racing-car/PACE-Italic.woff') format('woff'),
-        url('/assets/fonts/pace-racing-car/PACE-Italic.ttf') format('truetype'),
-        url('/assets/fonts/pace-racing-car/PACE-Italic.otf') format('opentype');
+    src: url('/public/assets/fonts/pace-racing-car/PACE-Italic.woff2') format('woff2'),
+        url('/public/assets/fonts/pace-racing-car/PACE-Italic.woff') format('woff'),
+        url('/public/assets/fonts/pace-racing-car/PACE-Italic.ttf') format('truetype'),
+        url('/public/assets/fonts/pace-racing-car/PACE-Italic.otf') format('opentype');
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'Sofast';
-    src: url('/assets/fonts/sofast-racing-car/Sofast.woff2') format('woff2'),
-        url('/assets/fonts/sofast-racing-car/Sofast.woff') format('woff'),
-        url('/assets/fonts/sofast-racing-car/Sofast.ttf') format('truetype'),
-        url('/assets/fonts/sofast-racing-car/Sofast.otf') format('opentype');
+    src: url('/public/assets/fonts/sofast-racing-car/Sofast.woff2') format('woff2'),
+        url('/public/assets/fonts/sofast-racing-car/Sofast.woff') format('woff'),
+        url('/public/assets/fonts/sofast-racing-car/Sofast.ttf') format('truetype'),
+        url('/public/assets/fonts/sofast-racing-car/Sofast.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Sofast Italic';
-    src: url('/assets/fonts/sofast-racing-car/Sofast-Italic.woff2') format('woff2'),
-        url('/assets/fonts/sofast-racing-car/Sofast-Italic.woff') format('woff'),
-        url('/assets/fonts/sofast-racing-car/Sofast-Italic.ttf') format('truetype'),
-        url('/assets/fonts/sofast-racing-car/Sofast-Italic.otf') format('opentype');
+    src: url('/public/assets/fonts/sofast-racing-car/Sofast-Italic.woff2') format('woff2'),
+        url('/public/assets/fonts/sofast-racing-car/Sofast-Italic.woff') format('woff'),
+        url('/public/assets/fonts/sofast-racing-car/Sofast-Italic.ttf') format('truetype'),
+        url('/public/assets/fonts/sofast-racing-car/Sofast.otf') format('opentype');
     font-weight: normal;
     font-style: italic;
 }
@@ -882,7 +882,7 @@ h6 {
     margin: var(--espacamento) 0;
 
     a {
-        background: url(/assets/img/car_video_bg.jpg);
+        background: url(/public/assets/img/car_video_bg.jpg);
         display: block;
         height: 100%;
         width: 100%;
@@ -1209,7 +1209,7 @@ h6 {
             position: relative;
             margin: 10px;
             .equipe-img{
-                background-image: url(/assets/img/team_1.jpg);
+                background-image: url(/public/assets/img/team_1.jpg);
                 position: relative;
                 width: 270px;
                 height: 290px;
