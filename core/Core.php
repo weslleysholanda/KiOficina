@@ -90,10 +90,10 @@ class Core
  
         // Instacia do controller atual
         $controller = new $controladorAtual();
-        var_dump($controller);
+        // var_dump($controller);
 
         // call_usar_func_array - Chama uma função de retorno com um array
-        // call_user_func_array(array($controller,$acaoAtual), $parametro);
+        call_user_func_array(array($controller,$acaoAtual), $parametro);
     }
 }
  

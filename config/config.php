@@ -1,7 +1,8 @@
 <?php
 
 //Definir URL base da aplicação
-define("BASE_URL","https://kioficina.smpsistema.com.br/"); //serve para criar uma constante de forma global
+// define("BASE_URL","https://kioficina.smpsistema.com.br/"); //serve para criar uma constante de forma global
+define("BASE_URL","http://localhost/kioficina/"); //serve para criar uma constante de forma global
 
 // Confguração de acesso ao banco de dados(Data Base)
 define("DB_HOST", "localhost"); //Host do sistema

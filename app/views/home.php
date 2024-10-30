@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/img/favicon.svg">
+    <link rel="icon" href="<?php BASE_URL?>assets/img/favicon.svg">
     <meta name="author" content="Weslley Holanda Santos">
     <title>KiOficina - Seu carro em boas mãos</title>
     <!-- Reset -->
-    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="<?php BASE_URL?>assets/css/reset.css">
     <!-- Slick -->
-    <link rel="stylesheet" href="assets/css/slick.css" />
-    <link rel="stylesheet" href="assets/css/slick-theme.css" />
+    <link rel="stylesheet" href="<?php BASE_URL?>assets/css/slick.css" />
+    <link rel="stylesheet" href="<?php BASE_URL?>assets/css/slick-theme.css" />
     <!-- litty -->
-    <link href="assets/css/lity.css" rel="stylesheet">
+    <link href="<?php BASE_URL?>assets/css/lity.css" rel="stylesheet">
     <!-- Style -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="<?php BASE_URL?>assets/css/style.css">
 </head>
 
 <body>
@@ -314,7 +314,7 @@
                 </div>
             </div>
             <div class="escolher-imagem">
-                <img src="/assets/img/choose-us.png" alt="">
+                <img src="assets/img/choose-us.png" alt="">
                 <img src="assets/img/Circle.png" alt="">
             </div>
         </div>
