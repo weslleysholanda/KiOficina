@@ -25,6 +25,9 @@
     <?php require_once('templates/topo.php') ?>
     <!-- final cabeçalho -->
 
+    <!-- contato -->
+    <?php require_once('templates/contato.php') ?>
+
     <?php require_once('templates/footer.php')?>
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

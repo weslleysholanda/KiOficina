@@ -58,9 +58,6 @@
     --fonteSofast: 'Sofast';
     --fontePace: 'PACE';
 
-    /* Espaçamento */
-    --espacamento: 200px;
-    --espacamento-medio: 125px;
 }
 
 /* Estilos iniciais */
@@ -85,6 +82,23 @@ p {
     font-weight: 400;
     line-height: 24px;
 }
+
+.of-height-125 {
+    height: 200px;
+}
+
+.of-height-25{
+    height: 25px;
+}
+
+.of-height-40{
+    height: 40px;
+}
+
+.of-height-45{
+    height: 45px;
+}
+
 
 html,
 body {
@@ -467,10 +481,6 @@ h6 {
 
 /* sessão Destaque */
 
-.destaque {
-    margin: var(--espacamento) 0;
-}
-
 .destaque>div {
     display: flex;
     justify-content: space-between;
@@ -548,7 +558,6 @@ h6 {
 /* Sessão Escolher */
 
 .escolher {
-    margin: var(--espacamento) 0;
 
     >div {
 
@@ -879,7 +888,6 @@ h6 {
 .video {
     height: 650px;
     width: 100%;
-    margin: var(--espacamento) 0;
 
     a {
         background: url(../img/car_video_bg.jpg);
@@ -922,7 +930,6 @@ h6 {
 
 /* Sessão Satisfação */
 .satisfacao {
-    margin: var(--espacamento) 0;
 
     >div {
         display: flex;
@@ -976,7 +983,6 @@ h6 {
 
 /* depoimento */
 .depoimento {
-    margin: var(--espacamento) 0;
     .depoimento-head {
         .depoimento-fundo {
             z-index: 9;
@@ -1112,7 +1118,6 @@ h6 {
 
 /* equipe */
 .equipe{
-    margin: var(--espacamento) 0;
     position: relative;
 
     >div{
@@ -1469,9 +1474,115 @@ h6 {
 
 }
 
-.footer{
-    margin: var(--espacamento) 0;
+/* contato */
+.conteudo-contato{
+    display: flex;
+    width: 100%; 
+    gap: 30px;
+
+    .conteudo-contato{
+        align-items: center;
+    }
+
+    .conteudo-contato .sessao-conteudo-titulo{
+        max-width: 441px;
+        width: 100%;
+    }
+
+    .conteudo-contato .form-contato{
+        width: 100%;
+        padding: 75px;
+        background-color: var(--colorContainer);
+    }
+
+    .form-contato .contato-inputs{
+        display: flex;
+        gap: 30px;
+        margin-bottom: 25px;
+    }
+
+    .form-contato .contato-inputs input{
+        color: #fff;
+        background-color: transparent;
+        padding: 12px 20px;
+        border: 1px solid rgba(255,255,255,0.25);
+        flex: 1;
+        /* outline é desenhado fora da borda do elemento e pode sobrepor outro conteúdo */
+        outline: none;
+    }
+
+    .form-contato .contato-inputs input:focus{
+        border-color: #fff !important;
+        box-shadow: 0 0 0 0.25em rgba(255,255,255,0.19);
+    }
+
+    .form-contato .contato-inputs .contato-type1{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+    }
+
+    .form-contato .contato-inputs .contato-type1 label{
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+
+    .form-contato .contato-inputs .contato-type1 input{
+        color:#fff;
+        border: 1px solid rgba(255,61, 36, 0.4392156863);
+    }
+
+    .form-contato .contato-inputs .contato-type1 input:focus{
+        border-color:rgba(255,61,36,0.4392156863) !important;
+        box-shadow: 0 0 0 0.25rem rgba(109,10,10,0.468);
+    }
+
+    .form-contato .from-textarea{
+        display: flex;
+        margin-bottom: 45px;
+    }
+
+    .form-contato .from-textarea textarea{
+        padding: 12px 20px;
+        color: #fff;
+        outline: none;
+        border: 1px solid rgba(255,255,255,0.25);
+        /* flex-grow propriedade especifica o quanto o item crescerá em relação ao restante dos itens flexíveis dentro do mesmo contêiner. */
+        flex-grow:1;
+        background-color:transparent;
+    }
+    
+    .form-contato .from-textarea textarea:focus{
+        border-color:#fff !important;
+        box-shadow: 0 0 0 0.25rem rgba(255,255,255,0.19);
+    }
+
+    .form-contato .from-textarea .contato-type1{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .form-contato .from-textarea .contato-type1 label{
+        font-size: 16px;
+        text-transform: uppercase;
+    }
+
+    .form-contato .from-textarea .contato-type1 textarea{
+        color: #fff;
+        border:1px solid rgba(255,61,36,0.4392156863);
+    }
+
+    .form-contato .from-textarea .contato-type1 textarea:focus{
+        border-color: rgba(255,61,36,0.4392156863)!important;
+        box-shadow: 0 0 0 0.25rem rgba(109,10,10,0.486);
+    }
+
 }
+
+
+
 @keyframes wave {
     0% {
         transform: translate(-50%, -50%) scale(0);

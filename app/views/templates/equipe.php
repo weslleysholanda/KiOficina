@@ -1,3 +1,4 @@
+<div class="of-height-125"></div>
 <section class="equipe">
         <div class="site">
             <div class="equipe-head">
