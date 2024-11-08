@@ -5,10 +5,10 @@
 define("BASE_URL","http://localhost/kioficina/"); //serve para criar uma constante de forma global
 
 // Confguração de acesso ao banco de dados(Data Base)
-define("DB_HOST", "localhost"); //Host do sistema
-define("DB_NAME","mecanica");   //Nome da data base
-define("DB_USER","root");       //Usuario data base
-define("DB_PASS","");          //Senha data base 
+define("HOST_EMAIL", "smtp.hostinger.com"); //Host do sistema
+define("PORT_EMAIL","465");   //Nome da data base
+define("USER_EMAIL","worlddev@tipi02.smpsistema.com.br");       //Usuario data base
+define("PASS_EMAIL","Senac@worlddev01");  //Senha data base 
 
 
 // Sistema de autoload das classes
