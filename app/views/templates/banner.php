@@ -15,7 +15,7 @@
                                 </div>
                                 <div></div>
                                 <div>
-                                    <a href="#">contato</a>
+                                    <a href="<?php BASE_URL; ?>contato">contato</a>
                                 </div>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                                 </div>
                                 <div></div>
                                 <div>
-                                    <a href="#">contato</a>
+                                    <a href="<?php BASE_URL; ?>contato">contato</a>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                                 </div>
                                 <div></div>
                                 <div>
-                                    <a href="#">contato</a>
+                                    <a href="<?php BASE_URL; ?>contato">contato</a>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                                 </div>
                                 <div></div>
                                 <div>
-                                    <a href="#">contato</a>
+                                    <a href="<?php BASE_URL; ?>contato">contato</a>
                                 </div>
                             </div>
                         </div>
