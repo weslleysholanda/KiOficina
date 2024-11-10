@@ -8,7 +8,7 @@
     <meta name="author" content="Weslley Holanda Santos">
     <title>KiOficina - Seu carro em boas mãos</title>
     <!-- Reset -->
-    <link rel="stylesheet" href="<?php BASE_URL?>assets/css/reset.css">
+    <link rel="stylesheet" href="<?php BASE_URL?>assets/css/reset.css"/>
     <!-- Slick -->
     <link rel="stylesheet" href="<?php BASE_URL?>assets/css/slick.css" />
     <link rel="stylesheet" href="<?php BASE_URL?>assets/css/slick-theme.css" />

@@ -5,7 +5,7 @@
             </div>
             <nav class="menu">
                 <ul>
-                    <li><a href="<?php BASE_URL; ?>home">HOME</a></li>
+                    <li><a href="http://localhost/innovaclick/public/home">HOME</a></li>
                     <li><a href="<?php BASE_URL; ?>sobre">SOBRE</a></li>
                     <li><a href="<?php BASE_URL; ?>servico">SERVIÇOS</a></li>
                     <li><a href="<?php BASE_URL; ?>area">ÁREA DE ATUAÇÃO</a></li>
