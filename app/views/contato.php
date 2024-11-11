@@ -4,20 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="<?php BASE_URL?>assets/img/favicon.svg">
+    <link rel="icon" href="http://localhost/kioficina/public/assets/img/favicon.svg">
     <meta name="author" content="Weslley Holanda Santos">
     <!-- shorthand ternario (?=if :=else) -->
 
     <title><?php echo isset($titulo)?$titulo: 'Contato - Ki Oficina'; ?></title>
     <!-- Reset -->
-    <link rel="stylesheet" href="<?php BASE_URL?>assets/css/reset.css">
-    <!-- Slick -->
-    <link rel="stylesheet" href="<?php BASE_URL?>assets/css/slick.css" />
-    <link rel="stylesheet" href="<?php BASE_URL?>assets/css/slick-theme.css" />
-    <!-- litty -->
-    <link href="<?php BASE_URL?>assets/css/lity.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost/kioficina/public/vendors/css/reset.css">
     <!-- Style -->
-    <link rel="stylesheet" href="<?php BASE_URL?>assets/css/style.css">
+    <link rel="stylesheet" href="http://localhost/kioficina/public/assets/css/style.css">
 </head>
 
 <body>

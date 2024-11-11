@@ -253,7 +253,7 @@ p {
 
 .conteudo-preloader {
     background-color: var(--colorContainer);
-    z-index: 999999999;
+    z-index: 99999;
     height: 100%;
     width: 100%;
     position: fixed;

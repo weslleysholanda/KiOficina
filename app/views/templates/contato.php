@@ -2,6 +2,15 @@
 <div class="of-height-80"></div>
 <section class="contato">
     <div class="site">
+        <?php
+        // if (isset($mensagem) && isset($status)) {
+        //     if ($status == 'sucesso') {
+        //         echo '<div class="alerta-sucesso"> ' . $mensagem . '</div>';
+        //     } elseif ($status == 'erro') {
+        //         echo '<div class="alerta-erro"> ' . $mensagem . '</div>';
+        //     }
+        // }
+        ?>
         <div class="conteudo-contato">
             <div class="sessao-conteudo-titulo">
                 <h2>Contate-nos</h2>

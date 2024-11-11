@@ -25,7 +25,7 @@
                 <div class="linhaBorder"></div>
                 <div class="of-height-35"></div>
                 <div class="footerLogo">
-                        <img src="../public/assets/img/Kioficina_Logo.svg" alt="">
+                        <img src="http://localhost/kioficina/public/assets/img/Kioficina_Logo.svg" alt="">
                         <h4>Kioficina</h1>
                 </div>
                 <div class="of-height-20"></div>
@@ -39,7 +39,7 @@
                                 <div class="fone">
                                         <a href="tel:5511988626603">
                                                 <span>
-                                                        <img src="assets/img/phone.svg" alt="KiOficina - Seu carro em boas mãos">
+                                                        <img src="http://localhost/kioficina/public/assets/img/phone.svg" alt="KiOficina - Seu carro em boas mãos">
                                                 </span>
                                                 <h6>55 11 988 626 603</h6>
                                         </a>
@@ -61,15 +61,15 @@
                         <div class="infoLocation">
                                 <p>Contato/Localização</p>
                                 <a href="#">
-                                        <img src="../public/assets/img/location.svg" alt="">
+                                        <img src="http://localhost/kioficina/public/assets/img/location.svg" alt="">
                                         AV.Marechal Tito, 1500 São Miguel Paulista, São Paulo
                                 </a>
                                 <a href="#">
-                                        <img src="../public/assets/img/email.svg" alt="">
+                                        <img src="http://localhost/kioficina/public/assets/img/email.svg" alt="">
                                         example@email.com
                                 </a>
                                 <a href="#">
-                                        <img src="../public/assets/img/calender.svg" alt="">
+                                        <img src="http://localhost/kioficina/public/assets/img/calender.svg" alt="">
                                         Dom - Qui: Aberto 27/7
                                 </a>
                         </div>

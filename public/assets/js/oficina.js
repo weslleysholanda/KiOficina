@@ -1,5 +1,8 @@
+//pre-inicialização
+  $(window).on("load", function () {
+    preloader();
+  });
 //preloader
-
 function preloader() {
     // setTimeout()método chama uma função após um número de milissegundos
     setTimeout(function () {
@@ -22,6 +25,7 @@ function preloader() {
             }
     },200);
 }
+
 // BANNER
 $('.slide-banner').slick({
     slidesToShow: 1,

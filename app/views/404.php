@@ -10,10 +10,7 @@
 
     <title><?php echo isset($titulo)?$titulo: 'Erro 404 - Ki Oficina'; ?></title>
     <!-- Reset -->
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <!-- Slick -->
-    <link rel="stylesheet" href="assets/css/slick.css" />
-    <link rel="stylesheet" href="assets/css/slick-theme.css" />
+    <link rel="stylesheet" href="vendors/css/reset.css">
     <!-- Style -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
