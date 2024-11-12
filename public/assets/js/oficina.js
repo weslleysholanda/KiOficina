@@ -30,7 +30,7 @@ function preloader() {
 $('.slide-banner').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     dots: true,
     autoplaySpeed: 2000,
 });
@@ -77,3 +77,10 @@ document.querySelector(".scrollup-trigger").onclick = function () {
 window.onscroll = function () {
     scrollFunction();
 };
+
+
+// guias empresa (missão/visão/valores)
+
+if($.exists("guia-empresa")){
+    
+}

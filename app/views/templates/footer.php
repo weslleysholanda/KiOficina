@@ -26,7 +26,7 @@
                 <div class="of-height-35"></div>
                 <div class="footerLogo">
                         <img src="http://localhost/kioficina/public/assets/img/Kioficina_Logo.svg" alt="">
-                        <h4>Kioficina</h1>
+                        <h4>Kioficina</h4>
                 </div>
                 <div class="of-height-20"></div>
                 <div class="footerConteudo">
@@ -44,8 +44,6 @@
                                                 <h6>55 11 988 626 603</h6>
                                         </a>
                                 </div>
-
-
                         </div>
 
                         <div class="infoMenu">

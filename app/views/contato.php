@@ -16,6 +16,9 @@
 </head>
 
 <body>
+    <!-- preloader -->
+    <?php require_once('templates/preloader.php') ?>
+
     <!-- cabeçalho -->
     <?php require_once('templates/topo.php') ?>
     <!-- final cabeçalho -->
@@ -29,6 +32,7 @@
     <!-- Animação banner -->
     <script src="assets/js/slick.js"></script>
     <script src="assets/js/lity.min.js"></script>
+    
     <script src="assets/js/oficina.js"></script>
 </body>
 </html>      

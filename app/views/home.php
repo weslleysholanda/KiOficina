@@ -1,94 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/img/favicon.svg">
-    <meta name="author" content="Weslley Holanda Santos">
-    <title>KiOficina - Seu carro em boas mãos</title>
-    <!-- Reset -->
-    <link rel="stylesheet" href="vendors/css/reset.css"/>
-    <!-- Slick -->
-    <link rel="stylesheet" href="vendors/css/slick.css"/>
-    <link rel="stylesheet" href="vendors/css/slick-theme.css"/>
-    <!-- litty -->
-    <link href="vendors/css/lity.css" rel="stylesheet">
-    <!-- Style -->
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="assets/img/favicon.svg">
+        <meta name="author" content="Weslley Holanda Santos">
+        <title>KiOficina - Seu carro em boas mãos</title>
+        <!-- Reset -->
+        <link rel="stylesheet" href="vendors/css/reset.css"/>
+        <!-- Slick -->
+        <link rel="stylesheet" href="vendors/css/slick.css"/>
+        <link rel="stylesheet" href="vendors/css/slick-theme.css"/>
+        <!-- litty -->
+        <link href="vendors/css/lity.css" rel="stylesheet">
+        <!-- Style -->
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
 
-<body>
-    <div id="preloader" class="conteudo-preloader"> 
-        <div class="janela-carregamento">
-            <div class="car">
-                <div class="strike"></div>
-                <div class="strike strike2"></div>
-                <div class="strike strike3"></div>
-                <div class="strike strike4"></div>
-                <div class="strike strike5"></div>
-                <div class="car-detail spoiler"></div>
-                <div class="car-detail back"></div>
-                <div class="car-detail center"></div>
-                <div class="car-detail center1"></div>
-                <div class="car-detail front"></div>
-                <div class="car-detail wheel"></div>
-                <div class="car-detail wheel wheel2"></div>
-            </div>
-        </div>
-    </div>
-    <!-- cabeçalho -->
-    <?php require_once('../app/views/templates/topo.php') ?>
+    <body>
+        <!-- preloader -->
+        <?php require_once('templates/preloader.php') ?>
+        <!-- cabeçalho -->
+        <?php require_once('../app/views/templates/topo.php') ?>
 
-    <!--banner -->
-    <?php require_once('../app/views/templates/banner.php') ?>
+        <!--banner -->
+        <?php require_once('../app/views/templates/banner.php') ?>
 
-    <!-- sessão destaque -->
-    <?php require_once('../app/views/templates/destaque.php')?>
+        <!-- sessão destaque -->
+        <?php require_once('../app/views/templates/destaque.php')?>
 
-    <!-- sessão escolher -->
-    <?php require_once('../app/views/templates/escolher.php')?>
-   
-
-    <!-- sessão Serviços -->
-    <?php require_once('../app/views/templates/servicos.php')?>
+        <!-- sessão escolher -->
+        <?php require_once('../app/views/templates/escolher.php')?>
     
 
-    <!-- sessão video -->
-    <?php require_once('../app/views/templates/video.php')?>
+        <!-- sessão Serviços -->
+        <?php require_once('../app/views/templates/servicos.php')?>
+        
 
-    <!-- sessão satisfacao -->
-    <?php require_once('../app/views/templates/satisfacao.php')?>
+        <!-- sessão video -->
+        <?php require_once('../app/views/templates/video.php')?>
 
-    <!-- sessão marcas -->
-    <?php require_once('../app/views/templates/marcas.php')?>
+        <!-- sessão satisfacao -->
+        <?php require_once('../app/views/templates/satisfacao.php')?>
 
-    <!-- back to top -->
-    <span class="scrollup-trigger scrollup-trigger-show">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 10L1.7625 11.7625L8.75 4.7875V20H11.25V4.7875L18.225 11.775L20 10L10 0L0 10Z"
-                fill="currentColor"></path>
-        </svg>
-    </span>
+        <!-- sessão marcas -->
+        <?php require_once('../app/views/templates/marcas.php')?>
 
-    <!-- sessão depoimento -->
-    <?php require_once('../app/views/templates/depoimento.php')?>
+        <!-- back to top -->
+        <span class="scrollup-trigger scrollup-trigger-show">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 10L1.7625 11.7625L8.75 4.7875V20H11.25V4.7875L18.225 11.775L20 10L10 0L0 10Z"
+                    fill="currentColor"></path>
+            </svg>
+        </span>
 
-    <!-- sessão equipe -->
-    <?php require_once('../app/views/templates/equipe.php')?>
+        <!-- sessão depoimento -->
+        <?php require_once('../app/views/templates/depoimento.php')?>
 
-    <!-- Blog -->
-    <?php require_once('../app/views/templates/blog.php')?>
+        <!-- sessão equipe -->
+        <?php require_once('../app/views/templates/equipe.php')?>
 
-    <!-- footer -->
-    <?php require_once('../app/views/templates/footer.php')?>
+        <!-- Blog -->
+        <?php require_once('../app/views/templates/blog.php')?>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <!-- Animação banner -->
-    <script src="vendors/js/slick.js"></script>
-    <script src="vendors/js/lity.min.js"></script>
-    <script src="assets/js/oficina.js"></script>
-</body>
+        <!-- footer -->
+        <?php require_once('../app/views/templates/footer.php')?>
+
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <!-- Animação banner -->
+        <script src="vendors/js/slick.js"></script>
+        <script src="vendors/js/lity.min.js"></script>
+        <script src="assets/js/oficina.js"></script>
+    </body>
 
 </html>
