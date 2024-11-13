@@ -5,5 +5,11 @@ class ServicoController extends Controller{
         $dados = array();
         $dados['titulo'] = 'Serviços - KiOficina';
         $this ->carregarViews('servico',$dados);
+
+
+        $servicoModel = new Servico();
+        $servicoAll = $servicoModel->getServicoAll();
+
+        $dados['servicos'] =   $servicoAll;
     }
 }

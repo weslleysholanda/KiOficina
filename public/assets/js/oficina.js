@@ -2,6 +2,10 @@
   $(window).on("load", function () {
     preloader();
   });
+
+  $.exists = function(selector) {
+    return $(selector).length > 0;
+};
 //preloader
 function preloader() {
     // setTimeout()método chama uma função após um número de milissegundos
@@ -30,7 +34,7 @@ function preloader() {
 $('.slide-banner').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     dots: true,
     autoplaySpeed: 2000,
 });
@@ -82,5 +86,20 @@ window.onscroll = function () {
 // guias empresa (missão/visão/valores)
 
 if($.exists("guia-empresa")){
+    var $guiaAtiva = $(".guia-ativa");
+    var $guiaConteudo = $(".guia-conteudo .guia-lista");
+    var $guiaLista = $(".guias li");
+    var activeIndex = $guiaAtiva.index();
+    $guiaConteudo.eq(activeIndex).show();
     
+    $(".guias").on("click","li", function(e){
+        var $guiaAtual = $(e.currentTarget);
+        var index = $guiaAtual.index();
+
+        $guiaLista.removeClass("guia-ativa");
+        $guiaAtual.addClass("guia-ativa");
+
+        $guiaConteudo.hide().eq(index).show();
+
+    });
 }

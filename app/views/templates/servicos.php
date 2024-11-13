@@ -12,41 +12,30 @@
         </div>
         <div class="servicos-secundary">
             <div class="container">
-                <div class="servicos-card">
-                    <a href="#">
-                        <img src="assets/img/service_1.jpg" alt="...">
-                    </a>
-                    <div class="servico-card-conteudo">
-                        <a href="#" class="card-titulo">Performance Upgrades and Customization</a>
-                        <p class="card-desc">Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's stan.</p>
-                        <a href="#">ver mais</a>
+ 
+                <?php foreach ($servicos as $servico): ?>
+                    <div class="servicos-card">
+                        <a href="#">
+                        <img src="<?php
+                            $caminhoArquivo = $_SERVER['DOCUMENT_ROOT'] . "/kioficina/public/uploads/" . $servico['foto_servico'];
+                                        if ($servico['foto_servico'] != "") {
+                                            if (file_exists($caminhoArquivo)){
+                                                echo ("http://localhost/kioficina/public/uploads/" .htmlspecialchars($servico['foto_servico'], ENT_QUOTES, 'UTF-8'));
+                                            } else {
+                                                echo ("http://localhost/kioficina/public/uploads/servico/sem-foto-servico.png");
+                                            }
+                                        } else {
+                                            echo ("http://localhost/kioficina/public/uploads/servico/sem-foto-servico.png");
+                                        }
+                                        ?>" alt="...">
+                        </a>
+                        <div class="servico-card-conteudo">
+                            <a href="#" class="card-titulo"><?php echo htmlspecialchars($servico['nome_servico'], ENT_QUOTES,'UTF-8'); ?></a>
+                            <p class="card-desc"><?php echo htmlspecialchars( $servico['descricao_servico'], ENT_QUOTES,'UTF-8'); ?></p>
+                            <a href="#">ver mais</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="servicos-card">
-                    <a href="#">
-                        <img src="assets/img/service_2.jpg" alt="...">
-                    </a>
-                    <div class="servico-card-conteudo">
-                        <a href="#" class="card-titulo">Engine Diagnostics and Repair</a>
-                        <p class="card-desc">Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's stan.</p>
-                        <a href="#">ver mais</a>
-                    </div>
-                </div>
-
-                <div class="servicos-card">
-                    <a href="#">
-                        <img src="assets/img/service_3.jpg" alt="...">
-                    </a>
-                    <div class="servico-card-conteudo">
-                        <a href="#" class="card-titulo">Tire Services</a>
-                        <p class="card-desc">Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been the industry's stan.</p>
-                        <a href="#">ver mais</a>
-                    </div>
-                </div>
+                <?php endforeach ?>
             </div>
         </div>
     </div>

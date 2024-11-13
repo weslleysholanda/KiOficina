@@ -40,6 +40,12 @@
     <!-- depoimento -->
     <?php require_once('templates/depoimento.php') ?>
 
+    <!-- sessão equipe -->
+    <?php require_once('../app/views/templates/equipe.php')?>
+
+     <!-- sessão marcas -->
+     <?php require_once('../app/views/templates/marcas.php')?>
+
     <!-- footer -->
     <?php require_once('templates/footer.php')?>
     <!-- Scripts -->
