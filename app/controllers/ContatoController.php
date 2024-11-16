@@ -63,7 +63,7 @@ class ContatoController extends Controller
 
                         $phpmail->isHTML(true);
                         $phpmail->setFrom(USER_EMAIL, $nome); //Email do remetente
-                        $phpmail->addAddress('weslleyh98@gmail.com', $assunto); //email do destinatario
+                        $phpmail->addAddress(USER_EMAIL, $assunto); //email do destinatario
 
                         $phpmail->Subject = $assunto; //Assunto enviado pelo método POST
 
@@ -100,7 +100,7 @@ class ContatoController extends Controller
                         $phpmailResposta->Password = PASS_EMAIL;
                         $phpmailResposta->isHTML(true);
                         $phpmailResposta->setFrom(USER_EMAIL, 'KiOficina'); //Remetente
-                        $phpmailResposta->addAddress("weslleyh98@gmail.com", $nome); // Destinatário
+                        $phpmailResposta->addAddress($email, $nome); // Destinatário
                         $phpmailResposta->Subject = "Resposta - " . $assunto;
 
                         $phpmailResposta->msgHTML("$nome <br>

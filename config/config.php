@@ -10,11 +10,15 @@ define("DB_NAME","u283879542_weslley");   //Nome da data base
 define("DB_USER","u283879542_weslley");       //Usuario data base
 define("DB_PASS","Weslley@tipi02");          //Senha data base 
 
-// Confguração de acesso ao banco de dados(Data Base)
+// Confguração de envio email
 define("HOST_EMAIL", "smtp.gmail.com"); //Host do sistema
 define("PORT_EMAIL","465");   //Nome da data base
-define("USER_EMAIL","innovaclicktipi02@smpsistema.com.br");       //Usuario data base
-define("PASS_EMAIL","Senac@tipi02");  //Senha data base 
+define("USER_EMAIL","weslleyh98@gmail.com");  //Usuario data base
+define("PASS_EMAIL","spjf oxdp pcwv mnvn");  //Senha data base 
+
+// envio por "HOST_EMAIL", "smtp.gmail.com"
+// define("USER_EMAIL","weslleyh98@gmail.com");       //Usuario data base
+// define("PASS_EMAIL","spjf oxdp pcwv mnvn"); 
 
 
 // Sistema de autoload das classes

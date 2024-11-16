@@ -59,6 +59,10 @@
     --fonteSofast: 'Sofast';
     --fontePace: 'PACE';
 
+    /* Espaçamento */
+    --marginBottom: 1.5em;
+    -marginRight: 1.5em;
+
 }
 
 /* Estilos iniciais */
@@ -122,7 +126,7 @@ p {
     height: 80px;
 }
 
-.of-height-125{
+.of-height-125 {
     height: 125px;
 }
 
@@ -273,7 +277,7 @@ p {
         transform: translate(0%, -50%);
         z-index: 1111199;
 
-        
+
         .dots {
             display: inline-block;
             width: 5px;
@@ -394,11 +398,11 @@ p {
                 left: 82px;
             }
 
-           
+
 
         }
 
-        
+
     }
 
     .fadeIn,
@@ -411,9 +415,9 @@ p {
         right: -1000px;
     }
 
-    
 
-   
+
+
 }
 
 
@@ -2243,49 +2247,50 @@ footer {
 }
 
 /* sobre nos */
-.banner-sobre{
-    .banner-conteudo{
+.banner-sobre {
+    .banner-conteudo {
         position: absolute;
         top: 30%;
         left: 15%;
 
-        h1{
+        h1 {
             font-size: 35px;
             text-transform: uppercase;
         }
 
-        .banner-titulo{
+        .banner-titulo {
             display: flex;
             gap: 0.5rem;
 
 
-            p{
+            p {
                 font-size: 16px;
             }
         }
     }
 }
 
-.guia-empresa{
-    .guias{
+.guia-empresa {
+    .guias {
         text-align: center;
-        ul{
+
+        ul {
             display: flex;
             justify-content: center;
 
-            li{
+            li {
                 text-transform: uppercase;
                 cursor: pointer;
             }
 
-            .guia-ativa{
+            .guia-ativa {
                 content: "+";
                 border-bottom: none;
                 position: relative;
                 color: #fff;
             }
 
-            .guia-ativa::after{
+            .guia-ativa::after {
                 width: 60%;
                 height: 2px;
                 position: absolute;
@@ -2297,6 +2302,136 @@ footer {
         }
 
     }
+}
+
+/* KiServicos */
+.kiServicos {
+
+    .kiServico-header {
+
+        h1 {
+            font-size: 36px;
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+
+        .kiServico-titulo {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 30px;
+
+            p {
+                font-size: 16px;
+                font-weight: normal;
+            }
+        }
+
+        .kiservicos-border {
+            width: 100%;
+            height: 1px;
+            background: var(--color2);
+        }
+    }
+
+    .kiServico-container {
+        display: flex;
+        flex-wrap: wrap;
+
+
+
+        .kiServico-conteudo {
+            /*flex-grow:1; -Diz que o item pode crescer para ocupar espaço extra disponível no container.
+                flex-shrink: 1; - Permite que o item encolha se o espaço no container for insuficiente.
+                flex-basis: calc(33.33% - 16px) -Define o tamanho inicial do item antes de ele crescer ou encolher. */
+
+            flex: 1 1 calc(33.33% - 16px);
+            padding: 38px 20px;
+            background: var(--colorContainer);
+            display: flex;
+            gap: 23px;
+            margin-bottom: .8em;
+            margin-right: .8em;
+            box-sizing: border-box;
+            flex-direction: column;
+            align-items: center;
+
+            .kiServico-icon {
+                border-radius: 25px;
+                display: flex;
+                padding: 17px;
+                background: var(--color6);
+
+                
+                
+            }
+
+            .kiServico-icon:hover{
+                cursor: pointer;
+                transition-duration:1s;
+                transform: rotate(360deg);
+            }
+            
+
+
+
+            .kiServico-desc {
+                text-align: center;
+
+                .title {
+                    font-size: 24px;
+                    text-transform: uppercase;
+                    font-weight: 500;
+                }
+
+                p {
+                    font-family: var(--fonteSofast);
+                    font-weight: normal;
+                    font-size: 15px;
+                    margin: 7px auto 16px;
+                }
+
+                a:nth-of-type(2) {
+                    position: relative;
+                    font-size: 17px;
+                    text-transform: uppercase;
+                }
+
+                a:hover{
+                    transition: all 0.5s;
+                    color: var(--color2);
+
+                }
+
+                a:nth-of-type(2):hover {
+                    letter-spacing: 2px;
+                    color: var(--color2);
+                }
+
+                a:nth-of-type(2)::after {
+                    content: "";
+                    position: absolute;
+                    display: inline;
+                    width: 70%;
+                    height: 2px;
+                    left: 0;
+                    bottom: -5px;
+                    opacity: 1;
+                    background-color: var(--color2);
+                    transition: all 0.5s;
+                }
+
+                a:hover::after {
+                    width: 100%;
+
+                }
+
+
+
+
+            }
+        }
+    }
+
 }
 
 @keyframes wave {

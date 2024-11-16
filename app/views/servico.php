@@ -23,6 +23,8 @@
 <body>
     <!-- cabeçalho -->
     <?php require_once('templates/topo.php') ?>
+    <!-- serviços -->
+    <?php require_once('templates/kiservicos.php') ?>
     <!-- footer -->
     <?php require_once('templates/footer.php')?>
     <!-- Scripts -->
