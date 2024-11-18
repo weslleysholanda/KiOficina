@@ -18,9 +18,13 @@ class HomeController extends Controller{
         //Obter os 3 serviços
         $servicoAleatorio = $servicoModel->getServicoAleatorio(3);
 
-        // var_dump($servicoAleatorio);
+        // obter 4 servicos nas letras da home 
+        $servicoNome = $servicoModel ->getServicoNome(4);
+
+       
 
         $dados['servicos'] = $servicoAleatorio;
+        $dados['servicosNome'] = $servicoNome;
         // var_dump($dados);
         // $this palavra-chave permite que você acesse as propriedades e métodos do objeto atual dentro da classe usando o operador de objeto ( ->):
         $this->carregarViews('home',$dados);

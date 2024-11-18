@@ -17,10 +17,10 @@
                     <div class="servicos-card">
                         <a href="#">
                         <img src="<?php
-                            $caminhoArquivo = $_SERVER['DOCUMENT_ROOT'] . "/kioficina/public/uploads/" . $servico['foto_servico'];
-                                        if ($servico['foto_servico'] != "") {
+                            $caminhoArquivo = $_SERVER['DOCUMENT_ROOT'] . "/kioficina/public/uploads/" . $servico['link_servico'];
+                                        if ($servico['link_servico'] != "") {
                                             if (file_exists($caminhoArquivo)){
-                                                echo ("http://localhost/kioficina/public/uploads/" .htmlspecialchars($servico['foto_servico'], ENT_QUOTES, 'UTF-8'));
+                                                echo ("http://localhost/kioficina/public/uploads/" .htmlspecialchars($servico['link_servico'], ENT_QUOTES, 'UTF-8'));
                                             } else {
                                                 echo ("http://localhost/kioficina/public/uploads/servico/sem-foto-servico.png");
                                             }

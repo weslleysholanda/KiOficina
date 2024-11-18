@@ -34,7 +34,7 @@
                         <div class="kiServico-desc">
                             <a href="#" class="title"><?php echo htmlspecialchars($servico['nome_servico'], ENT_QUOTES, 'UTF-8'); ?></a>
                             <p><?php echo htmlspecialchars($servico['descricao_servico'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            <a href="#">Veja Mais</a>
+                            <a href="<?php echo "servico/detalhe/" . htmlspecialchars($servico['link_servico'], ENT_QUOTES, 'UTF-8'); ?>">Veja Mais</a>
                         </div>
                     </div>
                 <?php endforeach ?>
