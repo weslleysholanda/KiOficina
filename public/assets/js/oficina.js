@@ -42,7 +42,7 @@ $('.slide-banner').slick({
 // Marcas
 
 $('.marcas-confiaveis .site div').slick({
-    slidesToShow: 7,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     arrows: false,

@@ -12,9 +12,9 @@
                 </p>
                
                     <div class="escolher-hover">
-                        <?php foreach ($servicosNome as $servico); ?>
+                        <?php foreach ($servicosNome as $servico): ?>
                             <h3><?php echo htmlspecialchars($servico['nome_especialidade'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                        <?php ?>
+                        <?php endforeach ?>
                     </div>
                    
                 

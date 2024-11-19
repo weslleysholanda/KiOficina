@@ -14,6 +14,7 @@
                 <div>
                     <div class="container-depoimento">
                         <div class="depoimento-conteudo">
+                        <?php foreach($depoimentoCliente as $depoimentoCliente): ?>
                             <div class="depoimento-titulo">
                                 <div>
                                     <h5>Jessica Silva</h5>
@@ -44,6 +45,8 @@
                                     resolveu tudo de forma rápida e eficiente. Muito agradecida pelo suporte e pela
                                     atenção! Voltarei com certeza.”</h4>
                             </div>
+                        <?php endforeach ?>
+                        
                         </div>
                         <div>
                             <img src="assets/img/testimaonial-jessica.png" alt="..." class="imagem-depoimento">

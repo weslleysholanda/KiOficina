@@ -39,6 +39,20 @@ class Servico extends Model{
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
     }
 
+    //Método para listar as fotos marcas
+    public function getLogoNome(){
+        $sql = "SELECT * FROM tbl_marca";
+        $stmt = $this -> db -> query($sql);
+        return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    //Método para listar depoimentos
+    public function getDepoimentoCliente(){
+        $sql="SELECT * FROM tbl_cliente INNER JOIN tbl_depoimento ON tbl_cliente.id_cliente = tbl_depoimento.id_cliente WHERE status_depoimento = 'Aprovado' ";
+        $stmt = $this -> db -> query($sql);
+        return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+    }
+
     //Método para carregar serviço especifico pelo link
     public function getServicoLink($link){
         $sql = " SELECT * from tbl_servico INNER JOIN tbl_galeria ON tbl_servico.id_servico = tbl_galeria.id_galeria where status_servico='Ativo' AND link_servico = :link ";
