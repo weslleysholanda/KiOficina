@@ -58,7 +58,7 @@ class Core
             if (isset($url[0]) && !empty($url[0])) {
                 $acaoAtual = $url[0];
                 //$acaoAtual = especialidade
-                var_dump("Nome da ação atual: " . $acaoAtual);
+                // var_dump("Nome da ação atual: " . $acaoAtual);
                 array_shift($url);
             } else {
                 $acaoAtual = 'index';

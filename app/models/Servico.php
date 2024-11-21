@@ -48,8 +48,18 @@ class Servico extends Model{
 
     //Método para listar depoimentos
     public function getDepoimentoCliente(){
-        $sql="SELECT * FROM tbl_cliente INNER JOIN tbl_depoimento ON tbl_cliente.id_cliente = tbl_depoimento.id_cliente WHERE status_depoimento = 'Aprovado' ";
+        $sql="SELECT * FROM tbl_depoimento INNER JOIN tbl_cliente ON tbl_depoimento.id_cliente = tbl_cliente.id_cliente INNER JOIN tbl_estado ON tbl_cliente.id_uf = tbl_estado.id_uf Where status_depoimento = 'Aprovado' ";
         $stmt = $this -> db -> query($sql);
+        return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    //Método para listar a equipe
+    public function getEquipe($limite = 3){
+        $sql = "SELECT * FROM tbl_funcionario ORDER BY RAND() LIMIT :limite";
+
+        $stmt = $this -> db -> prepare($sql);
+        $stmt -> bindValue(':limite',(int)$limite,PDO::PARAM_INT);
+        $stmt ->execute();
         return $stmt -> fetchAll(PDO::FETCH_ASSOC);
     }
 

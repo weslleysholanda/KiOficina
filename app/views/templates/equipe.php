@@ -15,29 +15,31 @@
         </div>
 
         <div class="equipe-container">
-            <div class="equipe-box">
-                <div class="equipe-img" style="background-image: url(assets/img/team_1.jpg);">
-                    <div class="equipe-conteudo">
-                        <div class="equipe-titulo">
-                            <a href="#">Weslley</a>
-                            <p>Especialista em Motores Diesel</p>
-                        </div>
-                        <div class="equipe-conteudo-social">
-                            <a href="https://www.facebook.com/" class="equipe-icone">
-                                <img src="assets/img/linkedinicon.svg" alt="...">
-                            </a>
-                            <a href="https://bd.linkedin.com/" class="equipe-icone">
-                                <img src="assets/img/facebookicon.svg" alt="">
-                            </a>
-                            <a href="https://www.instagram.com/" class="equipe-icone">
-                                <img src="assets/img/twittericon.svg" alt="">
-                            </a>
+            <?php foreach ($equipe as $nossaEquipe): ?>
+                <div class="equipe-box">
+                    <div class="equipe-img" style="background-image: url(assets/img/team_1.jpg);">
+                        <div class="equipe-conteudo">
+                            <div class="equipe-titulo">
+                                <a href="#"><?php echo htmlspecialchars($nossaEquipe['nome_funcionario'], ENT_QUOTES, 'UTF-8'); ?></a>
+                                <p><?php echo htmlspecialchars($nossaEquipe['cargo_funcionario'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            </div>
+                            <div class="equipe-conteudo-social">
+                                <a href="https://www.facebook.com/" class="equipe-icone">
+                                    <img src="assets/img/linkedinicon.svg" alt="...">
+                                </a>
+                                <a href="https://bd.linkedin.com/" class="equipe-icone">
+                                    <img src="assets/img/facebookicon.svg" alt="">
+                                </a>
+                                <a href="https://www.instagram.com/" class="equipe-icone">
+                                    <img src="assets/img/twittericon.svg" alt="">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php endforeach ?>
 
-            <div class="equipe-box">
+            <!-- <div class="equipe-box">
                 <div class="equipe-img" style="background-image: url(assets/img/team_2.jpg);">
                     <div class="equipe-conteudo">
                         <div class="equipe-titulo">
@@ -74,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>

@@ -23,7 +23,7 @@ class ServicoController extends Controller{
         $servicoModel = new Servico();
         $detalheServico = $servicoModel->getServicoLink($link);
         
-        var_dump($detalheServico);
+        // var_dump($detalheServico);
 
         if($detalheServico != ""){
             $dados['titulo'] = $detalheServico['nome_servico'];

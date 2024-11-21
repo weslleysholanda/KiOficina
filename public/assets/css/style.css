@@ -106,6 +106,10 @@ p {
     height: 25px;
 }
 
+.of-height-30 {
+    height: 30px;
+}
+
 .of-height-35 {
     height: 35px;
 }
@@ -116,6 +120,22 @@ p {
 
 .of-height-45 {
     height: 45px;
+}
+
+.of-height-50{
+    height: 50px;
+}
+
+.of-height-55{
+    height: 55px;
+}
+
+.of-height-60 {
+    height: 60px;
+}
+
+.of-height-65 {
+    height: 65px;
 }
 
 .of-height-70 {
@@ -397,12 +417,7 @@ p {
             .wheel2 {
                 left: 82px;
             }
-
-
-
         }
-
-
     }
 
     .fadeIn,
@@ -410,14 +425,16 @@ p {
         animation: fadeIn 0.4s both;
     }
 
-    .loaded .car {
-        position: absolute;
-        right: -1000px;
-    }
+    
 
 
 
 
+}
+
+.conteudo-preloader.loaded .car {
+    position: absolute;
+    right: -1000px;
 }
 
 
@@ -2317,6 +2334,7 @@ footer {
 /* KiServicos */
 .kiServicos {
 
+    
     .kiServico-header {
 
         h1 {
@@ -2381,9 +2399,6 @@ footer {
                 transform: rotate(360deg);
             }
             
-
-
-
             .kiServico-desc {
                 text-align: center;
 
@@ -2443,6 +2458,7 @@ footer {
 
 }
 
+/* Detalhe Servico */
 .kiServico-detalhe{
     .kiServicoDetalhe-header{
         h1 {
@@ -2451,7 +2467,7 @@ footer {
             text-transform: uppercase;
         }
 
-        .kiServico-Detalhe-titulo {
+        .kiServico-Detalhe-subtitulo {
             display: flex;
             gap: 0.5rem;
             margin-bottom: 30px;
@@ -2466,6 +2482,144 @@ footer {
             width: 100%;
             height: 1px;
             background: var(--color2);
+        }
+    }
+
+    .kiServico-detalhe-conteiner{
+        .kiServico-detalhe-conteudo{
+            .kiServico-conteudo-header{
+                display: grid;
+                gap: 1.5rem;
+                h2{
+                    font-family: var(--fonteSofast);
+                    font-weight: 600;
+                    font-size: 28px;
+                }
+
+                img{
+                    min-width: 500px;
+                    max-width: 75%;
+                    height: 500px;
+                    background: var(--color6);
+                }
+            }
+
+            .kiServico-conteudo-texto{
+                .kiServico-detalhe-desc{
+                    h3{
+                        font-size: 24px;
+                        font-family: var(--fontePace);
+                        font-weight: normal;
+                        text-transform: uppercase;
+                        margin-bottom:20px;
+                    }
+    
+                    p{
+                        margin-bottom: 45px;
+                        font-weight: normal;
+                    }
+
+                    .kiservico-detalhe-imagem-aside{
+                        img{
+                            min-width: 500px;
+                            width: 50px;
+                            height: 200px;
+                            background: var(--color6);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .kiServico-container-aside{
+        display: flex;
+        .kiServico-box {
+            /*flex-grow:1; -Diz que o item pode crescer para ocupar espaço extra disponível no container.
+                flex-shrink: 1; - Permite que o item encolha se o espaço no container for insuficiente.
+                flex-basis: calc(33.33% - 16px) -Define o tamanho inicial do item antes de ele crescer ou encolher. */
+
+            flex: 1 1 calc(33.33% - 16px);
+            padding: 38px 20px;
+            background: var(--colorContainer);
+            display: flex;
+            gap: 23px;
+            margin-bottom: .8em;
+            margin-right: .8em;
+            box-sizing: border-box;
+            flex-direction: column;
+            align-items: center;
+
+            .kiServico-icon {
+                border-radius: 25px;
+                display: flex;
+                padding: 17px;
+                background: var(--color6);
+
+                
+                
+            }
+
+            .kiServico-icon:hover{
+                cursor: pointer;
+                transition-duration:1s;
+                transform: rotate(360deg);
+            }
+            
+            .kiServico-desc {
+                text-align: center;
+
+                .title {
+                    font-size: 24px;
+                    text-transform: uppercase;
+                    font-weight: 500;
+                }
+
+                p {
+                    font-family: var(--fonteSofast);
+                    font-weight: normal;
+                    font-size: 15px;
+                    margin: 7px auto 16px;
+                }
+
+                a:nth-of-type(2) {
+                    position: relative;
+                    font-size: 17px;
+                    text-transform: uppercase;
+                }
+
+                a:hover{
+                    transition: all 0.5s;
+                    color: var(--color2);
+
+                }
+
+                a:nth-of-type(2):hover {
+                    letter-spacing: 2px;
+                    color: var(--color2);
+                }
+
+                a:nth-of-type(2)::after {
+                    content: "";
+                    position: absolute;
+                    display: inline;
+                    width: 70%;
+                    height: 2px;
+                    left: 0;
+                    bottom: -5px;
+                    opacity: 1;
+                    background-color: var(--color2);
+                    transition: all 0.5s;
+                }
+
+                a:hover::after {
+                    width: 100%;
+
+                }
+
+
+
+            }
         }
     }
 }

@@ -27,12 +27,16 @@ class HomeController extends Controller{
         //obter depoimento cliente
         $depoimentoCliente = $servicoModel -> getDepoimentoCliente();
 
+        //obter nome funcionario(equipe)
+        $equipe = $servicoModel ->getEquipe(3);
+
        
 
         $dados['servicos'] = $servicoAleatorio;
         $dados['servicosNome'] = $servicoNome;
         $dados['marcasLogo'] = $marcaLogo;
         $dados['depoimentoCliente'] =  $depoimentoCliente;
+        $dados['equipe'] = $equipe;
         // var_dump($dados);
         // $this palavra-chave permite que você acesse as propriedades e métodos do objeto atual dentro da classe usando o operador de objeto ( ->):
         $this->carregarViews('home',$dados);
