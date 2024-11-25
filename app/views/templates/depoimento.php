@@ -20,7 +20,7 @@
                                     <div>
 
                                         <h5><?php echo htmlspecialchars($depoimentoClientes['nome_cliente'], ENT_QUOTES, 'UTF-8') ?></h5>
-                                        <p><?php echo htmlspecialchars($depoimentoClientes['cidade_cliente'], ENT_QUOTES, 'UTF-8') ?>
+                                        <p><?php echo htmlspecialchars($depoimentoClientes['cidade_cliente'], ENT_QUOTES, 'UTF-8') ?>,
                                             <?php echo htmlspecialchars($depoimentoClientes['sigla_uf'], ENT_QUOTES, 'UTF-8') ?></p>
                                     </div>
                                     <div class="depoimento-icone">

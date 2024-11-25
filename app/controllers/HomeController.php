@@ -14,6 +14,9 @@ class HomeController extends Controller{
 
         //Instanciando o metodo servico
         $servicoModel = new Servico();
+        $marcaModel = new Marcas();
+        $equipeModel = new Equipe();
+        $depoimentoModel = new Depoimento();
 
         //Obter os 3 serviços
         $servicoAleatorio = $servicoModel->getServicoAleatorio(3);
@@ -22,13 +25,13 @@ class HomeController extends Controller{
         $servicoNome = $servicoModel ->getServicoNome(4);
 
         // obter marcas logo
-        $marcaLogo = $servicoModel->getLogoNome();
+        $marcaLogo = $marcaModel->getLogoNome();
 
         //obter depoimento cliente
-        $depoimentoCliente = $servicoModel -> getDepoimentoCliente();
+        $depoimentoCliente = $depoimentoModel -> getDepoimentoCliente();
 
         //obter nome funcionario(equipe)
-        $equipe = $servicoModel ->getEquipe(3);
+        $equipe = $equipeModel ->getEquipe(3);
 
        
 
