@@ -151,17 +151,19 @@
                                                 <input type="email" name="email" id="email" class="form-control" placeholder="digite seu email" required>
                                                 <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
                                         </div>
-                                        <div class="mb-3">
-                                                <label for="exampleInputPassword1" class="form-label">Senha: </label>
-                                                <input type="password" name="senha" id="senha" class="form-control" placeholder="digite sua senha" required>
+                                        <div class="input-group mb-3">
+                                                <input type="password" name="senha" id="password" class="form-control" placeholder="Digite sua senha">
+                                                <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility()">
+                                                        <i class="bi bi-eye" id="toggleIcon"></i>
+                                                </button>       
                                         </div>
 
                                         <div class="mb-3">
                                                 <label for="tipo_usuario" class="form-label">Tipo de Usuário: </label>
                                                 <select class="form-select" name="tipo_usuario" id="tipo_usuario" class="form-control" required>
                                                         <option selected>Selecione</option>
-                                                        <option value="cliente">Cliente</option>
-                                                        <option value="funcionario">Funcionário</option>
+                                                        <option value="Cliente">Cliente</option>
+                                                        <option value="Funcionario">Funcionário</option>
                                                 </select>
                                         </div>
 

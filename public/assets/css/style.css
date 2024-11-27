@@ -2067,6 +2067,10 @@ footer {
                             color: #000;
                         }
                     }
+                    .form-control:focus{
+                        border-color: rgba(245, 233, 0, 0.464) !important;
+                        box-shadow: 0 0 0 0.25rem rgba(245, 233, 0, 0.464);
+                    }
                 }
             }
 
@@ -2077,16 +2081,21 @@ footer {
                     border: 0;
                 }
 
+                .btn:focus-visible{
+                    color: var(--corLetras);
+                    background-color: var(--bs-btn-hover-bg);
+                    border-color: var(--bs-btn-hover-border-color);
+                    outline: 0;
+                    box-shadow: var(--bs-btn-focus-box-shadow);
+                }
+
                 :hover{
                     transition: background-color 0.4s, color 0.3s;
                     background: var(--color1);
                     color: var(--color2);
                 }
 
-                .form-control:focus{
-                    border-color: rgba(245, 233, 0, 0.464) !important;
-                    box-shadow: 0 0 0 0.25rem rgba(245, 233, 0, 0.464);
-                }
+                
             }
         }
     }

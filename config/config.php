@@ -1,8 +1,13 @@
 <?php
 
+if(session_status() == PHP_SESSION_NONE){
+    session_start();
+}
+
+
 //Definir URL base da aplicação
 // define("BASE_URL","https://kioficina.smpsistema.com.br/"); //serve para criar uma constante de forma global
-define("BASE_URL","http://localhost/kioficina/"); //serve para criar uma constante de forma global
+define('BASE_URL','http://localhost/kioficina/public/'); //serve para criar uma constante de forma global
 
 //configuração de acesso banco 
 define("DB_HOST", "smpsistema.com.br"); //Host do sistema
