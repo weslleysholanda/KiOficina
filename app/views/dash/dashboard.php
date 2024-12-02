@@ -6,7 +6,6 @@
     <title>KiOficina - Dashboard</title><!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="http://localhost/kioficina/public/assets/img/favicon.svg">
-    <meta name="title" content="AdminLTE | Dashboard v2">
     <meta name="author" content="ColorlibHQ">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
         integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous">
@@ -41,26 +40,55 @@
                             <i data-lte-icon="minimize" class="bi bi-fullscreen-exit" style="display: none;"></i>
                         </a>
                     </li>
-                    <li class="nav-item dropdown user-menu"> <a href="#" class="nav-link dropdown-toggle"
-                            data-bs-toggle="dropdown"> <img src="http://localhost/kioficina/public/vendors/img/user2-160x160.jpg"
-                                class="user-image rounded-circle shadow" alt="User Image"> <span
-                                class="d-none d-md-inline">Alexander Pierce</span> </a>
-                        <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end"> <!--begin::User Image-->
-                        <?php foreach ($usuario as $usuarioLogado): ?>
-                            <li class="user-header text-bg-primary"> 
-                                <img src="http://localhost/kioficina/public/vendors/img/user2-160x160.jpg" class="rounded-circle shadow" alt="User Image">
-                                
-                                <p>  
-                                    <?php echo htmlspecialchars($usuarioLogado['nome_funcionario'],ENT_QUOTES,'UTF-8')?> - <?php echo htmlspecialchars($usuarioLogado['cargo_funcionario'],ENT_QUOTES,'UTF-8')?>
-                                    <small>Member since Nov. 2023</small>
-                                </p>    
+                    <li class="nav-item dropdown user-menu">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <?php foreach ($usuario as $usuarioLogado): ?>
+                                <img src="<?php
+                                            $caminhoArquivo = $_SERVER['DOCUMENT_ROOT'] . "/kioficina/public/uploads/" . $usuarioLogado['foto_funcionario'];
+                                            if ($usuarioLogado['foto_funcionario'] != "") {
+                                                if (file_exists($caminhoArquivo)) {
+                                                    echo ("http://localhost/kioficina/public/uploads/" . htmlspecialchars($usuarioLogado['foto_funcionario'], ENT_QUOTES, 'UTF-8'));
+                                                } else {
+                                                    echo ("http://localhost/kioficina/public/uploads/funcionario/sem-foto-funcionario.png");
+                                                }
+                                            } else {
+                                                echo ("http://localhost/kioficina/public/uploads/funcionario/sem-foto-funcionario.png");
+                                            } ?>" class="user-image rounded-circle shadow" alt="User Image">
+                                </span>
+                            <?php endforeach ?>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+                            <?php foreach ($usuario as $usuarioLogado): ?>
+                                <li class="user-header text-bg-primary">
+                                    <img src="<?php
+                                                $caminhoArquivo = $_SERVER['DOCUMENT_ROOT'] . "/kioficina/public/uploads/" . $usuarioLogado['foto_funcionario'];
+                                                if ($usuarioLogado['foto_funcionario'] != "") {
+                                                    if (file_exists($caminhoArquivo)) {
+                                                        echo ("http://localhost/kioficina/public/uploads/" . htmlspecialchars($usuarioLogado['foto_funcionario'], ENT_QUOTES, 'UTF-8'));
+                                                    } else {
+                                                        echo ("http://localhost/kioficina/public/uploads/funcionario/sem-foto-funcionario.png");
+                                                    }
+                                                } else {
+                                                    echo ("http://localhost/kioficina/public/uploads/funcionario/sem-foto-funcionario.png");
+                                                } ?>" class="rounded-circle shadow" alt="User Image">
+                                    <p>
+                                        <?php echo htmlspecialchars($usuarioLogado['nome_funcionario'], ENT_QUOTES, 'UTF-8'); ?> -
+                                        <?php echo htmlspecialchars($usuarioLogado['cargo_funcionario'], ENT_QUOTES, 'UTF-8'); ?>
+                                        <small>
+                                            <?php $data = new DateTime($usuarioLogado['data_adm_funcionario']);
+                                            echo htmlspecialchars('Membro desde ' . $data->format('M. Y'), ENT_QUOTES, 'UTF-8');
+                                            ?>
+                                        </small>
+                                    </p>
+                                </li>
+                            <?php endforeach ?>
+                            <li class="user-footer">
+                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="http://localhost/kioficina/public/auth/sair" class="btn btn-default btn-flat float-end">Logoff</a>
                             </li>
-                        <?php endforeach ?>    
-                            <li class="user-footer"> <a href="#" class="btn btn-default btn-flat">Profile</a> <a
-                                    href="http://localhost/kioficina/public/auth/sair" class="btn btn-default btn-flat float-end">Logoff</a> </li>
-                            <!--end::Menu Footer-->
                         </ul>
                     </li>
+
                     <!--end::User Menu Dropdown-->
                 </ul> <!--end::End Navbar Links-->
             </div> <!--end::Container-->
@@ -68,7 +96,7 @@
         <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
             <div class="sidebar-brand">
                 <a href="./index.html" class="brand-link">
-                 <img src="http://localhost/kioficina/public/assets/img/Kioficina_Logo.svg" alt="Logo KiOficina" class="brand-image opacity-75 shadow">  <!--end::Brand Text-->
+                    <img src="http://localhost/kioficina/public/assets/img/Kioficina_Logo.svg" alt="Logo KiOficina" class="brand-image opacity-75 shadow"> <!--end::Brand Text-->
                 </a> <!--end::Brand Link-->
             </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
             <div class="sidebar-wrapper">
@@ -201,16 +229,18 @@
                                     </li>
 
 
-                                    <li class="nav-item"> 
-                                        <a href="./docs/browser-support.html" class="nav-link"> 
+                                    <li class="nav-item">
+                                        <a href="./docs/browser-support.html" class="nav-link">
                                             <i class="bi bi-images"></i>
                                             <p>Galeria</p>
-                                        </a> </li>
-                                    <li class="nav-item"> 
-                                        <a href="./docs/how-to-contribute.html" class="nav-link"> 
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="./docs/how-to-contribute.html" class="nav-link">
                                             <i class="bi bi-tags"></i>
                                             <p>Marcas</p>
-                                        </a> </li>
+                                        </a>
+                                    </li>
                                 </ul> <!--end::Sidebar Menu-->
                             </nav>
                         </div> <!--end::Sidebar Wrapper-->
@@ -481,8 +511,14 @@
                                 <span class="info-box-icon">
                                     <i class="bi bi-tag-fill"></i>
                                 </span>
-                                <div class="info-box-content"> <span class="info-box-text">Estoque</span> <span
-                                        class="info-box-number">5,200</span> </div> <!-- /.info-box-content -->
+                                <?php foreach ($estoque as $totalEstoque): ?>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">Estoque</span>
+                                        <!-- Provavelmente, o erro está no loop; ou seja, eu posso tratá-lo como um valor simples. -->
+                                        <span class="info-box-number"><?php echo htmlspecialchars($totalEstoque['qtde_estoque_peca'],ENT_QUOTES,'UTF-8'); ?></span>
+                                    </div>
+                                <?php endforeach ?>
+
                             </div> <!-- /.info-box -->
                             <!-- /.info-box -->
                             <div class="info-box mb-3 text-bg-danger" id="container-informacao">
