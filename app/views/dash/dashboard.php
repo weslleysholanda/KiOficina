@@ -3,8 +3,9 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>AdminLTE | Dashboard v2</title><!--begin::Primary Meta Tags-->
+    <title>KiOficina - Dashboard</title><!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="http://localhost/kioficina/public/assets/img/favicon.svg">
     <meta name="title" content="AdminLTE | Dashboard v2">
     <meta name="author" content="ColorlibHQ">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
@@ -17,6 +18,7 @@
         integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous">
     <!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="http://localhost/kioficina/public/vendors/css/adminlte.css"><!--end::Required Plugin(AdminLTE)--><!-- apexcharts -->
+    <link rel="stylesheet" href="http://localhost/kioficina/public/vendors/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css"
         integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous">
 </head>
@@ -28,84 +30,193 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"> <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button"> <i
                                 class="bi bi-list"></i> </a> </li>
-                    <li class="nav-item d-none d-md-block"> <a href="#" class="nav-link">Home</a> </li>
-                    <li class="nav-item d-none d-md-block"> <a href="#" class="nav-link">Contato</a> </li>
+                    <li class="nav-item d-none d-md-block"> <a href="#" class="nav-link">Site Ki Oficina</a></li>
                 </ul> <!--end::Start Navbar Links--> <!--begin::End Navbar Links-->
                 <ul class="navbar-nav ms-auto"> <!--begin::Navbar Search-->
-                    <li class="nav-item"> <a class="nav-link" data-widget="navbar-search" href="#" role="button"> <i
-                                class="bi bi-search"></i> </a> </li> <!--end::Navbar Search-->
-                    <!--begin::Messages Dropdown Menu-->
-                    <li class="nav-item dropdown"> <a class="nav-link" data-bs-toggle="dropdown" href="#"> <i
-                                class="bi bi-bell-fill"></i> <span class="navbar-badge badge text-bg-warning">15</span>
+                    <li class="nav-item"> <a class="nav-link" data-widget="navbar-search" href="#" role="button"> </a> </li> <!--end::Navbar Search-->
+                    <!--begin::Messages Dropdown Menu--> <!--end::Notifications Dropdown Menu--> <!--begin::Fullscreen Toggle-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-lte-toggle="fullscreen">
+                            <i data-lte-icon="maximize" class="bi bi-arrows-fullscreen"></i>
+                            <i data-lte-icon="minimize" class="bi bi-fullscreen-exit" style="display: none;"></i>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end"> <span
-                                class="dropdown-item dropdown-header">15 Notifications</span>
-                            <div class="dropdown-divider"></div> <a href="#" class="dropdown-item"> <i
-                                    class="bi bi-envelope me-2"></i> 4 new messages
-                                <span class="float-end text-secondary fs-7">3 mins</span> </a>
-                            <div class="dropdown-divider"></div> <a href="#" class="dropdown-item"> <i
-                                    class="bi bi-people-fill me-2"></i> 8 friend requests
-                                <span class="float-end text-secondary fs-7">12 hours</span> </a>
-                            <div class="dropdown-divider"></div> <a href="#" class="dropdown-item"> <i
-                                    class="bi bi-file-earmark-fill me-2"></i> 3 new reports
-                                <span class="float-end text-secondary fs-7">2 days</span> </a>
-                            <div class="dropdown-divider"></div> <a href="#" class="dropdown-item dropdown-footer">
-                                See All Notifications
-                            </a>
-                        </div>
-                    </li> <!--end::Notifications Dropdown Menu--> <!--begin::Fullscreen Toggle-->
+                    </li>
                     <li class="nav-item dropdown user-menu"> <a href="#" class="nav-link dropdown-toggle"
                             data-bs-toggle="dropdown"> <img src="http://localhost/kioficina/public/vendors/img/user2-160x160.jpg"
                                 class="user-image rounded-circle shadow" alt="User Image"> <span
                                 class="d-none d-md-inline">Alexander Pierce</span> </a>
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end"> <!--begin::User Image-->
-                            <li class="user-header text-bg-primary"> <img src="http://localhost/kioficina/public/vendors/img/user2-160x160.jpg"
-                                    class="rounded-circle shadow" alt="User Image">
-                                <p>
-                                    Alexander Pierce - Web Developer
+                        <?php foreach ($usuario as $usuarioLogado): ?>
+                            <li class="user-header text-bg-primary"> 
+                                <img src="http://localhost/kioficina/public/vendors/img/user2-160x160.jpg" class="rounded-circle shadow" alt="User Image">
+                                
+                                <p>  
+                                    <?php echo htmlspecialchars($usuarioLogado['nome_funcionario'],ENT_QUOTES,'UTF-8')?> - <?php echo htmlspecialchars($usuarioLogado['cargo_funcionario'],ENT_QUOTES,'UTF-8')?>
                                     <small>Member since Nov. 2023</small>
-                                </p>
-                            </li> <!--end::User Image--> <!--begin::Menu Body-->
-                            <li class="user-body"> <!--begin::Row-->
-                                <div class="row">
-                                    <div class="col-4 text-center"> <a href="#">Followers</a> </div>
-                                    <div class="col-4 text-center"> <a href="#">Sales</a> </div>
-                                    <div class="col-4 text-center"> <a href="#">Friends</a> </div>
-                                </div> <!--end::Row-->
-                            </li> <!--end::Menu Body--> <!--begin::Menu Footer-->
+                                </p>    
+                            </li>
+                        <?php endforeach ?>    
                             <li class="user-footer"> <a href="#" class="btn btn-default btn-flat">Profile</a> <a
                                     href="http://localhost/kioficina/public/auth/sair" class="btn btn-default btn-flat float-end">Logoff</a> </li>
                             <!--end::Menu Footer-->
                         </ul>
-                    </li> <!--end::User Menu Dropdown-->
+                    </li>
+                    <!--end::User Menu Dropdown-->
                 </ul> <!--end::End Navbar Links-->
             </div> <!--end::Container-->
         </nav> <!--end::Header--> <!--begin::Sidebar-->
         <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
-            <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="./index.html" class="brand-link">
-                    <!--begin::Brand Image--> <img src="http://localhost/kioficina/public/assets/img/Kioficina_Logo.svg" alt="Logo KiOficina"class="brand-image opacity-75 shadow"> <!--end::Brand Image--> <!--begin::Brand Text--> <span
-                        class="brand-text fw-light">KiOficina</span> <!--end::Brand Text--> </a> <!--end::Brand Link-->
+            <div class="sidebar-brand">
+                <a href="./index.html" class="brand-link">
+                 <img src="http://localhost/kioficina/public/assets/img/Kioficina_Logo.svg" alt="Logo KiOficina" class="brand-image opacity-75 shadow">  <!--end::Brand Text-->
+                </a> <!--end::Brand Link-->
             </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
             <div class="sidebar-wrapper">
                 <nav class="mt-2"> <!--begin::Sidebar Menu-->
-                    <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu"
-                        data-accordion="false">
+                    <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark"> <!--begin::Sidebar Brand-->
+                        <div class="sidebar-wrapper">
+                            <nav class="mt-2"> <!--begin::Sidebar Menu-->
+                                <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
+                                    <li class="nav-item menu-open"> <a href="#" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i>
+                                            <p>
+                                                Dashboard
 
-                            <li class="nav-item"> <a href="#" class="nav-link"> <i class="nav-icon bi bi-table"></i>
-                                <p>
-                                    Tables
-                                    <i class="nav-arrow bi bi-chevron-right"></i>
-                                </p>
-                                
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="./tables/simple.html" class="nav-link"> <i
-                                            class="nav-icon bi bi-circle"></i>
-                                        <p>Simple Tables</p>
+                                            </p>
+                                        </a>
+
+                                    </li>
+
+
                                     </a> </li>
-                            </ul>
-                        </li>
-                    </ul> <!--end::Sidebar Menu-->
+                                    <li class="nav-item"> <a href="#" class="nav-link">
+                                            <i class="bi bi-gear"></i>
+                                            <p>
+                                                Gestão de Serviços
+                                                <i class="nav-arrow bi bi-chevron-right"></i>
+                                            </p>
+                                        </a>
+                                        <ul class="nav nav-treeview">
+                                            <li class="nav-item">
+                                                <a href="./widgets/small-box.html" class="nav-link">
+                                                    <p>Agendamento de Serviços</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="./widgets/info-box.html" class="nav-link">
+                                                    <p>Serviços</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="./widgets/cards.html" class="nav-link">
+                                                    <p>Especialidade</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item"> <a href="#" class="nav-link"> <ion-icon name="people-outline"></ion-icon>
+                                            <p>
+                                                Gestão de Clientes
+                                                <i class="nav-arrow bi bi-chevron-right"></i>
+                                            </p>
+                                        </a>
+                                        <ul class="nav nav-treeview">
+                                            <li class="nav-item">
+                                                <a href="./layout/unfixed-sidebar.html" class="nav-link">
+                                                    <p>Clientes</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="./layout/fixed-sidebar.html" class="nav-link">
+                                                    <p>Veículos</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            <i class="bi bi-briefcase"></i>
+                                            <p>
+                                                Recursos Humanos
+                                                <i class="nav-arrow bi bi-chevron-right"></i>
+                                            </p>
+                                        </a>
+                                        <ul class="nav nav-treeview">
+                                            <li class="nav-item">
+                                                <a href="./UI/general.html" class="nav-link">
+                                                    <p>Funcionários</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+
+                                    <li class="nav-item"> <a href="#" class="nav-link">
+                                            <i class="bi bi-truck"></i>
+                                            <p>
+                                                Fornecedores
+                                                <i class="nav-arrow bi bi-chevron-right"></i>
+                                            </p>
+                                        </a>
+                                        <ul class="nav nav-treeview">
+                                            <li class="nav-item">
+                                                <a href="./forms/general.html" class="nav-link">
+                                                    <p>Fornecedores</p>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="./forms/general.html" class="nav-link">
+                                                    <p>Peças</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+
+
+
+
+
+                                    <li class="nav-header">SITE</li>
+
+                                    <li class="nav-item">
+                                        <a href="./docs/introduction.html" class="nav-link">
+                                            <i class="bi bi-chat-left-text"></i>
+                                            <p>Depoimentos</p>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="./docs/layout.html" class="nav-link">
+                                            <i class="bi bi-card-image"></i>
+                                            <p>Banners</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="./docs/color-mode.html" class="nav-link">
+                                            <i class="bi bi-envelope"></i>
+                                            <p>Contato</p>
+                                        </a>
+                                    </li>
+
+
+                                    <li class="nav-item"> 
+                                        <a href="./docs/browser-support.html" class="nav-link"> 
+                                            <i class="bi bi-images"></i>
+                                            <p>Galeria</p>
+                                        </a> </li>
+                                    <li class="nav-item"> 
+                                        <a href="./docs/how-to-contribute.html" class="nav-link"> 
+                                            <i class="bi bi-tags"></i>
+                                            <p>Marcas</p>
+                                        </a> </li>
+                                </ul> <!--end::Sidebar Menu-->
+                            </nav>
+                        </div> <!--end::Sidebar Wrapper-->
+                    </aside> <!--end::Sidebar--> <!--begin::App Main-->
+
+                    <!--end::Sidebar Menu-->
                 </nav>
             </div> <!--end::Sidebar Wrapper-->
         </aside> <!--end::Sidebar--> <!--begin::App Main-->
@@ -131,18 +242,39 @@
                 <div class="container-fluid"> <!-- Info boxes -->
                     <div class="row">
                         <div class="col-12 col-sm-6 col-md-3">
-                            <div class="info-box"> <span class="info-box-icon text-bg-danger shadow-sm"> <i
+                            <div class="info-box">
+                                <span class="info-box-icon text-bg-success shadow-sm">
+                                    <i class="bi bi-cart-fill"></i>
+                                </span>
+                                <div class="info-box-content"> <span class="info-box-text">Vendas</span> <span
+                                        class="info-box-number">760</span> </div> <!-- /.info-box-content -->
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3">
+                            <div class="info-box"> <span class="info-box-icon text-bg-danger shadow-sm container-comentarios-fundo"> <i
                                         class="bi bi-hand-thumbs-up-fill"></i> </span>
                                 <div class="info-box-content"> <span class="info-box-text">Comentários</span> <span
                                         class="info-box-number">41,410</span> </div> <!-- /.info-box-content -->
                             </div> <!-- /.info-box -->
                         </div> <!-- /.col --> <!-- fix for small devices only -->
                         <!-- <div class="clearfix hidden-md-up"></div> -->
+
                         <div class="col-12 col-sm-6 col-md-3">
-                            <div class="info-box"> <span class="info-box-icon text-bg-success shadow-sm"> <i
-                                        class="bi bi-cart-fill"></i> </span>
-                                <div class="info-box-content"> <span class="info-box-text">Vendas</span> <span
-                                        class="info-box-number">760</span> </div> <!-- /.info-box-content -->
+                            <div class="info-box">
+                                <span class="info-box-icon text-bg-success shadow-sm" id="cor">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Usuarios Registrados</span>
+                                    <span class="info-box-number">44</span>
+                                </div> <!-- /.info-box-content -->
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3">
+                            <div class="info-box"> <span class="info-box-icon text-bg-success shadow-sm" id="cor-primary-nav"> <ion-icon name="pie-chart-outline"></ion-icon>
+                                </span>
+                                <div class="info-box-content"> <span class="info-box-text">Visitantes Unicos</span> <span
+                                        class="info-box-number">65</span> </div> <!-- /.info-box-content -->
                             </div>
                         </div>
                     </div>
@@ -252,7 +384,7 @@
                                                     <th>ID do pedido</th>
                                                     <th>Item</th>
                                                     <th>Status</th>
-                                                    <th>	Popularidade</th>
+                                                    <th> Popularidade</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -262,7 +394,7 @@
                                                     </td>
                                                     <td>Call of Duty IV</td>
                                                     <td> <span class="badge text-bg-success">
-                                                        Enviado
+                                                            Enviado
                                                         </span> </td>
                                                     <td>
                                                         <div id="table-sparkline-1"></div>
@@ -284,7 +416,7 @@
                                                     </td>
                                                     <td>iPhone 6 Plus</td>
                                                     <td> <span class="badge text-bg-danger">
-                                                        Entregue
+                                                            Entregue
                                                         </span> </td>
                                                     <td>
                                                         <div id="table-sparkline-3"></div>
@@ -345,15 +477,20 @@
                             </div> <!-- /.card -->
                         </div> <!-- /.col -->
                         <div class="col-md-4"> <!-- Info Boxes Style 2 -->
-                            <div class="info-box mb-3 text-bg-warning"> <span class="info-box-icon"> <i
-                                        class="bi bi-tag-fill"></i> </span>
+                            <div class="info-box mb-3 text-bg-warning container-cor-warning">
+                                <span class="info-box-icon">
+                                    <i class="bi bi-tag-fill"></i>
+                                </span>
                                 <div class="info-box-content"> <span class="info-box-text">Estoque</span> <span
                                         class="info-box-number">5,200</span> </div> <!-- /.info-box-content -->
                             </div> <!-- /.info-box -->
-                             <!-- /.info-box -->
-                            <div class="info-box mb-3 text-bg-danger"> <span class="info-box-icon"> <i class="bi bi-cart-fill"></i></span>
-                                <div class="info-box-content"> <span class="info-box-text">Compras Realizadas</span> <span
-                                        class="info-box-number">114,381</span> </div> <!-- /.info-box-content -->
+                            <!-- /.info-box -->
+                            <div class="info-box mb-3 text-bg-danger" id="container-informacao">
+                                <span class="info-box-icon"> <i class="bi bi-cart-fill"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Compras Realizadas</span>
+                                    <span class="info-box-number">114,381</span>
+                                </div> <!-- /.info-box-content -->
                             </div> <!-- /.info-box --> <!-- /.info-box -->
                             <div class="card">
                                 <div class="card-header">
@@ -431,7 +568,7 @@
                 </div> <!--end::Container-->
             </div> <!--end::App Content-->
         </main> <!--end::App Main--> <!--begin::Footer-->
-        <footer class="app-footer"> <!--begin::To the end--> 
+        <footer class="app-footer"> <!--begin::To the end-->
             <strong>
                 Copyright &copy; 2014-2024&nbsp;
                 <a href="https://adminlte.io" class="text-decoration-none">KiOficina</a>.
@@ -442,14 +579,16 @@
     </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
     <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js"
         integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script>
-    <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/25f4259441.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
     <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script>
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-    <script src="../../dist/js/adminlte.js"></script>
+    <script src="http://localhost/kioficina/public/vendors/js/adminlte.js"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
         const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
@@ -458,7 +597,7 @@
             scrollbarAutoHide: "leave",
             scrollbarClickScroll: true,
         };
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
             if (
                 sidebarWrapper &&
@@ -492,13 +631,13 @@
 
         const sales_chart_options = {
             series: [{
-                name: "Digital Goods",
-                data: [28, 48, 40, 19, 86, 27, 90],
-            },
-            {
-                name: "Electronics",
-                data: [65, 59, 80, 81, 56, 55, 40],
-            },
+                    name: "Digital Goods",
+                    data: [28, 48, 40, 19, 86, 27, 90],
+                },
+                {
+                    name: "Electronics",
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                },
             ],
             chart: {
                 height: 180,
@@ -572,7 +711,7 @@
                     },
                     y: {
                         title: {
-                            formatter: function (seriesName) {
+                            formatter: function(seriesName) {
                                 return "";
                             },
                         },

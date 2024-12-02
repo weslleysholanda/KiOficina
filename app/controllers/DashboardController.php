@@ -23,7 +23,28 @@
             $dados['idUser'] = $_SESSION['userId'];
             $dados['tipoUser'] = $_SESSION['userTipo'];
 
+          
+
+
+
             $this->carregarViews('dash/dashboard', $dados);
         }
+
+        public function usuario($nome){
+            var_dump($nome);
+            // $dados = array();
+
+            $dashboardModel= new Dashboard();
+
+            //pegar os dados do usuario Logado
+            $usuario = $dashboardModel -> getUsuarioLogado($nome);
+
+            $dados['usuario'] = $usuario;
+            var_dump($usuario);
+
+            $this->carregarViews('dash/dashboard', $dados);
+        }
+
+            
        
     }

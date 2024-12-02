@@ -7408,8 +7408,9 @@ textarea.form-control-lg {
   display: none !important;
 }
 
-.shadow {
-  box-shadow: var(--bs-box-shadow) !important;
+i{
+  display: flex;
+  align-items: center;
 }
 
 .shadow-sm {
@@ -12995,8 +12996,7 @@ textarea.form-control-lg {
 }
 
 .sidebar-brand {
-
-  height: 3.5rem;
+  height: 8rem;
   padding: 0.8125rem 0.5rem;
   overflow: hidden;
   font-size: 1.25rem;
@@ -13013,12 +13013,13 @@ textarea.form-control-lg {
 .sidebar-brand .brand-link {
   display: flex;
   align-items: center;
+  justify-content: center;
   text-decoration: none;
 }
 .sidebar-brand .brand-link .brand-image {
   float: left;
   width: auto;
-  max-height: 33px;
+  max-height: 100px;
   line-height: 0.8;
 }
 .sidebar-brand .brand-link .brand-image-xs {
@@ -13051,10 +13052,7 @@ textarea.form-control-lg {
 }
 
 .sidebar-wrapper {
-  padding-top: 0.5rem;
-  padding-right: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.5rem;
+  overflow: hidden !important;
   border-right: 5px solid #FFFF00;
   scrollbar-color: var(--bs-secondary-bg) transparent;
   scrollbar-width: thin;
@@ -14473,6 +14471,36 @@ html.maximized-card {
   --lte-card-variant-color: #fff;
   --lte-card-variant-color-rgb: 255, 255, 255;
 }
+
+#cor{
+  background: #cb9a06 !important;
+}
+
+#container-informacao{
+  background: #198754 !important;
+}
+
+#cor-primary-nav{
+  background: #0d6efd !important;
+}
+
+.container-cor-warning{
+  background: #FF7F00 !important;
+
+  .info-box-icon{
+    color: white;
+  }
+
+  .info-box-content{
+    color: white;
+  }
+}
+
+.container-comentarios-fundo{
+  background: #9370DB !important;
+}
+
+
 
 .card-info,
 .bg-info,
