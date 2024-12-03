@@ -30,10 +30,19 @@ class DashboardController extends Controller
 
         //pegar os dados do usuario Logado
         $usuario = $dashboardModel->getUsuarioLogado($_SESSION['userId']);
+        //pegar dados do estoque
         $estoque = $dashboardModel->getEstoque();
+        //pegar dados do cliente
+        $cadastro = $dashboardModel->getCadastroUsuario();
 
-        $dados['usuario'] = $usuario;
-        $dados['estoque'] = $estoque;
+        //pegar dados servico realizado
+        $servico = $dashboardModel->getServicoRealizado();
+        
+
+        $dados['usuario'] =  $usuario;
+        $dados['estoque'] =  $estoque;
+        $dados['cadastro'] = $cadastro;
+        $dados['servico'] = $servico;
         // var_dump($usuario);
 
         $this->carregarViews('dash/dashboard', $dados);

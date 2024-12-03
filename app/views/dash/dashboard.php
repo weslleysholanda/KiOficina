@@ -283,7 +283,7 @@
                         <div class="col-12 col-sm-6 col-md-3">
                             <div class="info-box"> <span class="info-box-icon text-bg-danger shadow-sm container-comentarios-fundo"> <i
                                         class="bi bi-hand-thumbs-up-fill"></i> </span>
-                                <div class="info-box-content"> <span class="info-box-text">Comentários</span> <span
+                                <div class="info-box-content"> <span class="info-box-text">Depoimentos</span> <span
                                         class="info-box-number">41,410</span> </div> <!-- /.info-box-content -->
                             </div> <!-- /.info-box -->
                         </div> <!-- /.col --> <!-- fix for small devices only -->
@@ -296,7 +296,7 @@
                                 </span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">Usuarios Registrados</span>
-                                    <span class="info-box-number">44</span>
+                                    <span class="info-box-number"><?php echo htmlspecialchars($cadastro,ENT_QUOTES,'UTF-8'); ?></span>
                                 </div> <!-- /.info-box-content -->
                             </div>
                         </div>
@@ -511,21 +511,21 @@
                                 <span class="info-box-icon">
                                     <i class="bi bi-tag-fill"></i>
                                 </span>
-                                <?php foreach ($estoque as $totalEstoque): ?>
+                              
                                     <div class="info-box-content">
                                         <span class="info-box-text">Estoque</span>
                                         <!-- Provavelmente, o erro está no loop; ou seja, eu posso tratá-lo como um valor simples. -->
-                                        <span class="info-box-number"><?php echo htmlspecialchars($totalEstoque['qtde_estoque_peca'],ENT_QUOTES,'UTF-8'); ?></span>
+                                        <span class="info-box-number"><?php echo htmlspecialchars($estoque, ENT_QUOTES, 'UTF-8'); ?></span>
                                     </div>
-                                <?php endforeach ?>
+                               
 
                             </div> <!-- /.info-box -->
                             <!-- /.info-box -->
                             <div class="info-box mb-3 text-bg-danger" id="container-informacao">
                                 <span class="info-box-icon"> <i class="bi bi-cart-fill"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text">Compras Realizadas</span>
-                                    <span class="info-box-number">114,381</span>
+                                    <span class="info-box-text">Serviços Realizados</span>
+                                    <span class="info-box-number"><?php echo htmlspecialchars($servico,ENT_QUOTES,'UTF-8') ?></span>
                                 </div> <!-- /.info-box-content -->
                             </div> <!-- /.info-box --> <!-- /.info-box -->
                             <div class="card">
