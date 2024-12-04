@@ -3,21 +3,19 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>KiOficina - Dashboard</title><!--begin::Primary Meta Tags-->
+    <title>KiOficina - Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="http://localhost/kioficina/public/assets/img/favicon.svg">
     <meta name="author" content="ColorlibHQ">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
         integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous">
-    <!--end::Fonts--><!--begin::Third Party Plugin(OverlayScrollbars)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css"
         integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous">
-    <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Third Party Plugin(Bootstrap Icons)-->
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css"
         integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous">
-    <!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="http://localhost/kioficina/public/vendors/css/adminlte.css"><!--end::Required Plugin(AdminLTE)--><!-- apexcharts -->
-    <link rel="stylesheet" href="http://localhost/kioficina/public/vendors/css/style.css">
+    <link rel="stylesheet" href="http://localhost/kioficina/public/vendors/css/adminlte.css">
+    <link rel="stylesheet" href="http://localhost/kioficina/public/assets/css/dash.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css"
         integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous">
 </head>
@@ -130,7 +128,7 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="./widgets/info-box.html" class="nav-link">
+                                                <a href="http://localhost/kioficina/public/servico/listar" class="nav-link">
                                                     <p>Serviços</p>
                                                 </a>
                                             </li>
@@ -246,12 +244,12 @@
                         </div> <!--end::Sidebar Wrapper-->
                     </aside> <!--end::Sidebar--> <!--begin::App Main-->
 
-                    <!--end::Sidebar Menu-->
+
                 </nav>
-            </div> <!--end::Sidebar Wrapper-->
-        </aside> <!--end::Sidebar--> <!--begin::App Main-->
-        <main class="app-main"> <!--begin::App Content Header-->
-            <div class="app-content-header"> <!--begin::Container-->
+            </div>
+        </aside>
+        <main class="app-main">
+            <div class="app-content-header">
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
@@ -277,14 +275,14 @@
                                     <i class="bi bi-cart-fill"></i>
                                 </span>
                                 <div class="info-box-content"> <span class="info-box-text">Vendas</span> <span
-                                        class="info-box-number">760</span> </div> <!-- /.info-box-content -->
+                                        class="info-box-number"><?php echo htmlspecialchars($total_vendas, ENT_QUOTES, 'UTF-8'); ?></span> </div> <!-- /.info-box-content -->
                             </div>
                         </div>
                         <div class="col-12 col-sm-6 col-md-3">
                             <div class="info-box"> <span class="info-box-icon text-bg-danger shadow-sm container-comentarios-fundo"> <i
                                         class="bi bi-hand-thumbs-up-fill"></i> </span>
                                 <div class="info-box-content"> <span class="info-box-text">Depoimentos</span> <span
-                                        class="info-box-number">41,410</span> </div> <!-- /.info-box-content -->
+                                        class="info-box-number"><?php echo htmlspecialchars($depoimento, ENT_QUOTES, 'UTF-8') ?></span> </div> <!-- /.info-box-content -->
                             </div> <!-- /.info-box -->
                         </div> <!-- /.col --> <!-- fix for small devices only -->
                         <!-- <div class="clearfix hidden-md-up"></div> -->
@@ -296,7 +294,7 @@
                                 </span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">Usuarios Registrados</span>
-                                    <span class="info-box-number"><?php echo htmlspecialchars($cadastro,ENT_QUOTES,'UTF-8'); ?></span>
+                                    <span class="info-box-number"><?php echo htmlspecialchars($cadastro, ENT_QUOTES, 'UTF-8'); ?></span>
                                 </div> <!-- /.info-box-content -->
                             </div>
                         </div>
@@ -359,9 +357,9 @@
                                     <div class="row">
                                         <div class="col-md-3 col-6">
                                             <div class="text-center border-end"> <span class="text-success"> <i
-                                                        class="bi bi-caret-up-fill"></i> 17%
+                                                        class="bi bi-caret-up-fill"></i><?php echo htmlspecialchars($totalPorcentagem, ENT_QUOTES, 'UTF-8') ?>
                                                 </span>
-                                                <h5 class="fw-bold mb-0">$35,210.43</h5> <span
+                                                <h5 class="fw-bold mb-0"><?php echo htmlspecialchars($total_receita, ENT_QUOTES, 'UTF-8') ?></h5> <span
                                                     class="text-uppercase">Receita Total</span>
                                             </div>
                                         </div> <!-- /.col -->
@@ -393,120 +391,20 @@
                             </div> <!-- /.card -->
                         </div> <!-- /.col -->
                     </div> <!--end::Row--> <!--begin::Row-->
-                    <div class="row"> <!-- Start col -->
-                        <div class="col-md-8"> <!--begin::Row-->
+                    <div class="row">
+                        <?php
+                        if (isset($conteudo)) {
+                            $this->carregarViews($conteudo, $dados);
+                        } else {
+                            echo '<h2> Bem Vindo ao Dashboard! </h2>';
+                        }
 
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title">Últimos pedidos</h3>
-                                    <div class="card-tools"> <button type="button" class="btn btn-tool"
-                                            data-lte-toggle="card-collapse"> <i data-lte-icon="expand"
-                                                class="bi bi-plus-lg"></i> <i data-lte-icon="collapse"
-                                                class="bi bi-dash-lg"></i> </button> <button type="button"
-                                            class="btn btn-tool" data-lte-toggle="card-remove"> <i
-                                                class="bi bi-x-lg"></i> </button> </div>
-                                </div> <!-- /.card-header -->
-                                <div class="card-body p-0">
-                                    <div class="table-responsive">
-                                        <table class="table m-0">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID do pedido</th>
-                                                    <th>Item</th>
-                                                    <th>Status</th>
-                                                    <th> Popularidade</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td> <a href="pages/examples/invoice.html"
-                                                            class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">OR9842</a>
-                                                    </td>
-                                                    <td>Call of Duty IV</td>
-                                                    <td> <span class="badge text-bg-success">
-                                                            Enviado
-                                                        </span> </td>
-                                                    <td>
-                                                        <div id="table-sparkline-1"></div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> <a href="pages/examples/invoice.html"
-                                                            class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">OR1848</a>
-                                                    </td>
-                                                    <td>Samsung Smart TV</td>
-                                                    <td> <span class="badge text-bg-warning">Pendente</span> </td>
-                                                    <td>
-                                                        <div id="table-sparkline-2"></div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> <a href="pages/examples/invoice.html"
-                                                            class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">OR7429</a>
-                                                    </td>
-                                                    <td>iPhone 6 Plus</td>
-                                                    <td> <span class="badge text-bg-danger">
-                                                            Entregue
-                                                        </span> </td>
-                                                    <td>
-                                                        <div id="table-sparkline-3"></div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> <a href="pages/examples/invoice.html"
-                                                            class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">OR7429</a>
-                                                    </td>
-                                                    <td>Samsung Smart TV</td>
-                                                    <td> <span class="badge text-bg-info">Processamento</span> </td>
-                                                    <td>
-                                                        <div id="table-sparkline-4"></div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> <a href="pages/examples/invoice.html"
-                                                            class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">OR1848</a>
-                                                    </td>
-                                                    <td>Samsung Smart TV</td>
-                                                    <td> <span class="badge text-bg-warning">Pendente</span> </td>
-                                                    <td>
-                                                        <div id="table-sparkline-5"></div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> <a href="pages/examples/invoice.html"
-                                                            class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">OR7429</a>
-                                                    </td>
-                                                    <td>iPhone 6 Plus</td>
-                                                    <td> <span class="badge text-bg-danger">
-                                                            Entregue
-                                                        </span> </td>
-                                                    <td>
-                                                        <div id="table-sparkline-6"></div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> <a href="pages/examples/invoice.html"
-                                                            class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">OR9842</a>
-                                                    </td>
-                                                    <td>Call of Duty IV</td>
-                                                    <td> <span class="badge text-bg-success">Enviado</span> </td>
-                                                    <td>
-                                                        <div id="table-sparkline-7"></div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div> <!-- /.table-responsive -->
-                                </div> <!-- /.card-body -->
-                                <div class="card-footer clearfix"> <a href="javascript:void(0)"
-                                        class="btn btn-sm btn-primary float-start">
-                                        Fazer novo pedido
-                                    </a> <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-end">
-                                        Ver todos os pedidos
-                                    </a> </div> <!-- /.card-footer -->
-                            </div> <!-- /.card -->
-                        </div> <!-- /.col -->
-                        <div class="col-md-4"> <!-- Info Boxes Style 2 -->
+                        ?>
+                        <!-- <div class="col-md-8"> 
+                            
+                           
+                        </div> -->
+                        <!-- <div class="col-md-4"> 
                             <div class="info-box mb-3 text-bg-warning container-cor-warning">
                                 <span class="info-box-icon">
                                     <i class="bi bi-tag-fill"></i>
@@ -514,105 +412,33 @@
                               
                                     <div class="info-box-content">
                                         <span class="info-box-text">Estoque</span>
-                                        <!-- Provavelmente, o erro está no loop; ou seja, eu posso tratá-lo como um valor simples. -->
                                         <span class="info-box-number"><?php echo htmlspecialchars($estoque, ENT_QUOTES, 'UTF-8'); ?></span>
                                     </div>
                                
 
-                            </div> <!-- /.info-box -->
-                            <!-- /.info-box -->
+                            </div> 
+
                             <div class="info-box mb-3 text-bg-danger" id="container-informacao">
                                 <span class="info-box-icon"> <i class="bi bi-cart-fill"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">Serviços Realizados</span>
-                                    <span class="info-box-number"><?php echo htmlspecialchars($servico,ENT_QUOTES,'UTF-8') ?></span>
-                                </div> <!-- /.info-box-content -->
-                            </div> <!-- /.info-box --> <!-- /.info-box -->
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title">Produtos Adicionados recentemente</h3>
-                                    <div class="card-tools"> <button type="button" class="btn btn-tool"
-                                            data-lte-toggle="card-collapse"> <i data-lte-icon="expand"
-                                                class="bi bi-plus-lg"></i> <i data-lte-icon="collapse"
-                                                class="bi bi-dash-lg"></i> </button> <button type="button"
-                                            class="btn btn-tool" data-lte-toggle="card-remove"> <i
-                                                class="bi bi-x-lg"></i> </button> </div>
-                                </div> <!-- /.card-header -->
-                                <div class="card-body p-0">
-                                    <div class="px-2">
-                                        <div class="d-flex border-top py-2 px-1">
-                                            <div class="col-2"> <img src="http://localhost/kioficina/public/vendors/img/default-150x150.png"
-                                                    alt="Product Image" class="img-size-50"> </div>
-                                            <div class="col-10"> <a href="javascript:void(0)" class="fw-bold">
-                                                    Samsung TV
-                                                    <span class="badge text-bg-warning float-end">
-                                                        $1800
-                                                    </span> </a>
-                                                <div class="text-truncate">
-                                                    Samsung 32" 1080p 60Hz LED Smart HDTV.
-                                                </div>
-                                            </div>
-                                        </div> <!-- /.item -->
-                                        <div class="d-flex border-top py-2 px-1">
-                                            <div class="col-2"> <img src="http://localhost/kioficina/public/vendors/img/default-150x150.png"
-                                                    alt="Product Image" class="img-size-50"> </div>
-                                            <div class="col-10"> <a href="javascript:void(0)" class="fw-bold">
-                                                    Bicycle
-                                                    <span class="badge text-bg-info float-end">
-                                                        $700
-                                                    </span> </a>
-                                                <div class="text-truncate">
-                                                    26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                                                </div>
-                                            </div>
-                                        </div> <!-- /.item -->
-                                        <div class="d-flex border-top py-2 px-1">
-                                            <div class="col-2"> <img src="http://localhost/kioficina/public/vendors/img/default-150x150.png"
-                                                    alt="Product Image" class="img-size-50"> </div>
-                                            <div class="col-10"> <a href="javascript:void(0)" class="fw-bold">
-                                                    Xbox One
-                                                    <span class="badge text-bg-danger float-end">
-                                                        $350
-                                                    </span> </a>
-                                                <div class="text-truncate">
-                                                    Xbox One Console Bundle with Halo Master Chief
-                                                    Collection.
-                                                </div>
-                                            </div>
-                                        </div> <!-- /.item -->
-                                        <div class="d-flex border-top py-2 px-1">
-                                            <div class="col-2"> <img src="http://localhost/kioficina/public/vendors/img/default-150x150.png"
-                                                    alt="Product Image" class="img-size-50"> </div>
-                                            <div class="col-10"> <a href="javascript:void(0)" class="fw-bold">
-                                                    PlayStation 4
-                                                    <span class="badge text-bg-success float-end">
-                                                        $399
-                                                    </span> </a>
-                                                <div class="text-truncate">
-                                                    PlayStation 4 500GB Console (PS4)
-                                                </div>
-                                            </div>
-                                        </div> <!-- /.item -->
-                                    </div>
-                                </div> <!-- /.card-body -->
-                                <div class="card-footer text-center"> <a href="javascript:void(0)" class="uppercase">
-                                        Ver todos os pedidos
-                                    </a> </div> <!-- /.card-footer -->
-                            </div> <!-- /.card -->
-                        </div> <!-- /.col -->
-                    </div> <!--end::Row-->
-                </div> <!--end::Container-->
-            </div> <!--end::App Content-->
-        </main> <!--end::App Main--> <!--begin::Footer-->
-        <footer class="app-footer"> <!--begin::To the end-->
+                                    <span class="info-box-number"><?php echo htmlspecialchars($servico, ENT_QUOTES, 'UTF-8') ?></span>
+                                </div> 
+                            </div> 
+                        </div>  -->
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="app-footer">
             <strong>
                 Copyright &copy; 2014-2024&nbsp;
                 <a href="https://adminlte.io" class="text-decoration-none">KiOficina</a>.
             </strong>
             All rights reserved.
             <!--end::Copyright-->
-        </footer> <!--end::Footer-->
-    </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
+        </footer>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js"
         integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

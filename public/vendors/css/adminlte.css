@@ -441,6 +441,7 @@ th {
   border-width: 0;
 }
 
+
 label {
   display: inline-block;
 }
@@ -14471,35 +14472,6 @@ html.maximized-card {
   --lte-card-variant-color: #fff;
   --lte-card-variant-color-rgb: 255, 255, 255;
 }
-
-#cor{
-  background: #cb9a06 !important;
-}
-
-#container-informacao{
-  background: #198754 !important;
-}
-
-#cor-primary-nav{
-  background: #0d6efd !important;
-}
-
-.container-cor-warning{
-  background: #FF7F00 !important;
-
-  .info-box-icon{
-    color: white;
-  }
-
-  .info-box-content{
-    color: white;
-  }
-}
-
-.container-comentarios-fundo{
-  background: #9370DB !important;
-}
-
 
 
 .card-info,

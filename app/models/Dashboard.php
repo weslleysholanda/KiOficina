@@ -42,11 +42,40 @@ class Dashboard extends Model
 
 
     public function getServicoRealizado(){
-        $sql = "SELECT SUM(tbl_servico_executado.id_servico_executado) AS Servico_Realizado FROM tbl_servico_executado";
+        $sql = "SELECT COUNT(*) AS Servico_Realizado FROM tbl_servico_executado";
         $stmt = $this -> db ->query($sql);
         $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
-        var_dump($resultado);
+        // var_dump($resultado);
         return $resultado['Servico_Realizado'];
+
+    }
+
+    public function getDepoimento(){
+        $sql = "SELECT COUNT(*) AS total_depoimentos FROM tbl_depoimento WHERE status_depoimento = 'Aprovado';";
+        $stmt = $this -> db -> query($sql);
+        $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
+        return $resultado['total_depoimentos'];
+    }
+
+    public function getVendas(){
+        $sql = "SELECT COUNT(*) AS total_vendas FROM tbl_ordem_servico;";
+        $stmt = $this -> db -> query($sql);
+        $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
+        return $resultado['total_vendas'];
+    }
+
+    public function getReceitaTotal(){
+        $sql = "SELECT CONCAT('$', FORMAT(SUM(tbl_ordem_servico.valor_total_ordem), 2)) AS total_receita FROM tbl_ordem_servico";
+        $stmt = $this -> db -> query($sql);
+        $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
+        return $resultado['total_receita'];
+    }
+
+    public function getPorcentagem(){  
+        $sql = "SELECT CONCAT(FORMAT(SUM(tbl_ordem_servico.valor_total_ordem) * 0.10/100,0), '%') AS valor_percentual FROM tbl_ordem_servico;";
+        $stmt = $this -> db -> query($sql);
+        $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
+        return $resultado['valor_percentual'];
 
     }
 }

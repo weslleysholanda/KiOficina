@@ -2711,13 +2711,6 @@ footer {
     }
 }
 
-
-/* Dashboard */
-.info-box .info-box-icon #cor{
-    background: #ffc107;
-}
-
-
 @keyframes wave {
     0% {
         transform: translate(-50%, -50%) scale(0);

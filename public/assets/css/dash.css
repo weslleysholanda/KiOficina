@@ -1,0 +1,132 @@
+/* Fontes do projeto */
+@font-face {
+    font-family: 'PACE';
+    src: url('../fonts/pace-racing-car/PACE.woff2') format('woff2'),
+        url('../fonts/pace-racing-car/PACE.woff') format('woff'),
+        url('../fonts/pace-racing-car/PACE.ttf') format('truetype'),
+        url('../fonts/pace-racing-car/PACE.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PACE Italic';
+    src: url('../fonts/pace-racing-car/PACE-Italic.woff2') format('woff2'),
+        url('../fonts/pace-racing-car/PACE-Italic.woff') format('woff'),
+        url('../fonts/pace-racing-car/PACE-Italic.ttf') format('truetype'),
+        url('../fonts/pace-racing-car/PACE-Italic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Sofast';
+    src: url('../fonts/sofast-racing-car/Sofast.woff2') format('woff2'),
+        url('../fonts/sofast-racing-car/Sofast.woff') format('woff'),
+        url('../fonts/sofast-racing-car/Sofast.ttf') format('truetype'),
+        url('../fonts/sofast-racing-car/Sofast.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sofast Italic';
+    src: url('../fonts/sofast-racing-car/Sofast-Italic.woff2') format('woff2'),
+        url('../fonts/sofast-racing-car/Sofast-Italic.woff') format('woff'),
+        url('../fonts/sofast-racing-car/Sofast-Italic.ttf') format('truetype'),
+        url('../fonts/sofast-racing-car/Sofast.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
+:root{
+    /* Cores */
+    --corLetras: #fff;
+    --color1: #4C4C4C;
+    --corDoTexto: #4B4B4B;
+
+    --color2: #FFFF00;
+    --color3: #383838;
+    --color4: #FFC108;
+    --color5: #212121;
+    --color6: #D28101;
+    --colorBackground: #101010;
+    --colorContainer: #000000;
+
+    /* Fontes */
+    --fonteSofast: 'Sofast';
+    --fontePace: 'PACE';
+}
+
+.container-comentarios-fundo {
+    background: #9370DB !important;
+}
+
+#cor {
+    background: #cb9a06 !important;
+}
+
+#container-informacao {
+    background: #198754 !important;
+}
+
+#cor-primary-nav {
+    background: #0d6efd !important;
+}
+
+.container-cor-warning {
+    background: #FF7F00 !important;
+
+    .info-box-icon {
+        color: white;
+    }
+
+    .info-box-content {
+        color: white;
+    }
+}
+
+h1{
+    font-family: var(--fontePace);
+    font-weight: 700;
+    text-align: center;
+}
+
+.navTool{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 5px;
+
+    a{
+        text-decoration: none;
+        padding: 10px;
+        font-family: var(--fonteSofast);
+        color: var(--color1);
+        background: var(--color2);
+        border-radius: 5px;
+        transform-style: preserve-3d;
+        transition: background-color 0.4s, transform 0.3s, color 0.3s;
+       
+    }
+
+    :hover{
+        color: var(--color2);
+        background: var(--color1);
+    }
+
+}
+
+.table {
+    margin-top: 5px;
+    text-align: center;
+    tbody{
+        tr {
+            td {
+                i {
+                    justify-content: center;
+                }
+            }
+        }
+
+    }
+
+}
