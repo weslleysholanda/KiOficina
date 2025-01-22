@@ -2,71 +2,75 @@
 <!-- Tempus dominus timepicker -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/css/tempus-dominus.min.css" crossorigin="anonymous">
 <div class="container mt-5">
-    <div class="img">
-        <img id="preview-img" style="width:100%; cursor:pointer;" title="Clique na imagem para selecionar uma foto de serviço" src="http://localhost/kioficina/public/uploads/servico/sem-foto-servico.png" alt="">
-        <input type="file" name="foto_galeria" id="foto_galeria" style="display: none;" accept="image/*">
-    </div>
+
     <form method="POST" action="http://localhost/kioficina/public/servico/adicionar" enctype="multipart/form-data">
-        <!-- Nome do Serviço -->
-        <div class="mb-3">
-            <label for="nome_servico" class="form-label">Nome do Serviço</label>
-            <input type="text" class="form-control" name="nome_servico" id="nome_servico" required>
+        <div class="img">
+            <img id="preview-img" style="width:100%; cursor:pointer;" title="Clique na imagem para selecionar uma foto de serviço" src="http://localhost/kioficina/public/uploads/servico/sem-foto-servico.png" alt="">
+            <input type="file" name="foto_galeria" id="foto_galeria" style="display: none;" accept="image/*">
         </div>
-
-        <!-- Descrição do Serviço -->
-        <div class="mb-3">
-            <label for="descricaoServico" class="form-label">Descrição do Serviço</label>
-            <textarea class="form-control" name="descricao_servico" id="descricaoServico" rows="3" required></textarea>
-        </div>
-
-        <div class="flex">
+        <div class="container-form">
+            <!-- Nome do Serviço -->
             <div class="mb-3">
-                <label for="precoBase" class="form-label">Preço Base</label>
-                <input type="number" name="preco_base_servico" class="form-control" id="preco_base_servico" required>
+                <label for="nome_servico" class="form-label">Nome do Serviço</label>
+                <input type="text" class="form-control" name="nome_servico" id="nome_servico" required>
             </div>
 
-
-            <!-- Tempo Estimado -->
+            <!-- Descrição do Serviço -->
             <div class="mb-3">
-                <label for="tempoEstimado" class="form-label">Tempo Estimado</label>
-                <div class="input-group" id="datetimepicker">
-                    <input type="text" class="form-control" name="tempo_estimado_servico" placeholder="--:--" id="tempoEstimado" />
-                    <span class="input-group-text">
-                        <i class="fa fa-clock"></i>
-                    </span>
+                <label for="descricaoServico" class="form-label">Descrição do Serviço</label>
+                <textarea class="form-control" name="descricao_servico" id="descricaoServico" rows="3" required></textarea>
+            </div>
+
+            <div class="flex">
+                <div class="mb-3">
+                    <label for="precoBase" class="form-label">Preço Base</label>
+                    <input type="number" name="preco_base_servico" class="form-control" id="preco_base_servico" required>
+                </div>
+
+
+                <!-- Tempo Estimado -->
+                <div class="mb-3">
+                    <label for="tempoEstimado" class="form-label">Tempo Estimado</label>
+                    <div class="input-group" id="datetimepicker">
+                        <input type="text" class="form-control" name="tempo_estimado_servico" placeholder="--:--" id="tempoEstimado" />
+                        <span class="input-group-text">
+                            <i class="fa fa-clock"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Especialidade -->
+                <div class="mb-3">
+                    <label for="id_especialidade" class="form-label">Especialidade</label>
+                    <select name="id_especialidade" class="form-select" id="id_especialidade" required>
+                        <option selected disabled>-- Selecione --</option>
+                        <?php foreach ($listarEspecialidade as $especialidades): ?>
+                            <option value="<?php echo $especialidades['id_especialidade']; ?>"><?php echo $especialidades['nome_especialidade']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <!-- Status do Serviço -->
+                <div class="mb-3">
+                    <label for="statusServico" class="form-label">Status</label>
+                    <select class="form-select" id="status_servico" name="status_servico" required>
+                        <option selected disabled>Selecione o status</option>
+                        <option value="Ativo">Ativo</option>
+                        <option value="Inativo">Inativo</option>
+                    </select>
                 </div>
             </div>
 
-            <!-- Especialidade -->
             <div class="mb-3">
-                <label for="id_especialidade" class="form-label">Especialidade</label>
-                <select name="id_especialidade" class="form-select" id="id_especialidade" required>
-                    <option selected disabled>-- Selecione --</option>
-                    <?php foreach($listarEspecialidade as $especialidades):?>
-                        <option value="<?php echo $especialidades['id_especialidade'];?>"><?php echo $especialidades['nome_especialidade'];?></option>
-                    <?php endforeach; ?>
-                </select>
+                <label for="nome_servico" class="form-label">Se não existir a especialidade desejada, informe no campo a baixo:</label>
+                <input type="text" class="form-control" name="nova_especialidade" id="nome_servico">
             </div>
 
-            <!-- Status do Serviço -->
-            <div class="mb-3">
-                <label for="statusServico" class="form-label">Status</label>
-                <select class="form-select" id="status_servico" name="status_servico" required>
-                    <option selected disabled>Selecione o status</option>
-                    <option value="Ativo">Ativo</option>
-                    <option value="Inativo">Inativo</option>
-                </select>
-            </div>
+            <!-- Botões -->
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button type="button" class="btn btn-secondary" onclick="window.history.back()">Cancelar</button>
         </div>
 
-        <div class="mb-3">
-            <label for="nome_servico" class="form-label">Se não existir a especialidade desejada, informe no campo a baixo:</label>
-            <input type="text" class="form-control" name="nome_especialidade" id="nome_servico">
-        </div>
-
-        <!-- Botões -->
-        <button type="submit" class="btn btn-primary">Salvar</button>
-        <button type="button" class="btn btn-secondary" onclick="window.history.back()">Cancelar</button>
     </form>
 </div>
 

@@ -47,9 +47,6 @@ class DashboardController extends Controller
         //total receita
         $dados['total_receita'] = $this->dashboardModel ->getReceitaTotal();
 
-        //porcentagem
-        $dados['totalPorcentagem'] =$this->dashboardModel ->getPorcentagem();
-
         // var_dump($usuario);
 
         $this->carregarViews('dash/dashboard', $dados);

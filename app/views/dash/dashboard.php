@@ -52,7 +52,7 @@
                                             } else {
                                                 echo ("http://localhost/kioficina/public/uploads/funcionario/sem-foto-funcionario.png");
                                             } ?>" class="user-image rounded-circle shadow" alt="User Image">
-                                </span>
+                                <span><?php echo htmlspecialchars($usuarioLogado['nome_funcionario'], ENT_QUOTES, 'UTF-8'); ?></span>
                             <?php endforeach ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">

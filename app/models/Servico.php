@@ -84,11 +84,49 @@ class Servico extends Model{
         $stmt->bindValue(':status_servico', $dados['status_servico']);
         $stmt->bindValue(':link_servico', $dados['link_servico']);
  
-        return $stmt->execute();
+       $stmt->execute();
+
+        return $this->db->lastInsertId();
  
         // vincular os parametro
  
  
+    }
+
+    public function addFotoGaleria($id_servico,$arquivo, $nome_servico){
+        $sql = "INSERT INTO tbl_galeria(foto_galeria,alt_galeria,status_galeria,id_servico) 
+                VALUES (:foto_galeria, :alt_galeria, :status_galeria, :id_servico)";
+        
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':foto_galeria',$arquivo);
+        $stmt->bindValue(':alt_galeria',$nome_servico);
+        $stmt->bindValue(':status_galeria','Ativo');
+        $stmt->bindValue(':id_servico',$id_servico);
+        return $stmt->execute();
+    }
+
+    // Verificar se o link existe
+    public function existeEsseServico($link){
+        $sql = "SELECT COUNT(*) as total from tbl_servico WHERE link_servico= :link;";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':link',$link);
+        $stmt->execute();
+
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $resultado['total'] > 0;
+    }
+
+    /** Criar ou Obter Especialidade */
+    public function obterOuCriarEspecialidade($nome){
+        $sql = "INSERT INTO tbl_especialidade(nome_especialidade) VALUES (:nome)";
+        $stmt= $this->db->prepare($sql);
+        $stmt->bindValue(':nome',$nome);
+        if($stmt->execute()){
+            return $this-> db ->lastInsertId();
+        }
+        return false;
+        
     }
 
 }

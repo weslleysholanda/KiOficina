@@ -134,33 +134,35 @@ h1 {
 }
 
 .container {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-
     .img{
         max-width: 500px;
     }
     form {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+
         .flex {
             display: flex;
             gap: 10px;
         }
 
-        .btn{
-            text-decoration: none;
-            padding: 10px;
-            font-family: var(--fonteSofast);
-            color: var(--color1);
-            background: var(--color2);
-            border: none;
-            border-radius: 5px;
-            transform-style: preserve-3d;
-            transition: background-color 0.4s, transform 0.3s, color 0.3s;
-
-            &:hover{
-                color: var(--color2);
-                background: var(--color1);
+        .container-form{
+            .btn{
+                text-decoration: none;
+                padding: 10px;
+                font-family: var(--fonteSofast);
+                color: var(--color1);
+                background: var(--color2);
+                border: none;
+                border-radius: 5px;
+                transform-style: preserve-3d;
+                transition: background-color 0.4s, transform 0.3s, color 0.3s;
+    
+                &:hover{
+                    color: var(--color2);
+                    background: var(--color1);
+                }
             }
         }
     }
