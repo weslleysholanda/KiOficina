@@ -4,12 +4,16 @@ class ServicoController extends Controller{
 
     //atributo da classe
     private $servicoModel;
+    private $dashboardModel;
+    private $especialidadeModel;
     public function __construct(){
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
 
         $this->servicoModel = new Servico();
+        $this->dashboardModel= new Dashboard();
+        $this->especialidadeModel = new Especialidade();
     }
     // Front - END: Carregar a lista de serviços
     public function index(){
@@ -60,8 +64,29 @@ class ServicoController extends Controller{
 
         $dados = array();
         $dados['listaServico'] = $this ->servicoModel->getServicoAll();
-        var_dump($dados['listaServico']);
+        // var_dump($dados['listaServico']);
         $dados['conteudo'] = 'dash/servico/listar';
+
+        //metodo dashboardcontroller
+        //pegar os dados do usuario Logado
+        $dados['usuario'] = $this->dashboardModel->getUsuarioLogado($_SESSION['userId']);
+        //pegar dados do estoque
+        $dados['estoque'] = $this->dashboardModel->getEstoque();
+        //pegar dados do cliente
+        $dados['cadastro'] = $this->dashboardModel->getCadastroUsuario();
+
+        //pegar dados servico realizado
+        $dados['servico'] =  $this->dashboardModel->getServicoRealizado();
+
+        // pegar dados depoimento
+        $dados['depoimento'] = $this->dashboardModel ->getDepoimento();
+
+        //pegar dados vendas
+        $dados['total_vendas'] =  $this->dashboardModel ->getVendas();
+
+        //total receita
+        $dados['total_receita'] = $this->dashboardModel ->getReceitaTotal();
+
 
         $this -> carregarViews('dash/dashboard',$dados);
 
@@ -70,8 +95,91 @@ class ServicoController extends Controller{
     // 2 - método para adicionar serviços
     public function adicionar(){
 
+        if(!isset($_SESSION['userTipo']) || $_SESSION['userTipo'] !== 'Funcionario'){
+
+            header('Location:' . BASE_URL);
+            // header('Location:' . BASE_URL);
+            exit;
+        }
+
         $dados = array();
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+            //tbl_servico
+            $nome_servico = filter_input(INPUT_POST,'nome_servico',FILTER_SANITIZE_SPECIAL_CHARS);
+            $descricao_servico = filter_input(INPUT_POST,'descricao_servico',FILTER_SANITIZE_SPECIAL_CHARS);
+            $preco_base_servico = filter_input(INPUT_POST,'preco_base_servico',FILTER_SANITIZE_NUMBER_FLOAT);
+            $tempo_estimado_servico = filter_input(INPUT_POST,'tempo_estimado_servico');
+            $alt_foto_servico = filter_input(INPUT_POST,'alto_foto_servico',FILTER_SANITIZE_SPECIAL_CHARS);
+            $id_especialidade = filter_input(INPUT_POST,'id_especialidade',FILTER_SANITIZE_NUMBER_INT);
+            $status_servico = filter_input(INPUT_POST,'status_servico',FILTER_SANITIZE_SPECIAL_CHARS);
+            /*Tratar o texto*/
+            $link_servico = filter_input(INPUT_POST,'nome_servico',FILTER_SANITIZE_SPECIAL_CHARS);
+            // //tbl_galeria
+            // $foto_galeria
+            // $alt_galeria
+            // $status_galeria
+            // $id_servico
+
+            // //tbl_especialidade
+            // $nome_especialidade
+
+            if($nome_servico && $descricao_servico && $preco_base_servico !== false){
+                /** 1-Verificar a especialidade*/
+
+                /** 2- Link do servico*/
+
+                /** 3- Preparar dados*/
+                $dadosServico = array(
+                    'nome_servico'              => $nome_servico,
+                    'descricao_servico'         => $descricao_servico,
+                    'preco_base_servico'        => $preco_base_servico,
+                    'tempo_estimado_servico'    => $tempo_estimado_servico,
+                    'alt_foto_servico'          => $nome_servico,
+                    'id_especialidade'          => $id_especialidade,
+                    'status_servico'            => $status_servico,
+                    'link_servico'              => $link_servico,
+                );
+
+                /**4- Inserir o serviço e obter o ID*/
+                $id_servico = $this->servicoModel->addServico($dadosServico);
+                
+                if($id_servico){
+                    if(isset($_FILES['foto_galeria']) && $_FILES['foto_galeria']['error'] == 0){
+                        $arquivo = $this->uploadFoto($_FILES['foto_galeria']);
+                        var_dump($arquivo);
+                    }
+                }
+            }
+        }
+
         $dados['conteudo'] = 'dash/servico/adicionar';
+
+        /*Buscar as especialidades*/
+        $dados['listarEspecialidade']=$this->especialidadeModel->getEspecialidade();
+
+
+        //metodo dashboardcontroller
+
+        //pegar os dados do usuario Logado
+        $dados['usuario'] = $this->dashboardModel->getUsuarioLogado($_SESSION['userId']);
+        //pegar dados do estoque
+        $dados['estoque'] = $this->dashboardModel->getEstoque();
+        //pegar dados do cliente
+        $dados['cadastro'] = $this->dashboardModel->getCadastroUsuario();
+
+        //pegar dados servico realizado
+        $dados['servico'] =  $this->dashboardModel->getServicoRealizado();
+
+        // pegar dados depoimento
+        $dados['depoimento'] = $this->dashboardModel ->getDepoimento();
+
+        //pegar dados vendas
+        $dados['total_vendas'] =  $this->dashboardModel ->getVendas();
+
+        //total receita
+        $dados['total_receita'] = $this->dashboardModel ->getReceitaTotal();
 
         $this -> carregarViews('dash/dashboard',$dados);
 
@@ -82,6 +190,26 @@ class ServicoController extends Controller{
 
         $dados = array();
         $dados['conteudo'] = 'dash/servico/editar';
+        //metodo dashboardcontroller
+        //pegar os dados do usuario Logado
+        $dados['usuario'] = $this->dashboardModel->getUsuarioLogado($_SESSION['userId']);
+        //pegar dados do estoque
+        $dados['estoque'] = $this->dashboardModel->getEstoque();
+        //pegar dados do cliente
+        $dados['cadastro'] = $this->dashboardModel->getCadastroUsuario();
+
+        //pegar dados servico realizado
+        $dados['servico'] =  $this->dashboardModel->getServicoRealizado();
+
+        // pegar dados depoimento
+        $dados['depoimento'] = $this->dashboardModel ->getDepoimento();
+
+        //pegar dados vendas
+        $dados['total_vendas'] =  $this->dashboardModel ->getVendas();
+
+        //total receita
+        $dados['total_receita'] = $this->dashboardModel ->getReceitaTotal();
+
 
         $this -> carregarViews('dash/dashboard',$dados);
 
@@ -95,5 +223,25 @@ class ServicoController extends Controller{
 
         $this -> carregarViews('dash/dashboard',$dados);
 
+    }
+
+
+
+    //** Método para upload da Foto */
+    private function uploadFoto($file){
+        $dir = 'public/uploads/servico';
+
+        if(!file_exists($dir)){
+            mkdir($dir, 0775, true);
+        }
+
+        $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $nome_arquivo = uniqid() . '.' . $ext;
+
+        if(move_uploaded_file($file['tmp_name'], $dir . $ext)){
+            return $nome_arquivo;
+        }
+
+        return false;
     }
 }

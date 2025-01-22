@@ -50,5 +50,45 @@ class Servico extends Model{
         return $stmt -> fetch(PDO::FETCH_ASSOC);
     }
 
+    // Método para o DASHBOARD - Adicionar Serviço
+    public function addServico($dados)
+    {
+ 
+        $sql = "INSERT INTO tbl_servico (
+            nome_servico,
+            descricao_servico,
+            preco_base_servico,
+            tempo_estimado_servico,
+            alt_foto_servico,
+            id_especialidade,
+            status_servico,
+            link_servico
+        ) VALUES (
+            :nome_servico,
+            :descricao_servico,
+            :preco_base_servico,
+            :tempo_estimado_servico,
+            :alt_foto_servico,
+            :id_especialidade,
+            :status_servico,
+            :link_servico
+        )";
+        $stmt = $this->db->prepare($sql);
+ 
+        $stmt->bindValue(':nome_servico', $dados['nome_servico']);
+        $stmt->bindValue(':descricao_servico', $dados['descricao_servico']);
+        $stmt->bindValue(':preco_base_servico', $dados['preco_base_servico']);
+        $stmt->bindValue(':tempo_estimado_servico', $dados['tempo_estimado_servico']);
+        $stmt->bindValue(':alt_foto_servico', $dados['alt_foto_servico']);
+        $stmt->bindValue(':id_especialidade', $dados['id_especialidade']);
+        $stmt->bindValue(':status_servico', $dados['status_servico']);
+        $stmt->bindValue(':link_servico', $dados['link_servico']);
+ 
+        return $stmt->execute();
+ 
+        // vincular os parametro
+ 
+ 
+    }
 
 }

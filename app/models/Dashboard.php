@@ -70,12 +70,4 @@ class Dashboard extends Model
         $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
         return $resultado['total_receita'];
     }
-
-    public function getPorcentagem(){  
-        $sql = "SELECT CONCAT(FORMAT(SUM(tbl_ordem_servico.valor_total_ordem) * 0.10/100,0), '%') AS valor_percentual FROM tbl_ordem_servico;";
-        $stmt = $this -> db -> query($sql);
-        $resultado = $stmt -> fetch(PDO::FETCH_ASSOC);
-        return $resultado['valor_percentual'];
-
-    }
 }
