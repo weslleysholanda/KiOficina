@@ -1,8 +1,29 @@
-<h1>LISTAR SERVIÇO</h1>
+<?php 
+    if(session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if(isset($_SESSION['mensagem']) && isset($_SESSION['tipo-msg'])){
+
+        $mensagem = $_SESSION['mensagem'];
+        $tipo = $_SESSION['tipo-msg'];
+
+        /**Exibir a mensagem */
+        if($tipo == 'sucesso'){
+            echo '<div class="alert alert-success" role="alert">'. $mensagem .'</div>';
+        }elseif($tipo == 'erro'){
+            echo '<div class="alert alert-danger" role="alert">'. $mensagem .'</div>';
+        }
+
+        /** Limpe as variáveis de sessão */
+        unset($_SESSION['mensagem']);
+        unset($_SESSION['tipo-msg']);
+    }
+
+
+?>
 <div class="navTool">
     <a href="http://localhost/kioficina/public/servico/adicionar">ADICIONAR</a>
-    <a href="http://localhost/kioficina/public/servico/editar">EDITAR</a>
-    <a href="http://localhost/kioficina/public/servico/desativar">DESATIVAR</a>
 </div>
 <table class="table table-hover">
     <thead>
@@ -28,8 +49,8 @@
                 <td><?php echo $linha['preco_base_servico'] ?></td>
                 <td><?php echo $linha['tempo_estimado_servico'] ?></td>
                 <td><?php echo $linha['id_especialidade'] ?></td>
-                <td><i class="bi bi-pencil"></i></td>
-                <td><i class="bi bi-trash"></i></td>
+                <td><a href="http://localhost/kioficina/public/servico/editar"><i class="bi bi-pencil"></i></a></td>
+                <td><a href="http://localhost/kioficina/public/servico/desativar"><i class="bi bi-trash"></i></a></td>
             </tr>
         <?php endforeach ?>
     </tbody>

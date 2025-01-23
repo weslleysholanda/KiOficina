@@ -63,7 +63,7 @@
 
             <div class="mb-3">
                 <label for="nome_servico" class="form-label">Se não existir a especialidade desejada, informe no campo a baixo:</label>
-                <input type="text" class="form-control" name="nova_especialidade" id="nome_servico">
+                <input type="text" class="form-control" name="nova_especialidade">
             </div>
 
             <!-- Botões -->

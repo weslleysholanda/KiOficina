@@ -100,7 +100,7 @@ class ServicoController extends Controller
     public function adicionar()
     {
 
-        
+
 
         if (!isset($_SESSION['userTipo']) || $_SESSION['userTipo'] !== 'Funcionario') {
 
@@ -133,12 +133,18 @@ class ServicoController extends Controller
 
             if ($nome_servico && $descricao_servico && $preco_base_servico !== false) {
                 /** 1-Verificar a especialidade*/
-                if(empty($id_especialidade) && !empty($nova_especialidade) ){
+                if (empty($id_especialidade) && !empty($nova_especialidade)) {
                     /** Criar e Obter a especialidade nova */
                     $id_especialidade = $this->servicoModel->obterOuCriarEspecialidade($nova_especialidade);
                 }
-                /** tratar o texto -link-servico*/
-                
+
+                if (empty($id_especialidade)) {
+                    $dados['mensagem'] = "É necessário escolher ou criar uma especialidade!";
+                    $dados['tipo-msg'] = "erro";
+                    $this->carregarViews('dash/servico/adicionar', $dados);
+                    return;
+                }
+
                 /** 2- Link do servico*/
                 $link_servico = $this->gerarLinkServico($nome_servico);
 
@@ -149,7 +155,7 @@ class ServicoController extends Controller
                     'preco_base_servico'        => $preco_base_servico,
                     'tempo_estimado_servico'    => $tempo_estimado_servico,
                     'alt_foto_servico'          => $nome_servico,
-                    'id_especialidade'          => $id_especialidade,
+                    'id_especialidade'          => $id_especialidade,  //Esse id_especialidade pode vim da lista ou de uma nova.
                     'status_servico'            => $status_servico,
                     'link_servico'              => $link_servico,
                 );
@@ -160,14 +166,27 @@ class ServicoController extends Controller
                     if (isset($_FILES['foto_galeria']) && $_FILES['foto_galeria']['error'] == 0) {
                         // var_dump('cheguei aqui');
                         $arquivo = $this->uploadFoto($_FILES['foto_galeria']);
-                        if($arquivo){
+                        if ($arquivo) {
                             // Inserir na Galeria
-                            $this->servicoModel->addFotoGaleria($id_servico,$arquivo, $nome_servico);
-                        }else{
+                            $this->servicoModel->addFotoGaleria($id_servico, $arquivo, $nome_servico);
+                        } else {
                             //Definir uma mensagem informando que a foto não foi informado
                         }
                     }
+
+                    /** Mensagem de Sucesso */
+                    $_SESSION['mensagem'] = "Serviço adicionado com Sucesso!";
+                    $_SESSION['tipo-msg'] = 'sucesso';
+                    header('Location: http://localhost/kioficina/public/servico/listar');
+                    exit;
+
+                } else {
+                    $dados['mensagem'] = "Erro ao adicionar o serviço";
+                    $dados['tipo-msg'] = "erro-servico";
                 }
+            }else{
+                $dados['mensagem'] = "Preencha todos os campos obrigatórios";
+                $dados['tipo-msg'] = "erro";
             }
         }
 
@@ -241,16 +260,17 @@ class ServicoController extends Controller
         $this->carregarViews('dash/dashboard', $dados);
     }
 
-    public function gerarLinkServico($nome_servico){
- 
+    public function gerarLinkServico($nome_servico)
+    {
+
         //remover os acentos
         $semAcento = iconv('UTF-8', 'ASCII//TRANSLIT', $nome_servico);
-     
+
         /**Substituir qualquer caracter que não seja letra ou número por hífen */
-        $link = strtolower(trim(preg_replace('/[^a-zA-Z0-9]/', '-', $semAcento)));  
-     
+        $link = strtolower(trim(preg_replace('/[^a-zA-Z0-9]/', '-', $semAcento)));
+
         // var_dump($link);
-     
+
         /**Verificar se já existe no banco */
         $contador = 1;
         $link_original = $link;
@@ -262,7 +282,7 @@ class ServicoController extends Controller
         // var_dump($link);
         return $link;
     }
-     
+
 
     //** Método para upload da Foto */
     private function uploadFoto($file)

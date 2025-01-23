@@ -105,14 +105,18 @@ h1 {
         background: var(--color2);
         border-radius: 5px;
         transform-style: preserve-3d;
+        width: 100%;
+        text-align: center;
         transition: background-color 0.4s, transform 0.3s, color 0.3s;
 
+        &:hover {
+            color: var(--color2);
+            background: var(--color1);
+        }
+
     }
 
-    :hover {
-        color: var(--color2);
-        background: var(--color1);
-    }
+    
 
 }
 
