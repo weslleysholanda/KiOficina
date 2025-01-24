@@ -123,7 +123,7 @@
                                         </a>
                                         <ul class="nav nav-treeview">
                                             <li class="nav-item">
-                                                <a href="./widgets/small-box.html" class="nav-link">
+                                                <a href="http://localhost/kioficina/public/agendamento/listar" class="nav-link">
                                                     <p>Agendamento de Serviços</p>
                                                 </a>
                                             </li>
@@ -133,7 +133,7 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="./widgets/cards.html" class="nav-link">
+                                                <a href="http://localhost/kioficina/public/especialidade/listar" class="nav-link">
                                                     <p>Especialidade</p>
                                                 </a>
                                             </li>
@@ -148,12 +148,12 @@
                                         </a>
                                         <ul class="nav nav-treeview">
                                             <li class="nav-item">
-                                                <a href="./layout/unfixed-sidebar.html" class="nav-link">
+                                                <a href="http://localhost/kioficina/public/cliente/listar" class="nav-link">
                                                     <p>Clientes</p>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="./layout/fixed-sidebar.html" class="nav-link">
+                                                <a href="http://localhost/kioficina/public/veiculo/listar" class="nav-link">
                                                     <p>Veículos</p>
                                                 </a>
                                             </li>
