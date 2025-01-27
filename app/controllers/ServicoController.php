@@ -16,6 +16,8 @@ class ServicoController extends Controller
         $this->servicoModel = new Servico();
         $this->dashboardModel = new Dashboard();
         $this->especialidadeModel = new Especialidade();
+        
+
     }
     // Front - END: Carregar a lista de serviços
     public function index()
@@ -92,6 +94,7 @@ class ServicoController extends Controller
         //total receita
         $dados['total_receita'] = $this->dashboardModel->getReceitaTotal();
 
+        
 
         $this->carregarViews('dash/dashboard', $dados);
     }
@@ -99,8 +102,6 @@ class ServicoController extends Controller
     // 2 - método para adicionar serviços
     public function adicionar()
     {
-
-
 
         if (!isset($_SESSION['userTipo']) || $_SESSION['userTipo'] !== 'Funcionario') {
 
@@ -194,9 +195,6 @@ class ServicoController extends Controller
 
         /*Buscar as especialidades*/
         $dados['listarEspecialidade'] = $this->especialidadeModel->getEspecialidade();
-
-
-        //metodo dashboardcontroller
 
         //pegar os dados do usuario Logado
         $dados['usuario'] = $this->dashboardModel->getUsuarioLogado($_SESSION['userId']);

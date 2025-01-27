@@ -153,7 +153,7 @@
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="http://localhost/kioficina/public/veiculo/listar" class="nav-link">
+                                                <a href="" class="nav-link">
                                                     <p>Veículos</p>
                                                 </a>
                                             </li>
@@ -170,7 +170,7 @@
                                         </a>
                                         <ul class="nav nav-treeview">
                                             <li class="nav-item">
-                                                <a href="./UI/general.html" class="nav-link">
+                                                <a href="http://localhost/kioficina/public/funcionario/listar" class="nav-link">
                                                     <p>Funcionários</p>
                                                 </a>
                                             </li>
@@ -207,7 +207,7 @@
                                     <li class="nav-header">SITE</li>
 
                                     <li class="nav-item">
-                                        <a href="./docs/introduction.html" class="nav-link">
+                                        <a href="http://localhost/kioficina/public/depoimento/listar" class="nav-link">
                                             <i class="bi bi-chat-left-text"></i>
                                             <p>Depoimentos</p>
                                         </a>

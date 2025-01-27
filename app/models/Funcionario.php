@@ -10,4 +10,10 @@ class Funcionario extends Model{
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function getListarFuncionario(){
+        $sql = "SELECT * FROM tbl_funcionario;";
+        $stmt = $this->db->query($sql);
+        return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+    }
 }
