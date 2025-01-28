@@ -96,6 +96,7 @@ h1 {
     display: flex;
     gap: 1rem;
     margin-bottom: 5px;
+    padding: 0;
 
     a {
         text-decoration: none;

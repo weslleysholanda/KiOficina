@@ -33,7 +33,7 @@ class Dashboard extends Model
 
 
     public function getCadastroUsuario(){
-        $sql = "SELECT SUM(tbl_funcionario.id_funcionario + tbl_cliente.id_cliente) AS total_cadastro FROM tbl_funcionario INNER JOIN tbl_cliente ON tbl_funcionario.id_uf = tbl_cliente.id_uf WHERE status_funcionario='Ativo' AND status_cliente = 'Ativo'";
+        $sql = "SELECT (SELECT COUNT(*) FROM tbl_cliente WHERE status_cliente = 'Ativo') + (SELECT COUNT(*) FROM tbl_funcionario WHERE status_funcionario = 'Ativo') AS total_cadastro;";
         $stmt = $this->db->query($sql); 
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
         // var_dump($resultado);
