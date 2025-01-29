@@ -6,7 +6,7 @@
     <form id="normal" method="POST" action="http://localhost/kioficina/public/cliente/adicionar" enctype="multipart/form-data">
         <div class="img" id="normalFoto">
             <img id="preview-img" style="width:100%; cursor:pointer;" name="foto_cliente" title="Clique na imagem para selecionar uma foto de serviço" src="http://localhost/kioficina/public/uploads/servico/sem-foto-servico.png" alt="">
-            <input type="file" name="foto_cliente" id="foto_cliente" style="display: none;" accept="image/*">
+            <input type="file" name="foto_cliente" id="foto_cliente" required style="display: none;" accept="image/*">
         </div>
         <div class="container-form">
             <!-- Nome cliente -->
@@ -35,7 +35,7 @@
             <div class="mb-3">
                 <label for="dataCadastro" class="form-label">Data de Nascimento</label>
                 <div class="input-group date" id="dataCadastroPicker">
-                    <input type="date" class="form-control" name="data_nasc_cliente"; id="dataCadastro" placeholder="DD/MM/YYYY"/>
+                    <input type="text" class="form-control" name="data_nasc_cliente"; id="dataCadastro" placeholder="DD/MM/YYYY"/>
                     <span class="input-group-text">
                         <i class="fa fa-calendar"></i>
                     </span>

@@ -63,7 +63,15 @@ class ClienteController extends Controller
             $cidade_cliente = filter_input(INPUT_POST, 'cidade_cliente', FILTER_SANITIZE_SPECIAL_CHARS);
             $id_uf = filter_input(INPUT_POST, 'id_uf', FILTER_SANITIZE_SPECIAL_CHARS);
             $status_cliente = filter_input(INPUT_POST, 'status_cliente', FILTER_SANITIZE_SPECIAL_CHARS);
-        
+            
+            // verifica o dados do date
+            if (!empty($data_nasc_cliente)) {
+                $dataPartes = explode('/', $data_nasc_cliente);
+                if (count($dataPartes) === 3) {
+                    $data_nasc_cliente = "{$dataPartes[2]}-{$dataPartes[1]}-{$dataPartes[0]}"; // Converte para YYYY-MM-DD
+                }
+            }
+            
             // Verificar se uma foto foi enviada
             if (isset($_FILES['foto_cliente']) && $_FILES['foto_cliente']['error'] == 0) {
                 $foto_cliente = $this->uploadFoto($_FILES['foto_cliente']);
@@ -92,9 +100,15 @@ class ClienteController extends Controller
             $id_cliente = $this->clienteModel->addCliente($dadosCliente);
         
             if ($id_cliente) {
-                echo "Cliente adicionado com sucesso!";
+                $_SESSION['mensagem'] = "Cliente adicionado com Sucesso!";
+                $_SESSION['tipo-msg'] = 'sucesso';
+                header('Location: http://localhost/kioficina/public/cliente/listar');
+                exit;
             } else {
-                echo "Erro ao adicionar cliente.";
+                $_SESSION['mensagem'] = "Erro ao adicionar o cliente";
+                $_SESSION['tipo-msg'] = 'erro';
+                header('Location: http://localhost/kioficina/public/cliente/adicionar');
+                exit;
             }
         }
         

@@ -1,15 +1,15 @@
 <h1>Adicionar Depoimento</h1>
 <div class="container mt-5">
-    <form id="form-depoimento" method="POST" action="/depoimento/adicionar" enctype="multipart/form-data">
+    <form id="normal" method="POST" action="http://localhost/kioficina/public/depoimento/adicionar" enctype="multipart/form-data">
 
         <!-- Cliente -->
         <div class="mb-3">
             <label class="form-label">Cliente</label>
             <select class="form-select" name="id_cliente" required>
                 <option selected disabled>Selecione o cliente</option>
-                <?php foreach ($clientes as $cliente): ?>
+                <?php foreach ($listarCliente as $cliente): ?>
                     <option value="<?php echo $cliente['id_cliente']; ?>">
-                        <?php echo $cliente['nome_cliente']; ?>
+                <?php echo $cliente['nome_cliente']; ?>
                     </option>
                 <?php endforeach; ?>
             </select>
@@ -37,7 +37,7 @@
         <!-- Data e Hora do Depoimento -->
         <div class="mb-3">
             <label for="dataHoraDepoimento" class="form-label">Data e Hora</label>
-            <input type="datetime-local" class="form-control" name="datahora_depoimento" required>
+            <input type="datetime-local" class="form-cont rol" name="datahora_depoimento" required>
         </div>
 
         <!-- Status do Depoimento -->
@@ -45,7 +45,7 @@
             <label class="form-label">Status</label>
             <select class="form-select" name="status_depoimento" required>
                 <option selected disabled>Selecione o status</option>
-                <option value="Ativo">Ativo</option>
+                <option value="Ativo">Aprovado</option>
                 <option value="Inativo">Inativo</option>
             </select>
         </div>

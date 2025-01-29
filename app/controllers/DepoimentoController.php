@@ -43,7 +43,42 @@ class DepoimentoController extends Controller{
     public function adicionar(){
         $dados = array();
         $dados['conteudo'] = 'dash/depoimento/adicionar';
+        $dados['listarCliente'] = $this->depoimentoModel->getCliente();
+        
 
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $id_cliente = filter_input(INPUT_POST, 'id_cliente',FILTER_SANITIZE_SPECIAL_CHARS);
+            $descricao_depoimento = filter_input(INPUT_POST, 'descricao_depoimento',FILTER_SANITIZE_SPECIAL_CHARS);
+            $nota_depoimento = filter_input(INPUT_POST, 'nota_depoimento',FILTER_SANITIZE_SPECIAL_CHARS);
+            $datahora_depoimento = filter_input(INPUT_POST, 'datahora_depoimento',FILTER_SANITIZE_SPECIAL_CHARS);
+            $status_depoimento = filter_input(INPUT_POST, 'status_depoimento',FILTER_SANITIZE_SPECIAL_CHARS);
+            
+
+            $dadosDepoimento = [
+                'id_cliente' => $id_cliente,
+                'descricao_depoimento' => $descricao_depoimento,
+                'nota_depoimento' => $nota_depoimento,
+                'datahora_depoimento' => $datahora_depoimento,
+                'status_depoimento' => $status_depoimento,
+
+            ];
+
+            // inserir dados no banco 
+
+            $id_depoimento = $this->depoimentoModel->addDepoimento($dadosDepoimento);
+
+            if($id_depoimento){
+                $_SESSION['mensagem'] = 'Depoimento Adicionado com Sucesso!';
+                $_SESSION['tipo-msg'] = 'sucesso';
+                header('Location: http://localhost/kioficina/public/depoimento/listar ');
+                exit;
+            }else{
+                $_SESSION['mensagem'] = "Erro ao adicionar o depoimento";
+                $_SESSION['tipo-msg'] = 'erro';
+                header('Location: http://localhost/kioficina/public/depoimento/adicionar');
+                exit;
+            }
+        }
         //pegar os dados do usuario Logado
         $dados['usuario'] = $this->dashboardModel->getUsuarioLogado($_SESSION['userId']);
         //pegar dados do estoque

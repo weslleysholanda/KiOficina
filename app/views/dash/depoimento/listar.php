@@ -1,3 +1,31 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (isset($_SESSION['mensagem']) && isset($_SESSION['tipo-msg'])) {
+
+    $mensagem = $_SESSION['mensagem'];
+    $tipo = $_SESSION['tipo-msg'];
+
+    /**Exibir a mensagem */
+    if ($tipo == 'sucesso') {
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Sucesso!</strong> ' . $mensagem . '
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>';
+    } elseif ($tipo == 'erro') {
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Erro!</strong> ' . $mensagem . '
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>';
+    }
+
+    /** Limpe as variáveis de sessão */
+    unset($_SESSION['mensagem']);
+    unset($_SESSION['tipo-msg']);
+}
+?>
 <div class="navTool">
     <a href="http://localhost/kioficina/public/depoimento/adicionar">ADICIONAR</a>
 </div>
