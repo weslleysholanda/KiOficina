@@ -49,7 +49,7 @@
                 <td><?php echo $linha['preco_base_servico'] ?></td>
                 <td><?php echo $linha['tempo_estimado_servico'] ?></td>
                 <td><?php echo $linha['id_especialidade'] ?></td>
-                <td><a href="http://localhost/kioficina/public/servico/editar"><i class="bi bi-pencil"></i></a></td>
+                <td><a href="http://localhost/kioficina/public/servico/editar/<?php echo $linha['id_servico']?>"><i class="bi bi-pencil"></i></a></td>
                 <td><a href="http://localhost/kioficina/public/servico/desativar"><i class="bi bi-trash"></i></a></td>
             </tr>
         <?php endforeach ?>

@@ -16,8 +16,6 @@ class ServicoController extends Controller
         $this->servicoModel = new Servico();
         $this->dashboardModel = new Dashboard();
         $this->especialidadeModel = new Especialidade();
-        
-
     }
     // Front - END: Carregar a lista de serviços
     public function index()
@@ -94,7 +92,7 @@ class ServicoController extends Controller
         //total receita
         $dados['total_receita'] = $this->dashboardModel->getReceitaTotal();
 
-        
+
 
         $this->carregarViews('dash/dashboard', $dados);
     }
@@ -180,12 +178,11 @@ class ServicoController extends Controller
                     $_SESSION['tipo-msg'] = 'sucesso';
                     header('Location: http://localhost/kioficina/public/servico/listar');
                     exit;
-
                 } else {
                     $dados['mensagem'] = "Erro ao adicionar o serviço";
                     $dados['tipo-msg'] = "erro-servico";
                 }
-            }else{
+            } else {
                 $dados['mensagem'] = "Preencha todos os campos obrigatórios";
                 $dados['tipo-msg'] = "erro";
             }
@@ -219,21 +216,47 @@ class ServicoController extends Controller
     }
 
     // 3 - método para editar serviços
-    public function editar()
+    public function editar($id = null)
     {
-
         $dados = array();
+
+        if (!isset($_SESSION['userTipo']) || $_SESSION['userTipo'] !== 'Funcionario') {
+
+            header('Location:' . BASE_URL);
+            exit;
+        }
+
+
+
+        /** Se não houve ID na URL, redirecionar para página de erro(Lista) */
+
+        if ($id == null) {
+            header('Location: http://localhost/kioficina/public/servico/listar');
+            exit;
+        }
+
+        /** Caso seja Post, processar via FORM*/
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            /** Buscar dados do Serviços de acordo com o ID*/
+        }
+
+
+        $servico = $this->servicoModel->getServicoById($id);
+        $dados['servico'] = $servico;
+
+        // var_dump($dados['servico']);
+
         $dados['conteudo'] = 'dash/servico/editar';
+        $dados['listarEspecialidade'] = $this->especialidadeModel->getEspecialidade();
+
+
+
         //metodo dashboardcontroller
-        //pegar os dados do usuario Logado
         $dados['usuario'] = $this->dashboardModel->getUsuarioLogado($_SESSION['userId']);
         //pegar dados do estoque
         $dados['estoque'] = $this->dashboardModel->getEstoque();
         //pegar dados do cliente
         $dados['cadastro'] = $this->dashboardModel->getCadastroUsuario();
-
-        //pegar dados servico realizado
-        $dados['servico'] =  $this->dashboardModel->getServicoRealizado();
 
         // pegar dados depoimento
         $dados['depoimento'] = $this->dashboardModel->getDepoimento();

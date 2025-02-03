@@ -148,7 +148,9 @@ h1 {
 
 .container {
     .img{
+        width: 100%;
         max-width: 500px;
+        
 
         &#normalFoto{
             margin: 0 auto;

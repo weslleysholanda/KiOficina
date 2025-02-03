@@ -93,6 +93,20 @@ class Servico extends Model{
  
     }
 
+    /** Método para buscar os dados de Serviço de acordo com o ID */
+    public function getServicoById($id){
+        $sql = "SELECT s.*, g.foto_galeria, e.nome_especialidade FROM tbl_servico s
+                LEFT JOIN tbl_galeria g on s.id_servico = g.id_servico 
+                inner join tbl_especialidade e on s.id_especialidade = e.id_especialidade  
+                where s.id_servico  = :id_servico 
+                limit 1;";
+        $stmt = $this->db->prepare($sql);
+        $stmt ->bindValue(':id_servico',$id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function addFotoGaleria($id_servico,$arquivo, $nome_servico){
         $sql = "INSERT INTO tbl_galeria(foto_galeria,alt_galeria,status_galeria,id_servico) 
                 VALUES (:foto_galeria, :alt_galeria, :status_galeria, :id_servico)";
