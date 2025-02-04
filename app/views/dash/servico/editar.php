@@ -3,14 +3,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/css/tempus-dominus.min.css" crossorigin="anonymous">
 <div class="container mt-5">
 
-    <form method="POST" action="http://localhost/kioficina/public/servico/editar" enctype="multipart/form-data">
+    <form method="POST" action="http://localhost/kioficina/public/servico/editar/<?php echo $servico['id_servico']; ?>" enctype="multipart/form-data">
         <div class="img">
             <?php
-            $fotoGaleria = $servico['foto_galeria'];
-            $fotoPath = "http://localhost/kioficina/public/uploads/" . $fotoGaleria;
-            $fotoDefault = "http://localhost/kioficina/public/uploads/servico/sem-foto-servico.png";
+                $fotoGaleria = $servico['foto_galeria'];
+                $fotoPath = "http://localhost/kioficina/public/uploads/" . $fotoGaleria;
+                $fotoDefault = "http://localhost/kioficina/public/uploads/servico/sem-foto-servico.png";
 
-            $imagePath = (file_exists($_SERVER['DOCUMENT_ROOT'] . "/kioficina/public/uploads/" . $fotoGaleria) && !empty($fotoGaleria))
+                $imagePath = (file_exists($_SERVER['DOCUMENT_ROOT'] . "/kioficina/public/uploads/" . $fotoGaleria) && !empty($fotoGaleria))
                 ? $fotoPath
                 : $fotoDefault;
             ?>

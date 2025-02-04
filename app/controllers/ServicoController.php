@@ -164,7 +164,7 @@ class ServicoController extends Controller
                 if ($id_servico) {
                     if (isset($_FILES['foto_galeria']) && $_FILES['foto_galeria']['error'] == 0) {
                         // var_dump('cheguei aqui');
-                        $arquivo = $this->uploadFoto($_FILES['foto_galeria']);
+                        $arquivo = $this->uploadFoto($_FILES['foto_galeria'],$link_servico);
                         if ($arquivo) {
                             // Inserir na Galeria
                             $this->servicoModel->addFotoGaleria($id_servico, $arquivo, $nome_servico);
@@ -238,6 +238,82 @@ class ServicoController extends Controller
         /** Caso seja Post, processar via FORM*/
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             /** Buscar dados do Serviços de acordo com o ID*/
+
+
+            //tbl_servico
+            $nome_servico = filter_input(INPUT_POST, 'nome_servico', FILTER_SANITIZE_SPECIAL_CHARS);
+            $descricao_servico = filter_input(INPUT_POST, 'descricao_servico', FILTER_SANITIZE_SPECIAL_CHARS);
+            $preco_base_servico = filter_input(INPUT_POST, 'preco_base_servico', FILTER_SANITIZE_NUMBER_FLOAT);
+            $tempo_estimado_servico = filter_input(INPUT_POST, 'tempo_estimado_servico');
+            $alt_foto_servico = $nome_servico;
+            $id_especialidade = filter_input(INPUT_POST, 'id_especialidade', FILTER_SANITIZE_NUMBER_INT);
+            $status_servico = filter_input(INPUT_POST, 'status_servico', FILTER_SANITIZE_SPECIAL_CHARS);
+            $nova_especialidade = filter_input(INPUT_POST, 'nova_especialidade', FILTER_SANITIZE_SPECIAL_CHARS);
+            // //tbl_galeria
+            // $foto_galeria
+            // $alt_galeria
+            // $status_galeria
+            // $id_servico
+
+            // //tbl_especialidade
+            // $nome_especialidade
+
+            if ($nome_servico && $descricao_servico && $preco_base_servico !== false) {
+                /** 1-Verificar a especialidade*/
+                if (empty($id_especialidade) && !empty($nova_especialidade)) {
+                    /** Criar e Obter a especialidade nova */
+                    $id_especialidade = $this->servicoModel->obterOuCriarEspecialidade($nova_especialidade);
+                }
+
+                if (empty($id_especialidade)) {
+                    $dados['mensagem'] = "É necessário escolher ou criar uma especialidade!";
+                    $dados['tipo-msg'] = "erro";
+                    header('Location: http//localhost/kioficina/public/servico/editar/'.$id);
+                    return;
+                }
+
+                /** 2- Link do servico*/
+                $link_servico = $this->gerarLinkServico($nome_servico);
+
+                /** 3- Preparar dados*/
+                $dadosServico = array(
+                    'nome_servico'              => $nome_servico,
+                    'descricao_servico'         => $descricao_servico,
+                    'preco_base_servico'        => $preco_base_servico,
+                    'tempo_estimado_servico'    => $tempo_estimado_servico,
+                    'alt_foto_servico'          => $nome_servico,
+                    'id_especialidade'          => $id_especialidade,  //Esse id_especialidade pode vim da lista ou de uma nova.
+                    'status_servico'            => $status_servico,
+                    'link_servico'              => $link_servico,
+                );
+
+                /**4- Atualizar o serviço*/
+                $id_servico = $this->servicoModel->atualizarServico($id, $dadosServico);
+                if ($id_servico) {
+                    if (isset($_FILES['foto_galeria']) && $_FILES['foto_galeria']['error'] == 0) {
+                        // var_dump('cheguei aqui');
+                        $arquivo = $this->uploadFoto($_FILES['foto_galeria'],$link_servico);
+                        if ($arquivo) {
+                            // Inserir na Galeria
+                            $this->servicoModel->atualizarFotoGaleria($id, $arquivo, $nome_servico);
+                        } else {
+                            //Definir uma mensagem informando que a foto não foi informado
+                        }
+                    }
+
+                    /** Mensagem de Sucesso */
+                    $_SESSION['mensagem'] = "Serviço atualizado com Sucesso!";
+                    $_SESSION['tipo-msg'] = 'sucesso';
+                    header('Location: http://localhost/kioficina/public/servico/listar');
+                    exit;
+                } else {
+                    $dados['mensagem'] = "Erro ao atualizar o serviço";
+                    $dados['tipo-msg'] = "erro";
+                }
+            } else {
+                $dados['mensagem'] = "Preencha todos os campos obrigatórios";
+                $dados['tipo-msg'] = "erro";
+            }
         }
 
 
@@ -314,11 +390,11 @@ class ServicoController extends Controller
         }
 
         $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-        $nome_arquivo = 'servico/' . uniqid() . '.' . $ext;
+        $nome_arquivo = '$link_servico' .  '.' . $ext;
 
 
         if (move_uploaded_file($file['tmp_name'], $dir . $nome_arquivo)) {
-            return $nome_arquivo;
+            return 'servico/' . $nome_arquivo;
         }
 
         return false;
