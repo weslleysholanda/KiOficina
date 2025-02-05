@@ -1,3 +1,17 @@
+<?php
+    // Inicia a sessão apenas se não estiver iniciada
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    // Exibe apenas mensagens de erro
+    if (!empty($_SESSION['mensagem']) && !empty($_SESSION['tipo-msg']) && $_SESSION['tipo-msg'] === 'erro') {
+        echo '<div class="alert alert-danger" role="alert">' . htmlspecialchars($_SESSION['mensagem'], ENT_QUOTES, 'UTF-8') . '</div>';
+
+        // Remove a mensagem da sessão após exibir
+        unset($_SESSION['mensagem'], $_SESSION['tipo-msg']);
+    }
+?>
 <h1>Editar Servico</h1>
 <!-- Tempus dominus timepicker -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/css/tempus-dominus.min.css" crossorigin="anonymous">
@@ -6,16 +20,16 @@
     <form method="POST" action="http://localhost/kioficina/public/servico/editar/<?php echo $servico['id_servico']; ?>" enctype="multipart/form-data">
         <div class="img">
             <?php
-                $fotoGaleria = $servico['foto_galeria'];
-                $fotoPath = "http://localhost/kioficina/public/uploads/" . $fotoGaleria;
-                $fotoDefault = "http://localhost/kioficina/public/uploads/servico/sem-foto-servico.png";
+            $fotoGaleria = $servico['foto_galeria'];
+            $fotoPath = "http://localhost/kioficina/public/uploads/" . $fotoGaleria;
+            $fotoDefault = "http://localhost/kioficina/public/uploads/servico/sem-foto-servico.png";
 
-                $imagePath = (file_exists($_SERVER['DOCUMENT_ROOT'] . "/kioficina/public/uploads/" . $fotoGaleria) && !empty($fotoGaleria))
+            $imagePath = (file_exists($_SERVER['DOCUMENT_ROOT'] . "/kioficina/public/uploads/" . $fotoGaleria) && !empty($fotoGaleria))
                 ? $fotoPath
                 : $fotoDefault;
             ?>
 
-            <img id = "preview-img" style="width:100%; cursor:pointer;" src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($servico['nome_servico']); ?>">
+            <img id="preview-img" style="width:100%; cursor:pointer;" src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($servico['nome_servico']); ?>">
             <input type="file" name="foto_galeria" id="foto_galeria" style="display: none;" accept="image/*">
         </div>
         <div class="container-form">
@@ -34,7 +48,7 @@
             <div class="flex">
                 <div class="mb-3">
                     <label for="precoBase" class="form-label">Preço Base</label>
-                    <input type="number" name="preco_base_servico" class="form-control" id="preco_base_servico" value="<?php echo htmlspecialchars($servico['preco_base_servico']); ?>" required>
+                    <input type="number" step="any" name="preco_base_servico" class="form-control" id="preco_base_servico" value="<?php echo htmlspecialchars($servico['preco_base_servico']); ?>" required>
                 </div>
 
 

@@ -166,7 +166,7 @@ class Servico extends Model
         /**Verificar se existe */
         $sqlVerificar = "SELECT id_galeria from tbl_galeria WHERE id_servico = :id_servico;";
         $stmtVerificar = $this->db->prepare($sqlVerificar);
-        $stmtVerificar->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmtVerificar->bindValue(':id_servico', $id, PDO::PARAM_INT);
         $stmtVerificar->execute();
         $galeria = $stmtVerificar->fetch(PDO::FETCH_ASSOC);
 
@@ -183,6 +183,7 @@ class Servico extends Model
             $stmt->bindValue(':alt_galeria', $alt_servico);
             $stmt->bindValue(':status_galeria', 'Ativo');
             $stmt->bindValue(':id_galeria', $galeria['id_galeria']);
+            return $stmt->execute();
         } else {
             $sql = "INSERT INTO tbl_galeria(foto_galeria,alt_galeria,status_galeria,id_servico) 
                 VALUES (:foto_galeria, :alt_galeria, :status_galeria, :id_servico)";

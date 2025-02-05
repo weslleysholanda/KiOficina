@@ -1,5 +1,5 @@
 <div class="navTool">
-    <a href="http://localhost/kioficina/public/cliente/adicionar">ADICIONAR</a>
+    <a href="http://localhost/kioficina/public/funcionario/adicionar">ADICIONAR</a>
 </div>
 <table class="table table-hover">
     <thead>
