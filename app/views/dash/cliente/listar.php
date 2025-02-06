@@ -66,7 +66,7 @@ if (isset($_SESSION['mensagem']) && isset($_SESSION['tipo-msg'])) {
                 <td><?php echo $linha['telefone_cliente'] ?></td>
                 <td><?php echo $linha['cidade_cliente'] ?></td>
                 <td><?php echo $linha['bairro_cliente'] ?></td>
-                <td><a href="#"><i class="bi bi-pencil"></i></a></td>
+                <td><a href="http://localhost/kioficina/public/cliente/editar/<?php echo $linha['id_cliente'] ?>"><i class="bi bi-pencil"></i></a></td>
                 <td><a href="#"><i class="bi bi-trash"></i></a></td>
             </tr>
         <?php endforeach ?>

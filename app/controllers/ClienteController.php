@@ -122,9 +122,6 @@ class ClienteController extends Controller
         //pegar dados do cliente
         $dados['cadastro'] = $this->dashboardModel->getCadastroUsuario();
 
-        //pegar dados servico realizado
-        $dados['servico'] =  $this->dashboardModel->getServicoRealizado();
-
         // pegar dados depoimento
         $dados['depoimento'] = $this->dashboardModel->getDepoimento();
 
@@ -134,6 +131,36 @@ class ClienteController extends Controller
         //total receita
         $dados['total_receita'] = $this->dashboardModel->getReceitaTotal();
         $this->carregarViews('dash/dashboard', $dados);
+    }
+
+    public function editar($id = null){
+        $dados = array();
+
+        $dados['conteudo'] = 'dash/cliente/editar';
+        $dados['listarEstado'] = $this->estadoModel->getEstado();
+
+        $dados['cliente'] = $this->clienteModel->getClienteById($id);
+
+        // $cliente = $this->clienteModel->getClienteById($id);
+        // $dados['cliente'] = $cliente;
+
+        //metodo dashboardcontroller
+        //pegar os dados do usuario Logado
+        $dados['usuario'] = $this->dashboardModel->getUsuarioLogado($_SESSION['userId']);
+        //pegar dados do estoque
+        $dados['estoque'] = $this->dashboardModel->getEstoque();
+        //pegar dados do cliente
+        $dados['cadastro'] = $this->dashboardModel->getCadastroUsuario();
+
+
+        // pegar dados depoimento
+        $dados['depoimento'] = $this->dashboardModel->getDepoimento();
+
+        //pegar dados vendas
+        $dados['total_vendas'] =  $this->dashboardModel->getVendas();
+
+
+        $this->carregarViews('dash/dashboard',$dados);
     }
 
     private function uploadFoto($file){

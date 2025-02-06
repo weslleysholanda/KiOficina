@@ -72,5 +72,14 @@ class Cliente extends Model
         $stmt->execute();
         return $this->db->lastInsertId();
     }
+
+    public function getClienteById($id){
+        $sql = "SELECT * FROM tbl_cliente WHERE id_cliente = :id_cliente;";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue('id_cliente',$id,PDO::PARAM_INT);
+        $stmt ->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
     
 }
