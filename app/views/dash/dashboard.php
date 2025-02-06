@@ -345,16 +345,19 @@
                 </div>
             </div>
         </main>
-        
+
     </div>
     <footer class="app-footer">
-            <strong>
-                Copyright &copy; 2014-2024&nbsp;
-                <a href="https://adminlte.io" class="text-decoration-none">KiOficina</a>.
-            </strong>
-            All rights reserved.
-            <!--end::Copyright-->
-        </footer>
+        <strong>
+            Copyright &copy; 2014-2024&nbsp;
+            <a href="https://adminlte.io" class="text-decoration-none">KiOficina</a>.
+        </strong>
+        All rights reserved.
+        <!--end::Copyright-->
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js"
         integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -390,6 +393,86 @@
                 });
             }
         });
+
+        function abrirModalDesativar(idServico) {
+            // Verifica se o modal já está visível
+            if ($('#modalDesativar').hasClass('show')) {
+                return;
+            }
+
+            // Define o ID do serviço no campo hidden
+            document.getElementById('idServicoDesativar').value = idServico;
+
+            // Abre o modal com Bootstrap
+            $('#modalDesativar').modal('show');
+        };
+
+        document.getElementById('btnConfirmar').addEventListener('click', function() {
+            constidServico = document.getElementById('idServicoDesativar').value;
+            // console.log(idServico);
+
+            if (idServico) {
+                desativarServico(idServico);
+            }
+        })
+
+        function abrirModalDesativar(idServico) {
+
+            if ($('#modalDesativar').hasClass('show')) {
+                return;
+            }
+
+            document.getElementById('idServicoDesativar').value = idServico;
+
+            $('#modalDesativar').modal('show');
+
+        }
+
+        document.getElementById('btnConfirmar').addEventListener('click', function() {
+            const idServico = document.getElementById('idServicoDesativar').value;
+            console.log(idServico);
+
+            if (idServico) {
+                desativarServico(idServico);
+            }
+        });
+
+        function desativarServico(idServico) {
+
+            fetch(`http://localhost/kioficina/public/servico/desativar/${idServico}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => {
+                    // Se o código de resposta NÃO for ok, lança um erro
+                    if (!response.ok) {
+                        throw new Error(`Erro HTTP: ${response.status}`);
+                        console.log("ERRO -");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Se a resposta do servidor for OK, fecha o modal e carrega e atualiza a lista
+                    if(data.sucesso){
+                        console.log("Serviço desativado com sucesso");
+                        $('#modalDesativar').modal('hide')
+                        setTimeout(() =>{
+                            location.reload();
+                        }), 500 ;
+
+                    }else{
+                        alert(data.mensagem || "Ocorreu um erro ao desativar o serviço");
+                    }
+                    
+                })
+                .catch(erro => {
+                    console.error('Erro', erro);
+                    alert("Erro na requisição.");
+                })
+
+        }
     </script> <!--end::OverlayScrollbars Configure--> <!-- OPTIONAL SCRIPTS --> <!-- apexcharts --> <!--end::Script-->
 </body><!--end::Body-->
 

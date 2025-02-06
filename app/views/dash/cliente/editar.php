@@ -1,9 +1,23 @@
+<?php
+    // Inicia a sessão apenas se não estiver iniciada
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    // Exibe apenas mensagens de erro
+    if (!empty($_SESSION['mensagem']) && !empty($_SESSION['tipo-msg']) && $_SESSION['tipo-msg'] === 'erro') {
+        echo '<div class="alert alert-danger" role="alert">' . htmlspecialchars($_SESSION['mensagem'], ENT_QUOTES, 'UTF-8') . '</div>';
+    
+        // Remove a mensagem da sessão após exibir
+        unset($_SESSION['mensagem'], $_SESSION['tipo-msg']);
+    }
+?>
 <h1>Adicionar Cliente</h1>
 <!-- Tempus dominus timepicker -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/css/tempus-dominus.min.css" crossorigin="anonymous">
 <div class="container mt-5">
 
-    <form method="POST" action="http://localhost/kioficina/public/cliente/adicionar" enctype="multipart/form-data">
+    <form method="POST" action="http://localhost/kioficina/public/cliente/editar" enctype="multipart/form-data">
         <div class="img">
             <img id="preview-img" style="width:100%; cursor:pointer;" name="foto_cliente" title="Clique na imagem para selecionar uma foto de serviço" src="http://localhost/kioficina/public/uploads/servico/sem-foto-servico.png" alt="">
             <input type="file" name="foto_cliente" id="foto_cliente" required style="display: none;" accept="image/*">

@@ -1,24 +1,24 @@
-<?php 
-    if(session_status() == PHP_SESSION_NONE) {
-        session_start();
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (isset($_SESSION['mensagem']) && isset($_SESSION['tipo-msg'])) {
+
+    $mensagem = $_SESSION['mensagem'];
+    $tipo = $_SESSION['tipo-msg'];
+
+    /**Exibir a mensagem */
+    if ($tipo == 'sucesso') {
+        echo '<div class="alert alert-success" role="alert">' . $mensagem . '</div>';
+    } elseif ($tipo == 'erro') {
+        echo '<div class="alert alert-danger" role="alert">' . $mensagem . '</div>';
     }
 
-    if(isset($_SESSION['mensagem']) && isset($_SESSION['tipo-msg'])){
-
-        $mensagem = $_SESSION['mensagem'];
-        $tipo = $_SESSION['tipo-msg'];
-
-        /**Exibir a mensagem */
-        if($tipo == 'sucesso'){
-            echo '<div class="alert alert-success" role="alert">'. $mensagem .'</div>';
-        }elseif($tipo == 'erro'){
-            echo '<div class="alert alert-danger" role="alert">'. $mensagem .'</div>';
-        }
-
-        /** Limpe as variáveis de sessão */
-        unset($_SESSION['mensagem']);
-        unset($_SESSION['tipo-msg']);
-    }
+    /** Limpe as variáveis de sessão */
+    unset($_SESSION['mensagem']);
+    unset($_SESSION['tipo-msg']);
+}
 
 
 ?>
@@ -49,9 +49,30 @@
                 <td><?php echo $linha['preco_base_servico'] ?></td>
                 <td><?php echo $linha['tempo_estimado_servico'] ?></td>
                 <td><?php echo $linha['id_especialidade'] ?></td>
-                <td><a href="http://localhost/kioficina/public/servico/editar/<?php echo $linha['id_servico']?>"><i class="bi bi-pencil"></i></a></td>
-                <td><a href="http://localhost/kioficina/public/servico/desativar"><i class="bi bi-trash"></i></a></td>
+                <td><a href="http://localhost/kioficina/public/servico/editar/<?php echo $linha['id_servico'] ?>"><i class="bi bi-pencil"></i></a></td>
+                <td><a href="#" class="btn btn-danger" onclick="abrirModalDesativar(<?php echo $linha['id_servico']; ?>)"><i class="bi bi-trash"></i></a></td>
             </tr>
         <?php endforeach ?>
     </tbody>
 </table>
+<!-- Modal desativar servico -->
+<div class="modal" tabindex="-1" id="modalDesativar">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Desativar Serviços</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza de que deseja desativar esse serviço?</p>
+                <input type="hidden" id="idServicoDesativar" value="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btnConfirmar">Desativar</button>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+ 

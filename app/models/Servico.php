@@ -221,4 +221,12 @@ class Servico extends Model
         }
         return false;
     }
+
+    /**Desativar Servico */
+    public function desativarServico($id){
+        $sql = "UPDATE tbl_servico SET status_servico = 'Inativo' WHERE id_servico = :id_servico";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':id_servico', $id ,PDO::PARAM_INT);
+        return $stmt->execute();
+    }
 }

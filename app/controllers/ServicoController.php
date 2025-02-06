@@ -340,13 +340,37 @@ class ServicoController extends Controller
     }
 
     // 4 - método para desativar serviços
-    public function desativar()
+    public function desativar($id = null)
     {
+        if (!isset($_SESSION['userTipo']) || $_SESSION['userTipo'] !== 'Funcionario') {
+            http_response_code(400);
+            echo json_encode(["sucesso" => false, "mensagem" => "Acesso negado"]);
+            header('Location: http//localhost/kioficina/public/');
+            // header('Location:' . BASE_URL);
+            exit;
+        }
 
-        $dados = array();
-        $dados['conteudo'] = 'dash/servico/desativar';
+        if($id === null){
+            http_response_code(400);
+            echo json_encode(["sucesso" => false, "mensagem" => "ID inválido"]);
+            exit;
+        }
 
-        $this->carregarViews('dash/dashboard', $dados);
+        $resultado = $this->servicoModel->desativarServico($id);
+        header('Content-Type: application/json');
+
+        if($resultado){
+            $_SESSION['mensagem'] = 'Serviço desativado com sucesso!';
+            $_SESSION['tipo-msg'] = 'sucesso';
+
+            echo json_encode(['sucesso' => true]);
+        }else{
+
+            $_SESSION['mensagem'] = 'Falha ao desativar o serviço';
+            $_SESSION['tipo-msg'] = 'erro';
+
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Falha ao desativar o serviço']);
+        }
     }
 
     public function gerarLinkServico($nome_servico)
