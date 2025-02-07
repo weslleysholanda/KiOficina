@@ -1,16 +1,17 @@
+
 <?php
-    // Inicia a sessão apenas se não estiver iniciada
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
+// Inicia a sessão apenas se não estiver iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-    // Exibe apenas mensagens de erro
-    if (!empty($_SESSION['mensagem']) && !empty($_SESSION['tipo-msg']) && $_SESSION['tipo-msg'] === 'erro') {
-        echo '<div class="alert alert-danger" role="alert">' . htmlspecialchars($_SESSION['mensagem'], ENT_QUOTES, 'UTF-8') . '</div>';
+// Exibe apenas mensagens de erro
+if (!empty($_SESSION['mensagem']) && !empty($_SESSION['tipo-msg']) && $_SESSION['tipo-msg'] === 'erro') {
+    echo '<div class="alert alert-danger" role="alert">' . htmlspecialchars($_SESSION['mensagem'], ENT_QUOTES, 'UTF-8') . '</div>';
 
-        // Remove a mensagem da sessão após exibir
-        unset($_SESSION['mensagem'], $_SESSION['tipo-msg']);
-    }
+    // Remove a mensagem da sessão após exibir
+    unset($_SESSION['mensagem'], $_SESSION['tipo-msg']);
+}
 ?>
 <h1>Editar Servico</h1>
 <!-- Tempus dominus timepicker -->
@@ -103,25 +104,26 @@
     document.addEventListener('DOMContentLoaded', function() {
         const visualizarImg = document.getElementById('preview-img');
         const arquivo = document.getElementById('foto_galeria');
-
+ 
         visualizarImg.addEventListener('click', function() {
             arquivo.click()
         })
-
+ 
         arquivo.addEventListener('change', function() {
             if (arquivo.files && arquivo.files[0]) {
                 let render = new FileReader();
                 render.onload = function(e) {
                     visualizarImg.src = e.target.result
                 }
-
+ 
                 render.readAsDataURL(arquivo.files[0]);
-
+ 
             }
-
+ 
         })
     })
 </script>
+ 
 
 <!-- Tempus Dominus JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/js/tempus-dominus.min.js" crossorigin="anonymous"></script>

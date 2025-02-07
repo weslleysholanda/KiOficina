@@ -1,9 +1,9 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
+    if (session_status() == PHP_SESSION_NONE) {
     session_start();
-}
+    }
 
-if (isset($_SESSION['mensagem']) && isset($_SESSION['tipo-msg'])) {
+    if (isset($_SESSION['mensagem']) && isset($_SESSION['tipo-msg'])) {
 
     $mensagem = $_SESSION['mensagem'];
     $tipo = $_SESSION['tipo-msg'];
@@ -24,7 +24,7 @@ if (isset($_SESSION['mensagem']) && isset($_SESSION['tipo-msg'])) {
     /** Limpe as variáveis de sessão */
     unset($_SESSION['mensagem']);
     unset($_SESSION['tipo-msg']);
-}
+    }
 
 
 ?>
@@ -58,7 +58,7 @@ if (isset($_SESSION['mensagem']) && isset($_SESSION['tipo-msg'])) {
                                     }
                                 } else {
                                     echo ("http://localhost/kioficina/public/uploads/cliente/sem-foto-cliente.png");
-                                } ?>" alt="<?php echo htmlspecialchars($linha['alt_foto_cliente'], ENT_QUOTES, 'UTF-8'); ?>">
+                                } ?>" alt="<?php echo htmlspecialchars($linha['alt_foto_cliente'], ENT_QUOTES, 'UTF-8'); ?> " id="preview-img" onclick="abrirModalPerfil(<?php echo $linha['id_cliente']?>)" style="cursor:pointer;">
                 </td>
                 <td><?php echo $linha['nome_cliente'] ?></td>
                 <td><?php echo $linha['cpf_cnpj_cliente'] ?></td>
@@ -72,3 +72,15 @@ if (isset($_SESSION['mensagem']) && isset($_SESSION['tipo-msg'])) {
         <?php endforeach ?>
     </tbody>
 </table>
+<img id="preview-img" src="exemplo.jpg" style="cursor:pointer;" alt="Abrir Modal" />
+
+<div class="ui longer modal">
+    <i class="close icon"></i>
+    <div class="header">Imagem do Cliente</div>
+    <div class="content">
+        <p>Detalhes sobre o cliente.</p>
+    </div>
+    <div class="actions">
+        <div class="ui button" id="fechar-modal">Fechar</div>
+    </div>
+</div>

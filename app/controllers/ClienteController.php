@@ -15,7 +15,8 @@ class ClienteController extends Controller
         $this->dashboardModel = new Dashboard();
         $this->estadoModel = new Estado();
     }
-    public function listar(){
+    public function listar()
+    {
         $dados = array();
         $dados['conteudo'] = 'dash/cliente/listar';
         $dados['listarCliente'] = $this->clienteModel->getListarCliente();
@@ -42,7 +43,8 @@ class ClienteController extends Controller
         $this->carregarViews('dash/dashboard', $dados);
     }
 
-    public function adicionar(){
+    public function adicionar()
+    {
         $dados = array();
         $dados['conteudo'] = 'dash/cliente/adicionar';
         //estado
@@ -63,7 +65,7 @@ class ClienteController extends Controller
             $cidade_cliente = filter_input(INPUT_POST, 'cidade_cliente', FILTER_SANITIZE_SPECIAL_CHARS);
             $id_uf = filter_input(INPUT_POST, 'id_uf', FILTER_SANITIZE_SPECIAL_CHARS);
             $status_cliente = filter_input(INPUT_POST, 'status_cliente', FILTER_SANITIZE_SPECIAL_CHARS);
-            
+
             // verifica o dados do date
             if (!empty($data_nasc_cliente)) {
                 $dataPartes = explode('/', $data_nasc_cliente);
@@ -71,12 +73,12 @@ class ClienteController extends Controller
                     $data_nasc_cliente = "{$dataPartes[2]}-{$dataPartes[1]}-{$dataPartes[0]}"; // Converte para YYYY-MM-DD
                 }
             }
-            
+
             // Verificar se uma foto foi enviada
             if (isset($_FILES['foto_cliente']) && $_FILES['foto_cliente']['error'] == 0) {
                 $foto_cliente = $this->uploadFoto($_FILES['foto_cliente']);
             }
-        
+
             // Montando o array de dados do cliente
             $dadosCliente = [
                 'nome_cliente' => $nome_cliente,
@@ -95,10 +97,10 @@ class ClienteController extends Controller
                 'id_uf' => $id_uf,
                 'status_cliente' => $status_cliente,
             ];
-        
+
             // Inserir dados no banco
             $id_cliente = $this->clienteModel->addCliente($dadosCliente);
-        
+
             if ($id_cliente) {
                 $_SESSION['mensagem'] = "Cliente adicionado com Sucesso!";
                 $_SESSION['tipo-msg'] = 'sucesso';
@@ -111,8 +113,8 @@ class ClienteController extends Controller
                 exit;
             }
         }
-        
-        
+
+
 
         //metodo dashboardcontroller
         //pegar os dados do usuario Logado
@@ -133,7 +135,8 @@ class ClienteController extends Controller
         $this->carregarViews('dash/dashboard', $dados);
     }
 
-    public function editar($id = null){
+    public function editar($id = null)
+    {
         $dados = array();
 
         $dados['conteudo'] = 'dash/cliente/editar';
@@ -141,7 +144,7 @@ class ClienteController extends Controller
 
         $dados['cliente'] = $this->clienteModel->getClienteById($id);
 
-        
+
         //metodo dashboardcontroller
         //pegar os dados do usuario Logado
         $dados['usuario'] = $this->dashboardModel->getUsuarioLogado($_SESSION['userId']);
@@ -165,20 +168,22 @@ class ClienteController extends Controller
             $cidade_cliente = filter_input(INPUT_POST, 'cidade_cliente', FILTER_SANITIZE_SPECIAL_CHARS);
             $id_uf = filter_input(INPUT_POST, 'id_uf', FILTER_SANITIZE_SPECIAL_CHARS);
             $status_cliente = filter_input(INPUT_POST, 'status_cliente', FILTER_SANITIZE_SPECIAL_CHARS);
-            
+
             // verifica o dados do date
             if (!empty($data_nasc_cliente)) {
-                $dataPartes = explode('/', $data_nasc_cliente);
-                if (count($dataPartes) === 3) {
-                    $data_nasc_cliente = "{$dataPartes[2]}-{$dataPartes[1]}-{$dataPartes[0]}"; // Converte para YYYY-MM-DD
+                $dataObj = DateTime::createFromFormat('d/m/Y', $data_nasc_cliente);
+                if ($dataObj) {
+                    $data_nasc_cliente = $dataObj->format('Y-m-d');
                 }
             }
-            
+
             // Verificar se uma foto foi enviada
             if (isset($_FILES['foto_cliente']) && $_FILES['foto_cliente']['error'] == 0) {
                 $foto_cliente = $this->uploadFoto($_FILES['foto_cliente']);
+            } else {
+                $foto_cliente = $dados['cliente']['foto_cliente'];
             }
-        
+
             // Montando o array de dados do cliente
             $dadosCliente = [
                 'nome_cliente' => $nome_cliente,
@@ -196,23 +201,24 @@ class ClienteController extends Controller
                 'id_uf' => $id_uf,
                 'status_cliente' => $status_cliente,
             ];
-        
+
             // Inserir dados no banco
-            $id_cliente = $this->clienteModel->atualizarCliente($id,$dadosCliente);
-        
-            if ($id_cliente) {
-                $_SESSION['mensagem'] = "Cliente adicionado com Sucesso!";
+
+            $resultado = $this->clienteModel->atualizarCliente($id, $dadosCliente);
+
+            if ($resultado) {
+                $_SESSION['mensagem'] = "Cliente atualizado com sucesso!";
                 $_SESSION['tipo-msg'] = 'sucesso';
                 header('Location: http://localhost/kioficina/public/cliente/listar');
                 exit;
             } else {
-                $_SESSION['mensagem'] = "Erro ao adicionar o cliente";
+                $_SESSION['mensagem'] = "Erro ao atualizar o cliente";
                 $_SESSION['tipo-msg'] = 'erro';
-                header('Location: http://localhost/kioficina/public/cliente/adicionar');
+                header('Location: http://localhost/kioficina/public/cliente/editar/' . $id);
                 exit;
             }
         }
-        
+
 
         // pegar dados depoimento
         $dados['depoimento'] = $this->dashboardModel->getDepoimento();
@@ -221,19 +227,20 @@ class ClienteController extends Controller
         $dados['total_vendas'] =  $this->dashboardModel->getVendas();
 
 
-        $this->carregarViews('dash/dashboard',$dados);
+        $this->carregarViews('dash/dashboard', $dados);
     }
 
-    private function uploadFoto($file){
+    private function uploadFoto($file)
+    {
         $dir = '../public/uploads/';
-        if(!file_exists($dir)){
+        if (!file_exists($dir)) {
             mkdir($dir, 0755, true);
         }
 
-        $ext = pathinfo($file['name'],PATHINFO_EXTENSION);
-        $nome_arquivo = 'cliente/' .uniqid() . '.' . $ext;
+        $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $nome_arquivo = 'cliente/' . uniqid() . '.' . $ext;
 
-        if(move_uploaded_file($file['tmp_name'], $dir . $nome_arquivo)){
+        if (move_uploaded_file($file['tmp_name'], $dir . $nome_arquivo)) {
             return $nome_arquivo;
         }
 

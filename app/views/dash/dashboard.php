@@ -9,15 +9,15 @@
     <meta name="author" content="ColorlibHQ">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
         integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css"
-        integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css"
-        integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css" integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous">
+    <!-- Semantic UI -->
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css" rel="stylesheet">
     <link rel="stylesheet" href="http://localhost/kioficina/public/vendors/css/adminlte.css">
     <link rel="stylesheet" href="http://localhost/kioficina/public/assets/css/dash.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css"
-        integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css" integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous">
 </head>
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
@@ -313,34 +313,7 @@
                         } else {
                             echo '<h2> Bem Vindo ao Dashboard! </h2>';
                         }
-
                         ?>
-                        <!-- <div class="col-md-8"> 
-                            
-                           
-                        </div> -->
-                        <!-- <div class="col-md-4"> 
-                            <div class="info-box mb-3 text-bg-warning container-cor-warning">
-                                <span class="info-box-icon">
-                                    <i class="bi bi-tag-fill"></i>
-                                </span>
-                              
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">Estoque</span>
-                                        <span class="info-box-number"><?php echo htmlspecialchars($estoque, ENT_QUOTES, 'UTF-8'); ?></span>
-                                    </div>
-                               
-
-                            </div> 
-
-                            <div class="info-box mb-3 text-bg-danger" id="container-informacao">
-                                <span class="info-box-icon"> <i class="bi bi-cart-fill"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Serviços Realizados</span>
-                                    <span class="info-box-number"><?php echo htmlspecialchars($servico, ENT_QUOTES, 'UTF-8') ?></span>
-                                </div> 
-                            </div> 
-                        </div>  -->
                     </div>
                 </div>
             </div>
@@ -366,8 +339,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
     <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
     <script src="http://localhost/kioficina/public/vendors/js/adminlte.js"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
@@ -395,28 +368,6 @@
         });
 
         function abrirModalDesativar(idServico) {
-            // Verifica se o modal já está visível
-            if ($('#modalDesativar').hasClass('show')) {
-                return;
-            }
-
-            // Define o ID do serviço no campo hidden
-            document.getElementById('idServicoDesativar').value = idServico;
-
-            // Abre o modal com Bootstrap
-            $('#modalDesativar').modal('show');
-        };
-
-        document.getElementById('btnConfirmar').addEventListener('click', function() {
-            constidServico = document.getElementById('idServicoDesativar').value;
-            // console.log(idServico);
-
-            if (idServico) {
-                desativarServico(idServico);
-            }
-        })
-
-        function abrirModalDesativar(idServico) {
 
             if ($('#modalDesativar').hasClass('show')) {
                 return;
@@ -425,7 +376,18 @@
             document.getElementById('idServicoDesativar').value = idServico;
 
             $('#modalDesativar').modal('show');
+        }
 
+        function abrirModalPerfil(idCliente) {
+            let modal = document.querySelector('.ui.longer.modal');
+
+            if (!modal) {
+                console.error("Modal não encontrado: .ui.longer.modal");
+                return;
+            }
+
+            // Inicia e mostra o modal do Semantic UI
+            $('.ui.longer.modal').modal('toggle');
         }
 
         document.getElementById('btnConfirmar').addEventListener('click', function() {
@@ -455,17 +417,17 @@
                 })
                 .then(data => {
                     // Se a resposta do servidor for OK, fecha o modal e carrega e atualiza a lista
-                    if(data.sucesso){
+                    if (data.sucesso) {
                         console.log("Serviço desativado com sucesso");
                         $('#modalDesativar').modal('hide')
-                        setTimeout(() =>{
+                        setTimeout(() => {
                             location.reload();
-                        }), 500 ;
+                        }), 500;
 
-                    }else{
+                    } else {
                         alert(data.mensagem || "Ocorreu um erro ao desativar o serviço");
                     }
-                    
+
                 })
                 .catch(erro => {
                     console.error('Erro', erro);
@@ -473,7 +435,20 @@
                 })
 
         }
-    </script> <!--end::OverlayScrollbars Configure--> <!-- OPTIONAL SCRIPTS --> <!-- apexcharts --> <!--end::Script-->
-</body><!--end::Body-->
+
+        // Modal Semantic
+        $(document).ready(function() {
+            // Delegação para abrir o modal
+            $(document).on('click', '#preview-img', function() {
+                $('.ui.longer.modal').modal('show'); // Abre o modal
+            });
+
+            // Delegação para fechar o modal
+            $(document).on('click', '#fechar-modal, .close', function() {
+                $('.ui.longer.modal').modal('hide'); // Fecha o modal
+            });
+        });
+    </script>
+</body>
 
 </html>

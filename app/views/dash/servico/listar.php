@@ -74,5 +74,14 @@ if (isset($_SESSION['mensagem']) && isset($_SESSION['tipo-msg'])) {
         </div>
     </div>
 </div>
- 
- 
+
+<script>
+    document.getElementById('btnConfirmar').addEventListener('click', function() {
+        constidServico = document.getElementById('idServicoDesativar').value;
+        // console.log(idServico);
+
+        if (idServico) {
+            desativarServico(idServico);
+        }
+    })
+</script>

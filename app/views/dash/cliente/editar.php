@@ -1,26 +1,36 @@
 <?php
-    // Inicia a sessão apenas se não estiver iniciada
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-    
-    // Exibe apenas mensagens de erro
-    if (!empty($_SESSION['mensagem']) && !empty($_SESSION['tipo-msg']) && $_SESSION['tipo-msg'] === 'erro') {
-        echo '<div class="alert alert-danger" role="alert">' . htmlspecialchars($_SESSION['mensagem'], ENT_QUOTES, 'UTF-8') . '</div>';
-    
-        // Remove a mensagem da sessão após exibir
-        unset($_SESSION['mensagem'], $_SESSION['tipo-msg']);
-    }
+// Inicia a sessão apenas se não estiver iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Exibe apenas mensagens de erro
+if (!empty($_SESSION['mensagem']) && !empty($_SESSION['tipo-msg']) && $_SESSION['tipo-msg'] === 'erro') {
+    echo '<div class="alert alert-danger" role="alert">' . htmlspecialchars($_SESSION['mensagem'], ENT_QUOTES, 'UTF-8') . '</div>';
+
+    // Remove a mensagem da sessão após exibir
+    unset($_SESSION['mensagem'], $_SESSION['tipo-msg']);
+}
 ?>
 <h1>Adicionar Cliente</h1>
 <!-- Tempus dominus timepicker -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/css/tempus-dominus.min.css" crossorigin="anonymous">
 <div class="container mt-5">
 
-    <form method="POST" action="http://localhost/kioficina/public/cliente/editar" enctype="multipart/form-data">
+    <form method="POST" action="http://localhost/kioficina/public/cliente/editar/<?php echo $cliente['id_cliente']; ?>" enctype="multipart/form-data">
         <div class="img">
-            <img id="preview-img" style="width:100%; cursor:pointer;" name="foto_cliente" title="Clique na imagem para selecionar uma foto de serviço" src="http://localhost/kioficina/public/uploads/servico/sem-foto-servico.png" alt="">
-            <input type="file" name="foto_cliente" id="foto_cliente" required style="display: none;" accept="image/*">
+            <?php
+            $fotoCliente = $cliente['foto_cliente'];
+            $fotoPath = "http://localhost/kioficina/public/uploads/" . $fotoCliente;
+            $fotoDefault = "http://localhost/kioficina/public/uploads/cliente/sem-foto-cliente.png";
+
+            $imagePath = (file_exists($_SERVER['DOCUMENT_ROOT'] . "/kioficina/public/uploads/" . $fotoCliente) && !empty($fotoCliente))
+                ? $fotoPath
+                : $fotoDefault;
+            ?>
+
+            <img id="preview-img" style="width:100%; cursor:pointer;" src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($cliente['nome_cliente']); ?>">
+            <input type="file" name="foto_cliente" id="foto_cliente" style="display: none;" accept="image/*">
         </div>
         <div class="container-form">
             <div class="flex">
@@ -57,38 +67,38 @@
                 <!-- Cpf/Cnpj -->
                 <div class="mb-3">
                     <label class="form-label">CPF ou CNPJ</label>
-                    <input type="text" class="form-control" name="cpf_cnpj_cliente" required placeholder="Digite o CPF ou CNPJ" value="<?php echo $cliente['cpf_cnpj_cliente'] ?>">
+                    <input type="text" class="form-control" name="cpf_cnpj_cliente" placeholder="Digite o CPF ou CNPJ" value="<?php echo $cliente['cpf_cnpj_cliente'] ?>">
                 </div>
             </div>
             <div class="flex">
                 <!-- Telefone -->
                 <div class="mb-3">
                     <label class="form-label">Telefone</label>
-                    <input type="text" class="form-control" name="telefone_cliente" value="<?php echo $cliente['telefone_cliente'] ?>" required>
+                    <input type="text" class="form-control" name="telefone_cliente" value="<?php echo $cliente['telefone_cliente'] ?>">
                 </div>
 
                 <!-- Email -->
                 <div class="mb-3">
                     <label class="form-label">E-mail</label>
-                    <input type="text" class="form-control" name="email_cliente" value="<?php echo $cliente['email_cliente'] ?>" required>
+                    <input type="text" class="form-control" name="email_cliente" value="<?php echo $cliente['email_cliente'] ?>">
                 </div>
 
                 <!-- Senha -->
                 <div class="mb-3">
                     <label class="form-label">Senha</label>
-                    <input type="text" class="form-control" value="<?php echo $cliente['senha_cliente'] ?>" name="senha_cliente" required>
+                    <input type="text" class="form-control" name="senha_cliente">
                 </div>
             </div>
             <div class="flex"><!-- Endereço Cliente -->
                 <div class="mb-3">
                     <label class="form-label">Endereço</label>
-                    <input type="text" class="form-control" value="<?php echo $cliente['endereco_cliente'] ?>" name="endereco_cliente" required>
+                    <input type="text" class="form-control" value="<?php echo $cliente['endereco_cliente'] ?>" name="endereco_cliente">
                 </div>
 
                 <!-- Bairo cliente -->
                 <div class="mb-3">
                     <label class="form-label">bairro</label>
-                    <input type="text" class="form-control" name="bairro_cliente" value="<?php echo $cliente['bairro_cliente'] ?>" required>
+                    <input type="text" class="form-control" name="bairro_cliente" value="<?php echo $cliente['bairro_cliente'] ?>">
                 </div>
             </div>
 
@@ -96,14 +106,14 @@
                 <!-- Cidade cliente -->
                 <div class="mb-3">
                     <label class="form-label">Cidade</label>
-                    <input type="text" class="form-control" value="<?php echo $cliente['cidade_cliente'] ?>" name="cidade_cliente" required>
+                    <input type="text" class="form-control" value="<?php echo $cliente['cidade_cliente'] ?>" name="cidade_cliente">
                 </div>
 
 
                 <!-- Estado -->
                 <div class="mb-3">
                     <label for="statusServico" class="form-label">Estado</label>
-                    <select class="form-select" id="status_servico" name="id_uf" required>
+                    <select class="form-select" id="status_servico" name="id_uf">
                         <option disabled <?= empty($cliente['id_uf']) ? 'selected' : ''; ?>>Selecione o Estado</option>
                         <?php foreach ($listarEstado as $estado): ?>
                             <option value="<?= $estado['id_uf']; ?>" <?= ($cliente['id_uf'] ?? '') == $estado['id_uf'] ? 'selected' : ''; ?>>
@@ -117,7 +127,7 @@
             <!-- Status do Serviço -->
             <div class="mb-3">
                 <label for="statusServico" class="form-label">Status</label>
-                <select class="form-select" id="status_servico" name="status_cliente" required>
+                <select class="form-select" id="status_servico" name="status_cliente">
                     <option disabled <?= empty($cliente['status_cliente']) ? 'selected' : ''; ?>>Selecione o status</option>
                     <option value="Ativo" <?= ($cliente['status_cliente'] ?? '') == 'Ativo' ? 'selected' : ''; ?>>Ativo</option>
                     <option value="Inativo" <?= ($cliente['status_cliente'] ?? '') == 'Inativo' ? 'selected' : ''; ?>>Inativo</option>
