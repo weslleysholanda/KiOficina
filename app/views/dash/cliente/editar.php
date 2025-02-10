@@ -136,7 +136,10 @@ if (!empty($_SESSION['mensagem']) && !empty($_SESSION['tipo-msg']) && $_SESSION[
 
             <!-- Botões -->
             <button type="submit" class="btn btn-primary">Salvar</button>
-            <button type="button" class="btn btn-secondary" onclick="window.history.back()">Cancelar</button>
+            
+            <a href="http://localhost/kioficina/public/cliente/listar">
+                <button type="button" class="btn btn-secondary">Cancelar</button>
+            </a>
         </div>
 
     </form>

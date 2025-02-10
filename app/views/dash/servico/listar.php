@@ -56,8 +56,8 @@ if (isset($_SESSION['mensagem']) && isset($_SESSION['tipo-msg'])) {
     </tbody>
 </table>
 <!-- Modal desativar servico -->
-<div class="modal" tabindex="-1" id="modalDesativar">
-    <div class="modal-dialog">
+<div class="modal faded" tabindex="-1" id="modalDesativar">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Desativar Serviços</h5>

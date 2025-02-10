@@ -75,7 +75,7 @@ class Cliente extends Model
 
     public function getClienteById($id)
     {
-        $sql = "SELECT * FROM tbl_cliente WHERE id_cliente = :id_cliente;";
+        $sql = "SELECT * FROM tbl_cliente WHERE id_cliente = :id_cliente LIMIT 1;";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue('id_cliente', $id, PDO::PARAM_INT);
         $stmt->execute();

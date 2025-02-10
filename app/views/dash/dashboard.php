@@ -339,7 +339,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
     <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src=" https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
     <script src="http://localhost/kioficina/public/vendors/js/adminlte.js"></script>
@@ -378,24 +378,15 @@
             $('#modalDesativar').modal('show');
         }
 
-        function abrirModalPerfil(idCliente) {
-            let modal = document.querySelector('.ui.longer.modal');
+        //Delegação de Evento: Serviço - Desativar
+        document.addEventListener('click', function(event) {
+            if (event.target && event.target.id === 'btnConfirmar') {
+                const idServico = document.getElementById('idServicoDesativar').value;
+                console.log(idServico);
 
-            if (!modal) {
-                console.error("Modal não encontrado: .ui.longer.modal");
-                return;
-            }
-
-            // Inicia e mostra o modal do Semantic UI
-            $('.ui.longer.modal').modal('toggle');
-        }
-
-        document.getElementById('btnConfirmar').addEventListener('click', function() {
-            const idServico = document.getElementById('idServicoDesativar').value;
-            console.log(idServico);
-
-            if (idServico) {
-                desativarServico(idServico);
+                if (idServico) {
+                    desativarServico(idServico);
+                }
             }
         });
 
@@ -436,18 +427,43 @@
 
         }
 
-        // Modal Semantic
-        $(document).ready(function() {
-            // Delegação para abrir o modal
-            $(document).on('click', '#preview-img', function() {
-                $('.ui.longer.modal').modal('show'); // Abre o modal
-            });
+        function abrirModalPerfil(idCliente) {
+            const cliente = <?php echo json_encode($dados['listarCliente']); ?>;
+            const clienteSelecionado = cliente.find(c => c.id_cliente === idCliente);
 
-            // Delegação para fechar o modal
-            $(document).on('click', '#fechar-modal, .close', function() {
-                $('.ui.longer.modal').modal('hide'); // Fecha o modal
-            });
-        });
+            if (clienteSelecionado) {
+                // Atualizando o nome do cliente
+                document.querySelector('#modalPerfil input[name="nome_cliente"]').value = clienteSelecionado.nome_cliente;
+
+                // Formatando a data de nascimento (de ano-mês-dia para dia/mês/ano)
+                const dataNasc = clienteSelecionado.data_nasc_cliente;
+                const dataFormatada = formatarData(dataNasc);
+                document.querySelector('#modalPerfil input[name="data_nasc_cliente"]').value = dataFormatada;
+
+                // Atualizando outros campos
+                document.querySelector('#modalPerfil select[name="tipo_cliente"]').value = clienteSelecionado.tipo_cliente;
+                document.querySelector('#modalPerfil input[name="cpf_cnpj_cliente"]').value = clienteSelecionado.cpf_cnpj_cliente;
+                document.querySelector('#modalPerfil input[name="telefone_cliente"]').value = clienteSelecionado.telefone_cliente;
+                document.querySelector('#modalPerfil input[name="email_cliente"]').value = clienteSelecionado.email_cliente;
+                document.querySelector('#modalPerfil input[name="senha_cliente"]').value = clienteSelecionado.senha_cliente;
+                document.querySelector('#modalPerfil select[name="status_cliente"]').value = clienteSelecionado.status_cliente;
+
+                // Atualizando a imagem do cliente
+                const caminhoImagem = "http://localhost/kioficina/public/uploads/" + clienteSelecionado.foto_cliente;
+                document.querySelector('#modalPerfil #preview-img').src = caminhoImagem;
+
+                // Abrindo o modal
+                $('#modalPerfil').modal('show');
+            } else {
+                alert("Cliente não encontrado!");
+            }
+        }
+
+        // Função para formatar a data de ano-mês-dia para dia/mês/ano
+        function formatarData(data) {
+            const partes = data.split("-"); // Divide a data no formato ano-mês-dia
+            return `${partes[2]}/${partes[1]}/${partes[0]}`; // Retorna no formato dia/mês/ano
+        }
     </script>
 </body>
 

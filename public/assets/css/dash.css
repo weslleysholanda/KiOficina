@@ -195,3 +195,18 @@ h1 {
 .app-footer{
     text-align: center;
 }
+
+.modal.fade{
+    .modal-dialog-scrollable{
+        .modal-content{
+            .col-md-4{
+                div{
+                    width: 100%; 
+                    display: flex; 
+                    align-items: center; 
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
