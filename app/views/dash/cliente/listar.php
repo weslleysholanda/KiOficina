@@ -115,8 +115,8 @@ if (isset($_SESSION['mensagem']) && isset($_SESSION['tipo-msg'])) {
                             <label class="form-label">Tipo Cliente</label>
                             <select class="form-select" name="tipo_cliente" required>
                                 <option selected disabled>Selecione o tipo</option>
-                                <option value="Pessoa Jurídica">Pessoa Jurídica</option>
-                                <option value="Pessoa Física">Pessoa Física</option>
+                                <option value="<?= htmlspecialchars('Pessoa Jurídica', ENT_QUOTES, 'UTF-8') ?>">Pessoa Jurídica</option>
+                                <option value="<?= htmlspecialchars('Pessoa Física', ENT_QUOTES, 'UTF-8') ?>">Pessoa Física</option>
                             </select>
                         </div>
 
