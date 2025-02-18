@@ -21,7 +21,5 @@ class Veiculo extends Model{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function servicoExecutadoPorIdCliente($id){
-        
-    }
+    
 }
